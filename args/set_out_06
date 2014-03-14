@@ -1,0 +1,35 @@
+<s>CreditSuisse změnilo doporučení pro DevonEnergy na overweight " z neutral " .
+<slemma>CreditSuisse změnit doporučení pro DevonEnergy na overweight " z neutral " .
+<stag>kA k5eAaPmAgNnS k1gNnSc1 k7c4 kA k7c4 k2nPgIc4 kIx" k7c2 k2nPgIc2 kIx" kIx.
+<clause>CreditSuisse změnilo doporučení pro DevonEnergy na overweight " z neutral
+<clausenum>1 2 3 4 5 6 7 8 9 10
+<clauseconj> ():
+<vp> (k5eAaPmAgNnS): změnilo
+<vplemma> (k5eAaPmAgNnS): změnit
+<vpnum> (k5eAaPmAgNnS): 2
+<vphead> 2
+<phr> (kA): CreditSuisse
+<phrlemma> (kA): CreditSuisse
+<phrnum> (kA): 1
+<phrhead> 1
+[1] ->>> [2]
+<phr> (k1gNnSc1): doporučení
+<phrlemma> (k1gNnSc1): doporučení
+<phrnum> (k1gNnSc1): 3
+<phrhead> 3
+[3] ->>> [2]
+<phr> (k7c4): pro DevonEnergy
+<phrlemma> (k7c4): pro DevonEnergy
+<phrnum> (k7c4): 4 5
+<phrhead> 4
+[4, 5] ->>> [3]
+<phr> (k7c4): na overweight
+<phrlemma> (k7c4): na overweight
+<phrnum> (k7c4): 6 7
+<phrhead> 6
+[6, 7] ->>> [2]
+<phr> (k7c2): z neutral
+<phrlemma> (k7c2): z neutral
+<phrnum> (k7c2): 9 10
+<phrhead> 9
+</s>

@@ -1,0 +1,36 @@
+<s>Investiční bankaGoldmanSachs změnila doporučení pro akcie německé automobilkyBMW na koupit z neutral .
+<slemma>investiční bankaGoldmanSachs změnit doporučení pro akcie německý automobilkaBMW na koupit z neutral .
+<stag>k2eAgFnSc1d1 k1gFnSc1 k5eAaPmAgFnS k1gNnSc4 k7c4 k1gFnPc4 k2eAgFnSc2d1 k1gFnSc2 k7c4 k2nPgIc4 k7c2 k2nPgIc2 kIx.
+<clause>Investiční bankaGoldmanSachs změnila doporučení pro akcie německé automobilkyBMW na koupit z neutral
+<clausenum>1 2 3 4 5 6 7 8 9 10 11 12
+<clauseconj> ():
+<vp> (k5eAaPmAgFnS): změnila
+<vplemma> (k5eAaPmAgFnS): změnit
+<vpnum> (k5eAaPmAgFnS): 3
+<vphead> 3
+<phr> (k1gFnSc1): Investiční bankaGoldmanSachs
+<phrlemma> (k1gFnSc1): investiční bankaGoldmanSachs
+<phrnum> (k1gFnSc1): 1 2
+<phrhead> 2
+[1, 2] ->>> [3]
+<phr> (k1gNnSc4): doporučení
+<phrlemma> (k1gNnSc4): doporučení
+<phrnum> (k1gNnSc4): 4
+<phrhead> 4
+[4] ->>> [3]
+<phr> (k7c4): pro akcie německé automobilkyBMW
+<phrlemma> (k7c4): pro akcie německý automobilkaBMW
+<phrnum> (k7c4): 5 6 7 8
+<phrhead> 5
+[5, 6, 7, 8] ->>> [4]
+<phr> (k7c4): na koupit
+<phrlemma> (k7c4): na koupit
+<phrnum> (k7c4): 9 10
+<phrhead> 9
+[9, 10] ->>> [5, 6, 7, 8]
+<phr> (k7c2): z neutral
+<phrlemma> (k7c2): z neutral
+<phrnum> (k7c2): 11 12
+<phrhead> 11
+[11, 12] ->>> [9, 10]
+</s>

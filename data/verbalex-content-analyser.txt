@@ -1,0 +1,60 @@
+#
+#	Vlastná aplikácia Verbalexu
+#	rozoznáva len niektoré valenčné rámce potrebné pre extrakciu informácie
+#
+
+* SNÍŽIT:1(SNIŽOVAT)
+=wnid: ENG20-02281969-v
+=def: měnit něco
+=canbepassive: yes
+=meaning: I
+=class:
+ ~ dok: snížit:1  ned: snižovat:1
+ + AG(kdo1;<organization:1>;obl)+++VERB+++DPHR(phrase;'doporučení';obl)+++OBJ(na co4;<object:1>;obl)+++OBJ(z čeho2;<object:1>;obl)
+     -synon:
+     -example: ned: banka snížila doporučení
+     -occurs: not-verbalex
+     -attr: use=prim, reflexivity=no, mustbeimperative=no
+ ~ dok: snížit:1  ned: snižovat:1
+ + AG(kdo1;<organization:1>;obl)+++VERB+++DPHR(phrase;'doporučení';obl)
+     -synon:
+     -example: ned: banka snížila doporučení
+     -occurs: not-verbalex
+     -attr: use=prim, reflexivity=no, mustbeimperative=no
+     
+* VYSLOUŽIT SI:1
+=wnid: ENG20-02648970-v
+=def: ukázat se hodným uznání, něj. hodnocení
+=canbepassive: no
+=meaning: I
+=class:
+ ~ dok: vysloužit si:1
+ + AG(kdo1;<organization:1>;obl)+++VERB+++OBJ(co4;<object:1>;obl)
+     -synon:
+     -example: dok: politik si vysloužil ostrou kritiku
+     -example: dok: klavíristka si vysloužila aplaus
+     -example: dok: pilný student si vysloužil pochvalu
+     -occurs: not-verbalex
+     -attr: use=prim, reflexivity=tantum, mustbeimperative=no
+     
+     
+* ZVÝŠIT SE:1(ZVYŠOVAT SE), ZVÝŠIT:1(ZVYŠOVAT)
+=wnid: ENG20-00281258-v
+=def: (postupně) zvětšovat, zesilovat
+=canbepassive ESKALOVAT:1,VYSTUPŇOVAT SE:1, ZVÝŠIT SE:1(ZVYŠOVAT SE): no
+=canbepassive VYSTUPŇOVAT:1, ZVÝŠIT:2(ZVYŠOVAT): yes
+=meaning: I
+=class:
+ ~ dok: zvýšit:1  ned: zvyšovat:1
+ + AG(kdo1;<organization:1>;obl)+++VERB+++DPHR(phrase;'doporučení';obl)+++OBJ(na co4;<object:1>;obl)+++OBJ(z čeho2;<object:1>;obl)
+     -synon:
+     -example: ned: banka zvýšila doporučení
+     -occurs: not-verbalex
+     -attr: use=prim, reflexivity=no, mustbeimperative=no
+ ~ dok: zvýšit:1  ned: zvyšovat:1
+ + AG(kdo1;<organization:1>;obl)+++VERB+++OBJ(co4;<object:1>;obl)
+     -synon:
+     -example: ned: banka zvýšila doporučení
+     -occurs: not-verbalex
+     -attr: use=prim, reflexivity=no, mustbeimperative=no    
+     

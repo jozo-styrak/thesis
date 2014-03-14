@@ -1,0 +1,67 @@
+<s>Barclays snižuje doporučení pro Deutsche_Bank na equalweight z overweight . 
+<slemma>Barclays snižovat doporučení pro Deutsche na equalweight z overweighta . 
+<stag>k1gInSc1 k5eAaImIp3nS k1gNnPc4 k7c4 k1nPgIc4 k7c4 k1nPgIc4 k7c2 k1nPgIc2 kIx. 
+<clause>Barclays snižuje doporučení pro Deutsche_Bank na equalweight z overweight
+<clausenum>1 2 3 4 5 6 7 8 9
+<clauseconj> (): 
+<vp> (k5eAaImIp3nS): snižuje
+<vplemma> (k5eAaImIp3nS): snižovat
+<vpnum> (k5eAaImIp3nS): 2
+<vphead> 2
+<phr> (k1gInSc1): Barclays
+<phrlemma> (k1gInSc1): Barclays
+<phrnum> (k1gInSc1): 1
+<phrhead> 1 
+[1] ->>> [2]
+<phr> (k1gNnPc4): doporučení
+<phrlemma> (k1gNnPc4): doporučení
+<phrnum> (k1gNnPc4): 3
+<phrhead> 3 
+[3] ->>> [2]
+<phr> (k7c4): pro Deutsche_Bank
+<phrlemma> (k7c4): pro Deutsche
+<phrnum> (k7c4): 4 5
+<phrhead> 4 
+[4, 5] ->>> [3]
+<phr> (k7c4): na equalweight
+<phrlemma> (k7c4): na equalweight
+<phrnum> (k7c4): 6 7
+<phrhead> 6 
+[6, 7] ->>> [4, 5]
+<phr> (k7c2): z overweight
+<phrlemma> (k7c2): z overweighta
+<phrnum> (k7c2): 8 9
+<phrhead> 8 
+[8, 9] ->>> [6, 7]
+</s>
+
+<s>Credit_Suisse začalo pokrývat společnost Red_Hat s doporučením outperform .
+<slemma>Credit začít pokrývat společnost Red s doporučení outperform .
+<stag>k1gInSc1 k5eAaPmAgNnS k5eAaImF k1gFnSc4 k1nPgIc2 k7c7 k1gNnSc7 k1nPgIc2 kIx.
+<clause>Credit_Suisse začalo pokrývat společnost Red_Hat s doporučením outperform
+<clausenum>1 2 3 4 5 6 7 8
+<clauseconj> ():
+<vp> (k5eAaPmAgNnS): začalo
+<vplemma> (k5eAaPmAgNnS): začít
+<vpnum> (k5eAaPmAgNnS): 2
+<vphead> 2
+<vp> (k5eAaImF): pokrývat
+<vplemma> (k5eAaImF): pokrývat
+<vpnum> (k5eAaImF): 3
+<vphead> 3
+<phr> (k1gInSc1): Credit_Suisse
+<phrlemma> (k1gInSc1): Credit
+<phrnum> (k1gInSc1): 1
+<phrhead> 1
+[1] ->>> [2]
+<phr> (k1gFnSc4): společnost Red_Hat
+<phrlemma> (k1gFnSc4): společnost Red
+<phrnum> (k1gFnSc4): 4 5
+<phrhead> 4
+[4, 5] ->>> [3]
+<phr> (k7c7): s doporučením outperform
+<phrlemma> (k7c7): s doporučení outperform
+<phrnum> (k7c7): 6 7 8
+<phrhead> 6
+[6, 7, 8] ->>> [4, 5]
+</s>

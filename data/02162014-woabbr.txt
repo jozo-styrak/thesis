@@ -1,0 +1,1454 @@
+<s desamb="1">
+Na	na	k7c4
+výsledky	výsledek	k1gInPc4
+reagoval	reagovat	k5eAaBmAgInS
+investiční	investiční	k2eAgInSc1d1
+dům	dům	k1gInSc1
+Jefferies	Jefferiesa	k1gFnPc2
+doporučením	doporučení	k1gNnSc7
+"	"	kIx"
+Hold	hold	k1gInSc1
+"	"	kIx"
+a	a	k8xC
+cílovou	cílový	k2eAgFnSc7d1
+cenou	cena	k1gFnSc7
+88	#num#	k4
+USD	USD	kA
+(	(	kIx(
+z	z	k7c2
+předchozích	předchozí	k2eAgInPc2d1
+78	#num#	k4
+USD	USD	kA
+)	)	kIx)
+.	.	kIx.
+</s>
+<s desamb="1">
+Ze	z	k7c2
+46	#num#	k4
+analytiků	analytik	k1gMnPc2
+oslovených	oslovený	k2eAgMnPc2d1
+agenturou	agentura	k1gFnSc7
+Bloomberg	Bloomberg	k1gInSc4
+jich	on	k3xPp3gMnPc2
+35	#num#	k4
+doporučuje	doporučovat	k5eAaImIp3nS
+nakupovat	nakupovat	k5eAaBmF
+akcie	akcie	k1gFnPc4
+společnosti	společnost	k1gFnSc2
+,	,	kIx,
+přičemž	přičemž	k6eAd1
+ani	ani	k8xC
+jeden	jeden	k4xCgInSc4
+by	by	kYmCp3nS
+je	on	k3xPp3gFnPc4
+neprodával	prodávat	k5eNaImAgMnS
+.	.	kIx.
+</s>
+<s desamb="1">
+Credit	Credit	k1gMnSc4
+Suisse	Suiss	k1gMnSc4
+začalo	začít	k5eAaPmAgNnS
+pokrývat	pokrývat	k5eAaImF
+společnost	společnost	k1gFnSc4
+Red	Red	k1gFnSc2
+Hat	hat	k0
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+outperform	outperform	k1gInSc4
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Credit	Credit	k1gMnSc4
+Suisse	Suiss	k1gMnSc4
+začalo	začít	k5eAaPmAgNnS
+pokrývat	pokrývat	k5eAaImF
+softwarovou	softwarový	k2eAgFnSc4d1
+společnost	společnost	k1gFnSc4
+Red	Red	k1gFnSc2
+Hat	hat	k0
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+outperform	outperform	k1gInSc4
+"	"	kIx"
+a	a	k8xC
+cílovou	cílový	k2eAgFnSc7d1
+cenou	cena	k1gFnSc7
+70	#num#	k4
+dolarů	dolar	k1gInPc2
+.	.	kIx.
+</s>
+<s desamb="1">
+Z	z	k7c2
+23	#num#	k4
+analytiků	analytik	k1gMnPc2
+oslovených	oslovený	k2eAgMnPc2d1
+agenturou	agentura	k1gFnSc7
+Bloomberg	Bloomberg	k1gInSc1
+doporučuje	doporučovat	k5eAaImIp3nS
+14	#num#	k4
+nakupovat	nakupovat	k5eAaBmF
+akcie	akcie	k1gFnPc4
+společnosti	společnost	k1gFnSc2
+,	,	kIx,
+zatímco	zatímco	k8xS
+ani	ani	k8xC
+jeden	jeden	k4xCgInSc1
+nedoporučuje	doporučovat	k5eNaImIp3nS
+akcie	akcie	k1gFnPc4
+prodávat	prodávat	k5eAaImF
+.	.	kIx.
+</s>
+<s desamb="1">
+Po	po	k7c6
+nepříznivých	příznivý	k2eNgInPc6d1
+výsledcích	výsledek	k1gInPc6
+Raiffeisenbank	Raiffeisenbanka	k1gFnPc2
+snižuje	snižovat	k5eAaImIp3nS
+cílovou	cílový	k2eAgFnSc4d1
+cenu	cena	k1gFnSc4
+pro	pro	k7c4
+NWR	NWR	kA
+na	na	k7c6
+16,1	16,1	k?
+Kč	Kč	kA
+a	a	k8xC
+doporučuje	doporučovat	k5eAaImIp3nS
+titul	titul	k1gInSc4
+prodat	prodat	k5eAaPmF
+.	.	kIx.
+</s>
+<s desamb="1">
+Jen	jen	k9
+jeden	jeden	k4xCgMnSc1
+doporučuje	doporučovat	k5eAaImIp3nS
+akcie	akcie	k1gFnPc4
+těžaře	těžař	k1gMnSc2
+koupit	koupit	k5eAaPmF
+,	,	kIx,
+6	#num#	k4
+jich	on	k3xPp3gInPc2
+doporučuje	doporučovat	k5eAaImIp3nS
+titul	titul	k1gInSc1
+držet	držet	k5eAaImF
+a	a	k8xC
+13	#num#	k4
+radí	radit	k5eAaImIp3nP
+prodat	prodat	k5eAaPmF
+.	.	kIx.
+</s>
+<s desamb="1">
+HSBC	HSBC	kA
+zvyšuje	zvyšovat	k5eAaImIp3nS
+doporučení	doporučení	k1gNnPc4
+pro	pro	k7c4
+společnost	společnost	k1gFnSc4
+Polska	Polsko	k1gNnSc2
+Grupa	grupa	k1gFnSc1
+Energetyczna	Energetyczna	k1gFnSc1
+z	z	k7c2
+underweight	underweighta	k1gFnPc2
+"	"	kIx"
+na	na	k7c4
+neutral	utrat	k5eNaPmAgInS,k5eNaImAgInS
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+V	v	k7c6
+závěru	závěr	k1gInSc6
+minulého	minulý	k2eAgInSc2d1
+týdne	týden	k1gInSc2
+došlo	dojít	k5eAaPmAgNnS
+ke	k	k7c3
+snížení	snížení	k1gNnSc3
+našeho	náš	k3xOp1gNnSc2
+investičního	investiční	k2eAgNnSc2d1
+doporučení	doporučení	k1gNnSc2
+pro	pro	k7c4
+společnost	společnost	k1gFnSc4
+Pegas	Pegas	k1gMnSc1
+Nonwovens	Nonwovensa	k1gFnPc2
+z	z	k7c2
+předchozího	předchozí	k2eAgInSc2d1
+držet	držet	k5eAaImF
+"	"	kIx"
+na	na	k7c4
+stupeň	stupeň	k1gInSc4
+redukovat	redukovat	k5eAaBmF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Morgan	morgan	k1gInSc4
+Stanley	Stanlea	k1gFnSc2
+začalo	začít	k5eAaPmAgNnS
+titul	titul	k1gInSc4
+pokrývat	pokrývat	k5eAaImF
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+equalweight	equalweighta	k1gFnPc2
+"	"	kIx"
+a	a	k8xC
+Goldman	Goldman	k1gMnSc1
+Sachs	Sachsa	k1gFnPc2
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+neutral	utrat	k5eNaImAgMnS,k5eNaPmAgMnS
+"	"	kIx"
+a	a	k8xC
+cílovou	cílový	k2eAgFnSc7d1
+cenou	cena	k1gFnSc7
+23	#num#	k4
+dolarů	dolar	k1gInPc2
+.	.	kIx.
+</s>
+<s desamb="1">
+Barclays	Barclays	k1gInSc1
+snižuje	snižovat	k5eAaImIp3nS
+cílovou	cílový	k2eAgFnSc4d1
+cenu	cena	k1gFnSc4
+pro	pro	k7c4
+Boeing	boeing	k1gInSc4
+ze	z	k7c2
+160	#num#	k4
+USD	USD	kA
+na	na	k7c4
+147	#num#	k4
+USD	USD	kA
+při	při	k7c6
+doporučení	doporučení	k1gNnSc6
+overweight	overweighta	k1gFnPc2
+.	.	kIx.
+</s>
+<s desamb="1">
+Investiční	investiční	k2eAgFnSc1d1
+banka	banka	k1gFnSc1
+Goldman	Goldman	k1gMnSc1
+Sachs	Sachs	k1gInSc1
+změnila	změnit	k5eAaPmAgFnS
+doporučení	doporučení	k1gNnSc4
+pro	pro	k7c4
+Volkswagen	volkswagen	k1gInSc4
+na	na	k7c4
+neutral	utrat	k5eNaPmAgInS,k5eNaImAgInS
+"	"	kIx"
+z	z	k7c2
+koupit	koupit	k5eAaPmF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+HSBC	HSBC	kA
+snižuje	snižovat	k5eAaImIp3nS
+doporučení	doporučení	k1gNnPc4
+pro	pro	k7c4
+společnost	společnost	k1gFnSc4
+Coca-Cola	Coca-Cola	k1gFnSc1
+na	na	k7c4
+neutral	utrat	k5eNaPmAgInS,k5eNaImAgInS
+"	"	kIx"
+z	z	k7c2
+overweight	overweighta	k1gFnPc2
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Societe	Societ	k1gMnSc5
+Generale	General	k1gMnSc5
+snížila	snížit	k5eAaPmAgFnS
+doporučení	doporučení	k1gNnPc4
+pro	pro	k7c4
+Apple	Apple	kA
+na	na	k7c6
+držet	držet	k5eAaImF
+"	"	kIx"
+z	z	k7c2
+koupit	koupit	k5eAaPmF
+.	.	kIx.
+</s>
+<s desamb="1">
+"	"	kIx"
+Daří	dařit	k5eAaImIp3nP
+se	sebe	k3xPyFc4
+energetikám	energetika	k1gFnPc3
+;	;	kIx,
+PGE	PGE	kA
+(	(	kIx(
+PGE	PGE	kA
++2,30	+2,30	k?
+%	%	kIx~
+)	)	kIx)
+,	,	kIx,
+po	po	k7c6
+zvýšeném	zvýšený	k2eAgNnSc6d1
+doporučení	doporučení	k1gNnSc6
+na	na	k7c6
+držet	držet	k5eAaImF
+"	"	kIx"
+z	z	k7c2
+prodat	prodat	k5eAaPmF
+"	"	kIx"
+od	od	k7c2
+Zachodni	Zachodni	k1gFnSc2
+Bank	bank	k1gInSc1
+zhodnocuje	zhodnocovat	k5eAaImIp3nS
+také	také	k9
+Tauron	Tauron	k1gInSc1
+(	(	kIx(
+TPE	TPE	kA
++2,14	+2,14	k?
+%	%	kIx~
+)	)	kIx)
+.	.	kIx.
+</s>
+<s desamb="1">
+Siemens	siemens	k1gInSc1
+(	(	kIx(
+SIE	SIE	kA
+)	)	kIx)
+klesá	klesat	k5eAaImIp3nS
+o	o	k7c4
+1,5	1,5	k?
+%	%	kIx~
+na	na	k7c4
+93,46	93,46	k?
+eur	euro	k1gNnPc2
+po	po	k7c6
+zvýšení	zvýšení	k1gNnSc6
+cílové	cílový	k2eAgFnSc2d1
+ceny	cena	k1gFnSc2
+od	od	k7c2
+Canaccord	Canaccordo	k1gNnPc2
+na	na	k7c4
+93	#num#	k4
+eur	euro	k1gNnPc2
+z	z	k7c2
+90	#num#	k4
+eur	euro	k1gNnPc2
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+Držet	držet	k5eAaImF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Goldman	Goldman	k1gMnSc1
+Sachs	Sachsa	k1gFnPc2
+doporučuje	doporučovat	k5eAaImIp3nS
+akcie	akcie	k1gFnSc1
+automobilky	automobilka	k1gFnSc2
+BMW	BMW	kA
+k	k	k7c3
+nákupu	nákup	k1gInSc3
+.	.	kIx.
+</s>
+<s desamb="1">
+Investiční	investiční	k2eAgFnSc1d1
+banka	banka	k1gFnSc1
+Goldman	Goldman	k1gMnSc1
+Sachs	Sachs	k1gInSc1
+změnila	změnit	k5eAaPmAgFnS
+doporučení	doporučení	k1gNnSc4
+pro	pro	k7c4
+akcie	akcie	k1gFnPc4
+německé	německý	k2eAgFnSc2d1
+automobilky	automobilka	k1gFnSc2
+BMW	BMW	kA
+na	na	k7c6
+koupit	koupit	k5eAaPmF
+"	"	kIx"
+z	z	k7c2
+neutral	utrat	k5eNaPmAgInS,k5eNaImAgInS
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Investiční	investiční	k2eAgInSc1d1
+dům	dům	k1gInSc1
+Guggenheim	Guggenheima	k1gFnPc2
+zvyšuje	zvyšovat	k5eAaImIp3nS
+doporučení	doporučení	k1gNnPc4
+pro	pro	k7c4
+Goldman	Goldman	k1gMnSc1
+Sachs	Sachs	k1gInSc1
+z	z	k7c2
+neutral	utrat	k5eNaPmAgInS,k5eNaImAgInS
+"	"	kIx"
+na	na	k7c4
+kupovat	kupovat	k5eAaImF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+BNY	BNY	kA
+Mellon	Mellon	k1gInSc1
+obdržela	obdržet	k5eAaPmAgFnS
+snížení	snížení	k1gNnSc4
+cílové	cílový	k2eAgFnSc2d1
+ceny	cena	k1gFnSc2
+ze	z	k7c2
+40	#num#	k4
+USD	USD	kA
+na	na	k7c4
+38	#num#	k4
+USD	USD	kA
+při	při	k7c6
+doporučení	doporučení	k1gNnSc6
+kupovat	kupovat	k5eAaImF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Pro	pro	k7c4
+JPMorgan	JPMorgan	k1gInSc4
+byla	být	k5eAaImAgFnS
+cílová	cílový	k2eAgFnSc1d1
+cena	cena	k1gFnSc1
+snížená	snížený	k2eAgFnSc1d1
+z	z	k7c2
+68	#num#	k4
+USD	USD	kA
+na	na	k7c4
+65	#num#	k4
+USD	USD	kA
+při	při	k7c6
+doporučení	doporučení	k1gNnSc6
+kupovat	kupovat	k5eAaImF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Cíl	cíl	k1gInSc1
+pro	pro	k7c4
+Citigroup	Citigroup	k1gInSc4
+byl	být	k5eAaImAgInS
+snížen	snížit	k5eAaPmNgInS
+z	z	k7c2
+68	#num#	k4
+USD	USD	kA
+na	na	k7c4
+62	#num#	k4
+USD	USD	kA
+při	při	k7c6
+doporučení	doporučení	k1gNnSc6
+kupovat	kupovat	k5eAaImF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Ze	z	k7c2
+40	#num#	k4
+analytiků	analytik	k1gMnPc2
+oslovených	oslovený	k2eAgMnPc2d1
+agenturou	agentura	k1gFnSc7
+Bloomberg	Bloomberg	k1gInSc1
+doporučuje	doporučovat	k5eAaImIp3nS
+16	#num#	k4
+nákup	nákup	k1gInSc1
+akcií	akcie	k1gFnPc2
+společnosti	společnost	k1gFnSc2
+,	,	kIx,
+zatímco	zatímco	k8xS
+pouze	pouze	k6eAd1
+3	#num#	k4
+by	by	kYmCp3nP
+akcie	akcie	k1gFnPc4
+prodávali	prodávat	k5eAaImAgMnP
+.	.	kIx.
+</s>
+<s desamb="1">
+Credit	Credit	k1gFnSc1
+Suisse	Suisse	k1gFnSc1
+změnilo	změnit	k5eAaPmAgNnS
+doporučení	doporučení	k1gNnSc1
+pro	pro	k7c4
+Devon	devon	k1gInSc4
+Energy	Energ	k1gInPc4
+na	na	k7c4
+overweight	overweight	k1gInSc4
+"	"	kIx"
+z	z	k7c2
+neutral	utrat	k5eNaPmAgInS,k5eNaImAgInS
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Sanford	Sanford	k1gInSc1
+C.	C.	kA
+Bernstein	Bernstein	k1gInSc1
+-	-	kIx~
+cílová	cílový	k2eAgFnSc1d1
+cena	cena	k1gFnSc1
+45	#num#	k4
+USD	USD	kA
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+"	"	kIx"
+outperform	outperform	k1gInSc1
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Nomura	Nomura	k1gFnSc1
+-	-	kIx~
+40	#num#	k4
+USD	USD	kA
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+"	"	kIx"
+neutral	utrat	k5eNaPmAgInS,k5eNaImAgInS
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+RBC	RBC	kA
+Capital	Capital	k1gMnSc1
+Markets	market	k1gInSc4zS
+-	-	kIx~
+44	#num#	k4
+USD	USD	kA
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+"	"	kIx"
+outperform	outperform	k1gInSc1
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Atlantic	Atlantice	k1gFnPc2
+změnil	změnit	k5eAaPmAgInS
+doporučení	doporučení	k1gNnPc4
+pro	pro	k7c4
+modní	modní	k2eAgInSc4d1
+dům	dům	k1gInSc4
+Ralph	Ralpha	k1gFnPc2
+Lauren	Laurna	k1gFnPc2
+na	na	k7c4
+overweight	overweight	k1gInSc4
+"	"	kIx"
+z	z	k7c2
+neutral	utrat	k5eNaPmAgInS,k5eNaImAgInS
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+JPMorgan	JPMorgan	k1gInSc1
+zvýšil	zvýšit	k5eAaPmAgInS
+doporučení	doporučení	k1gNnPc4
+pro	pro	k7c4
+společnost	společnost	k1gFnSc4
+Alcoa	Alco	k1gInSc2
+na	na	k7c4
+overweight	overweight	k1gInSc4
+"	"	kIx"
+z	z	k7c2
+neutral	utrat	k5eNaPmAgInS,k5eNaImAgInS
+"	"	kIx"
+kvůli	kvůli	k7c3
+smršťujícímu	smršťující	k2eAgMnSc3d1
+se	sebe	k3xPyFc4
+trhu	trh	k1gInSc2
+s	s	k7c7
+hliníkem	hliník	k1gInSc7
+.	.	kIx.
+</s>
+<s desamb="1">
+Těžařská	těžařský	k2eAgFnSc1d1
+společnost	společnost	k1gFnSc1
+Bogdanka	Bogdanka	k1gFnSc1
+(	(	kIx(
+LWB	LWB	kA
+;	;	kIx,
+-	-	kIx~
+0,44	0,44	k?
+%	%	kIx~
+)	)	kIx)
+oslabuje	oslabovat	k5eAaImIp3nS
+na	na	k7c4
+125,1	125,1	k?
+po	po	k7c6
+snížení	snížení	k1gNnSc6
+cílové	cílový	k2eAgFnSc2d1
+ceny	cena	k1gFnSc2
+od	od	k7c2
+Société	Sociétý	k2eAgFnSc2d1
+Générale	Général	k1gMnSc5
+na	na	k7c4
+127	#num#	k4
+PLN	plno	k1gNnPc2
+ze	z	k7c2
+137	#num#	k4
+PLN	plno	k1gNnPc2
+a	a	k8xC
+změně	změna	k1gFnSc3
+doporučení	doporučení	k1gNnSc4
+z	z	k7c2
+koupit	koupit	k5eAaPmF
+"	"	kIx"
+na	na	k7c4
+držet	držet	k5eAaImF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+ING	ing	kA
+dnes	dnes	k6eAd1
+zvýšila	zvýšit	k5eAaPmAgFnS
+doporučení	doporučení	k1gNnSc4
+pro	pro	k7c4
+společnost	společnost	k1gFnSc4
+z	z	k7c2
+držet	držet	k5eAaImF
+"	"	kIx"
+na	na	k7c4
+kupovat	kupovat	k5eAaImF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Operátor	operátor	k1gInSc1
+Orange	Orange	k1gNnSc2
+Polska	Polsko	k1gNnSc2
+(	(	kIx(
+OPL	OPL	kA
++2,23	+2,23	k?
+%	%	kIx~
+)	)	kIx)
+roste	růst	k5eAaImIp3nS
+k	k	k7c3
+úrovni	úroveň	k1gFnSc3
+11	#num#	k4
+PLN	plno	k1gNnPc2
+poté	poté	k6eAd1
+,	,	kIx,
+co	co	k3yQnSc4,k3yRnSc4,k3yInSc4
+Erste	Erst	k1gMnSc5
+Group	Group	k1gInSc1
+zvyšuje	zvyšovat	k5eAaImIp3nS
+cílovou	cílový	k2eAgFnSc4d1
+cenu	cena	k1gFnSc4
+akcie	akcie	k1gFnSc2
+na	na	k7c4
+10,7	10,7	k?
+PLN	pln	k2eAgInSc1d1
+z	z	k7c2
+původních	původní	k2eAgNnPc2d1
+8	#num#	k4
+PLN	plno	k1gNnPc2
+a	a	k8xC
+ponechává	ponechávat	k5eAaImIp3nS
+doporučení	doporučení	k1gNnSc4
+držet	držet	k5eAaImF
+.	.	kIx.
+</s>
+<s desamb="1">
+BMO	BMO	kA
+Capital	Capital	k1gMnSc1
+Markets	market	k1gInSc4zS
+zvyšuje	zvyšovat	k5eAaImIp3nS
+cílovou	cílový	k2eAgFnSc4d1
+cenu	cena	k1gFnSc4
+pro	pro	k7c4
+Caterpillar	Caterpillar	k1gInSc4
+z	z	k7c2
+80	#num#	k4
+USD	USD	kA
+na	na	k7c4
+96	#num#	k4
+USD	USD	kA
+při	při	k7c6
+doporučení	doporučení	k1gNnSc6
+market	market	k1gInSc1
+perform	perform	k1gInSc1
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Goldman	Goldman	k1gMnSc1
+Sachs	Sachs	k1gInSc4
+zvyšuje	zvyšovat	k5eAaImIp3nS
+z	z	k7c2
+94	#num#	k4
+USD	USD	kA
+na	na	k7c4
+100	#num#	k4
+USD	USD	kA
+,	,	kIx,
+doporučení	doporučení	k1gNnPc4
+neutral	utrat	k5eNaPmAgInS,k5eNaImAgInS
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Citigroup	Citigroup	k1gInSc1
+zvyšuje	zvyšovat	k5eAaImIp3nS
+z	z	k7c2
+92	#num#	k4
+USD	USD	kA
+na	na	k7c4
+100	#num#	k4
+USD	USD	kA
+,	,	kIx,
+doporučení	doporučení	k1gNnPc4
+neutral	utrat	k5eNaPmAgInS,k5eNaImAgInS
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Raymond	Raymond	k1gMnSc1
+James	James	k1gMnSc1
+navyšuje	navyšovat	k5eAaImIp3nS
+z	z	k7c2
+89	#num#	k4
+USD	USD	kA
+na	na	k7c4
+94	#num#	k4
+USD	USD	kA
+,	,	kIx,
+doporučení	doporučení	k1gNnSc1
+market	market	k1gInSc1
+perform	perform	k1gInSc1
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+UBS	UBS	kA
+zvyšuje	zvyšovat	k5eAaImIp3nS
+z	z	k7c2
+94	#num#	k4
+USD	USD	kA
+na	na	k7c4
+99	#num#	k4
+USD	USD	kA
+,	,	kIx,
+doporučení	doporučení	k1gNnPc4
+neutral	utrat	k5eNaPmAgInS,k5eNaImAgInS
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Nejvyšší	vysoký	k2eAgFnSc4d3
+cílovou	cílový	k2eAgFnSc4d1
+cenu	cena	k1gFnSc4
+stanovila	stanovit	k5eAaPmAgFnS
+Raiffeisenbank	Raiffeisenbanka	k1gFnPc2
+na	na	k7c6
+hodnotě	hodnota	k1gFnSc6
+4800	#num#	k4
+Kč	Kč	kA
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+držet	držet	k5eAaImF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Credit	Credit	k1gFnSc1
+Suisse	Suisse	k1gFnSc1
+stanovuje	stanovovat	k5eAaImIp3nS
+u	u	k7c2
+titulu	titul	k1gInSc2
+cílovou	cílový	k2eAgFnSc4d1
+cenu	cena	k1gFnSc4
+4150	#num#	k4
+Kč	Kč	kA
+a	a	k8xC
+ponechává	ponechávat	k5eAaImIp3nS
+doporučení	doporučení	k1gNnSc4
+neutral	utrat	k5eNaPmAgInS,k5eNaImAgInS
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Barclays	Barclays	k1gInSc4
+stanovila	stanovit	k5eAaPmAgFnS
+cílovou	cílový	k2eAgFnSc4d1
+cenu	cena	k1gFnSc4
+4700	#num#	k4
+Kč	Kč	kA
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+equalweight	equalweighta	k1gFnPc2
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Raymond	Raymond	k1gInSc4
+James	James	k1gInSc4
+snížilo	snížit	k5eAaPmAgNnS
+doporučení	doporučení	k1gNnSc1
+pro	pro	k7c4
+stavitele	stavitel	k1gMnSc4
+Lennar	Lennara	k1gFnPc2
+na	na	k7c4
+outperform	outperform	k1gInSc4
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Raymond	Raymond	k1gInSc4
+James	James	k1gInSc4
+snížilo	snížit	k5eAaPmAgNnS
+doporučení	doporučení	k1gNnSc1
+pro	pro	k7c4
+stavitele	stavitel	k1gMnSc4
+Lennar	Lennara	k1gFnPc2
+na	na	k7c4
+outperform	outperform	k1gInSc4
+"	"	kIx"
+ze	z	k7c2
+strong	stronga	k1gFnPc2
+buy	buy	k?
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Société	Sociétý	k2eAgFnPc4d1
+Générale	Général	k1gMnSc5
+-	-	kIx~
+cílová	cílový	k2eAgFnSc1d1
+cena	cena	k1gFnSc1
+575	#num#	k4
+USD	USD	kA
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+"	"	kIx"
+Držet	držet	k5eAaImF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Goldman	Goldman	k1gMnSc1
+Sachs	Sachsa	k1gFnPc2
+-	-	kIx~
+cílová	cílový	k2eAgFnSc1d1
+cena	cena	k1gFnSc1
+610	#num#	k4
+USD	USD	kA
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+"	"	kIx"
+Koupit	koupit	k5eAaPmF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Credit	Credit	k1gFnSc1
+Suisse	Suisse	k1gFnSc1
+-	-	kIx~
+cílová	cílový	k2eAgFnSc1d1
+cena	cena	k1gFnSc1
+500	#num#	k4
+USD	USD	kA
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+"	"	kIx"
+Neutral	Neutral	k1gMnPc1
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+UBS	UBS	kA
+-	-	kIx~
+cílová	cílový	k2eAgFnSc1d1
+cena	cena	k1gFnSc1
+625	#num#	k4
+USD	USD	kA
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+"	"	kIx"
+Koupit	koupit	k5eAaPmF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+JP	JP	kA
+Morgan	morgan	k1gMnSc1
+-	-	kIx~
+cílová	cílový	k2eAgFnSc1d1
+cena	cena	k1gFnSc1
+585	#num#	k4
+USD	USD	kA
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+"	"	kIx"
+Overweight	Overweighta	k1gFnPc2
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Jefferies	Jefferies	k1gInSc4
+-	-	kIx~
+cílová	cílový	k2eAgFnSc1d1
+cena	cena	k1gFnSc1
+625	#num#	k4
+USD	USD	kA
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+"	"	kIx"
+Koupit	koupit	k5eAaPmF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Nejvíce	nejvíce	k6eAd1,k6eAd3
+se	sebe	k3xPyFc4
+dařilo	dařit	k5eAaImAgNnS
+telekomunikačnímu	telekomunikační	k2eAgMnSc3d1
+operátorovi	operátor	k1gMnSc3
+Orange	Orange	k1gNnSc2
+Polska	Polsko	k1gNnSc2
+(	(	kIx(
+OPL	OPL	kA
++2,23	+2,23	k?
+%	%	kIx~
+)	)	kIx)
+,	,	kIx,
+který	který	k3yRgInSc1
+posílil	posílit	k5eAaPmAgInS
+k	k	k7c3
+úrovni	úroveň	k1gFnSc3
+11	#num#	k4
+PLN	plno	k1gNnPc2
+poté	poté	k6eAd1
+,	,	kIx,
+co	co	k3yQnSc4,k3yRnSc4,k3yInSc4
+Erste	Erst	k1gMnSc5
+Group	Group	k1gInSc4
+zvýšila	zvýšit	k5eAaPmAgFnS
+cílovou	cílový	k2eAgFnSc4d1
+cenu	cena	k1gFnSc4
+akcie	akcie	k1gFnSc2
+na	na	k7c4
+10,7	10,7	k?
+PLN	pln	k2eAgInSc1d1
+z	z	k7c2
+původních	původní	k2eAgNnPc2d1
+8	#num#	k4
+PLN	plno	k1gNnPc2
+a	a	k8xC
+ponechala	ponechat	k5eAaPmAgFnS
+doporučení	doporučení	k1gNnSc4
+držet	držet	k5eAaImF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Polská	polský	k2eAgFnSc1d1
+energetika	energetika	k1gFnSc1
+Tauron	Tauron	k1gInSc4
+získala	získat	k5eAaPmAgFnS
+nákupní	nákupní	k2eAgNnSc4d1
+doporučení	doporučení	k1gNnSc4
+.	.	kIx.
+</s>
+<s desamb="1">
+Societe	Societ	k1gMnSc5
+Generale	General	k1gMnSc5
+zvýšilo	zvýšit	k5eAaPmAgNnS
+doporučení	doporučení	k1gNnSc4
+pro	pro	k7c4
+polskou	polský	k2eAgFnSc4d1
+energetiku	energetika	k1gFnSc4
+Tauron	Tauron	k1gInSc4
+na	na	k7c4
+koupit	koupit	k5eAaPmF
+"	"	kIx"
+z	z	k7c2
+držet	držet	k5eAaImF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+ING	ing	kA
+dnes	dnes	k6eAd1
+zvýšila	zvýšit	k5eAaPmAgFnS
+doporučení	doporučení	k1gNnSc4
+pro	pro	k7c4
+společnost	společnost	k1gFnSc4
+z	z	k7c2
+držet	držet	k5eAaImF
+"	"	kIx"
+na	na	k7c4
+kupovat	kupovat	k5eAaImF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Societe	Societ	k1gMnSc5
+Generale	General	k1gMnSc5
+snížila	snížit	k5eAaPmAgFnS
+doporučení	doporučení	k1gNnPc4
+pro	pro	k7c4
+polskou	polský	k2eAgFnSc4d1
+telekomunikaci	telekomunikace	k1gFnSc4
+Orange	Orang	k1gFnSc2
+na	na	k7c4
+prodat	prodat	k5eAaPmF
+"	"	kIx"
+z	z	k7c2
+držet	držet	k5eAaImF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Na	na	k7c6
+současných	současný	k2eAgFnPc6d1
+cenách	cena	k1gFnPc6
+ho	on	k3xPp3gNnSc2
+ale	ale	k9
+považujeme	považovat	k5eAaImIp1nP
+za	za	k7c4
+nadceněný	nadceněný	k2eAgInSc4d1
+a	a	k8xC
+investorům	investor	k1gMnPc3
+doporučujeme	doporučovat	k5eAaImIp1nP
+pozici	pozice	k1gFnSc4
+redukovat	redukovat	k5eAaBmF
+.	.	kIx.
+</s>
+<s desamb="1">
+Akcie	akcie	k1gFnPc1
+chemičky	chemička	k1gFnSc2
+Lanxess	Lanxessa	k1gFnPc2
+doporučovány	doporučovat	k5eAaImNgFnP
+k	k	k7c3
+nákupu	nákup	k1gInSc3
+.	.	kIx.
+</s>
+<s desamb="1">
+Berenberg	Berenberg	k1gMnSc1
+zvyšuje	zvyšovat	k5eAaImIp3nS
+doporučení	doporučení	k1gNnPc4
+pro	pro	k7c4
+chemičku	chemička	k1gFnSc4
+Lanxess	Lanxessa	k1gFnPc2
+na	na	k7c6
+koupit	koupit	k5eAaPmF
+"	"	kIx"
+z	z	k7c2
+držet	držet	k5eAaImF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Akcie	akcie	k1gFnSc1
+výrobců	výrobce	k1gMnPc2
+3	#num#	k4
+D	D	kA
+tiskáren	tiskárna	k1gFnPc2
+se	sebe	k3xPyFc4
+dnes	dnes	k6eAd1
+těší	těšit	k5eAaImIp3nS
+oblibě	obliba	k1gFnSc3
+investorů	investor	k1gMnPc2
+,	,	kIx,
+poté	poté	k6eAd1
+co	co	k3yQnSc4,k3yRnSc4,k3yInSc4
+analytici	analytik	k1gMnPc1
+firmy	firma	k1gFnSc2
+William	William	k1gInSc1
+Blair	Blair	k1gMnSc1
+,	,	kIx,
+kteří	který	k3yRgMnPc1
+byli	být	k5eAaImAgMnP
+dříve	dříve	k6eAd2
+velkými	velký	k2eAgMnPc7d1
+medvědy	medvěd	k1gMnPc7
+,	,	kIx,
+zvýšili	zvýšit	k5eAaPmAgMnP
+doporučení	doporučení	k1gNnSc4
+pro	pro	k7c4
+Stratasys	Stratasys	k1gInSc4
+na	na	k7c4
+market	market	k1gInSc4
+perform	perform	k1gInSc4
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Mobilní	mobilní	k2eAgInSc4d1
+operátor	operátor	k1gInSc4
+China	China	k1gFnSc1
+Mobile	mobile	k1gNnSc2
+připisuje	připisovat	k5eAaImIp3nS
+přes	přes	k7c4
+půl	půl	k1xP
+procenta	procent	k1gInSc2
+po	po	k7c6
+snížení	snížení	k1gNnSc6
+doporučení	doporučení	k1gNnPc2
+od	od	k7c2
+Société	Sociétý	k2eAgFnSc2d1
+Générale	Général	k1gMnSc5
+na	na	k7c4
+neutral	utrat	k5eNaPmAgInS,k5eNaImAgInS
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Po	po	k7c6
+několika	několik	k4yIc2
+zvýšených	zvýšený	k2eAgNnPc2d1
+doporučení	doporučení	k1gNnPc2
+a	a	k8xC
+růstu	růst	k1gInSc2
+o	o	k7c6
+více	mnoho	k6eAd2
+jak	jak	k8xC,k8xS
+1	#num#	k4
+USD	USD	kA
+budou	být	k5eAaImBp3nP
+muset	muset	k5eAaImF
+být	být	k5eAaImF
+výsledky	výsledek	k1gInPc1
+hodně	hodně	k6eAd1
+silné	silný	k2eAgInPc1d1
+,	,	kIx,
+aby	aby	kYmCp3nS
+si	se	k3xPyFc3
+technologický	technologický	k2eAgMnSc1d1
+gigant	gigant	k1gMnSc1
+své	svůj	k3xOyFgFnSc3
+nově	nova	k1gFnSc3
+dobité	dobitý	k2eAgNnSc1d1
+území	území	k1gNnSc1
+nad	nad	k7c7
+26	#num#	k4
+USD	USD	kA
+uhájil	uhájit	k5eAaPmAgMnS
+.	.	kIx.
+</s>
+<s desamb="1">
+Mezi	mezi	k7c4
+ně	on	k3xPp3gMnPc4
+se	sebe	k3xPyFc4
+zařadila	zařadit	k5eAaPmAgFnS
+Deustche	Deustche	k1gFnSc1
+Bank	banka	k1gFnPc2
+(	(	kIx(
+DBK	DBK	kA
+-2,95	-2,95	k?
+%	%	kIx~
+)	)	kIx)
+,	,	kIx,
+na	na	k7c4
+kterou	který	k3yRgFnSc4,k3yIgFnSc4,k3yQgFnSc4
+dolehlo	dolehnout	k5eAaPmAgNnS
+snížené	snížený	k2eAgNnSc1d1
+doporučení	doporučení	k1gNnSc1
+od	od	k7c2
+Barclays	Barclaysa	k1gFnPc2
+na	na	k7c4
+equalweight	equalweight	k1gInSc4
+"	"	kIx"
+z	z	k7c2
+overweight	overweighta	k1gFnPc2
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Société	Sociétý	k2eAgFnPc4d1
+Générale	Général	k1gMnSc5
+na	na	k7c4
+zprávu	zpráva	k1gFnSc4
+reaguje	reagovat	k5eAaBmIp3nS
+snížením	snížení	k1gNnSc7
+doporučení	doporučení	k1gNnPc2
+pro	pro	k7c4
+akcie	akcie	k1gFnPc4
+Merck	Mercka	k1gFnPc2
+z	z	k7c2
+držet	držet	k5eAaImF
+na	na	k7c4
+prodat	prodat	k5eAaPmF
+.	.	kIx.
+</s>
+<s desamb="1">
+Barclays	Barclays	k1gInSc1
+snižuje	snižovat	k5eAaImIp3nS
+doporučení	doporučení	k1gNnPc4
+pro	pro	k7c4
+Deutsche	Deutsche	k1gNnSc4
+Bank	banka	k1gFnPc2
+na	na	k7c4
+equalweight	equalweight	k1gInSc4
+"	"	kIx"
+z	z	k7c2
+overweight	overweighta	k1gFnPc2
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Důvodem	důvod	k1gInSc7
+je	být	k5eAaImIp3nS
+snížení	snížení	k1gNnSc1
+cílové	cílový	k2eAgFnSc2d1
+ceny	cena	k1gFnSc2
+od	od	k7c2
+JPMorgan	JPMorgana	k1gFnPc2
+ze	z	k7c2
+37	#num#	k4
+eur	euro	k1gNnPc2
+na	na	k7c4
+28	#num#	k4
+eur	euro	k1gNnPc2
+s	s	k7c7
+doporučením	doporučení	k1gNnSc7
+underweight	underweighta	k1gFnPc2
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Dnes	dnes	k6eAd1
+na	na	k7c4
+SAP	sapa	k1gFnPc2
+vydali	vydat	k5eAaPmAgMnP
+nová	nový	k2eAgNnPc4d1
+doporučení	doporučení	k1gNnPc4
+hned	hned	k6eAd1
+3	#num#	k4
+banky	banka	k1gFnPc4
+:	:	kIx,
+UBS	UBS	kA
+(	(	kIx(
+cílová	cílový	k2eAgFnSc1d1
+cena	cena	k1gFnSc1
+67	#num#	k4
+euro	euro	k1gNnSc4
+,	,	kIx,
+doporučení	doporučení	k1gNnPc4
+koupit	koupit	k5eAaPmF
+)	)	kIx)
+,	,	kIx,
+Credit	Credit	k1gFnSc3
+Suisse	Suisse	k1gFnPc4
+(	(	kIx(
+cílová	cílový	k2eAgFnSc1d1
+cena	cena	k1gFnSc1
+67,5	67,5	k?
+eura	euro	k1gNnSc2
+,	,	kIx,
+doporučení	doporučení	k1gNnPc4
+outperform	outperform	k1gInSc4
+"	"	kIx"
+)	)	kIx)
+a	a	k8xC
+Commerzbank	Commerzbank	k1gInSc4
+(	(	kIx(
+cílová	cílový	k2eAgFnSc1d1
+cena	cena	k1gFnSc1
+72	#num#	k4
+eur	euro	k1gNnPc2
+,	,	kIx,
+doporučení	doporučení	k1gNnPc4
+koupit	koupit	k5eAaPmF
+)	)	kIx)
+.	.	kIx.
+</s>
+<s desamb="1">
+Polsko	Polsko	k1gNnSc1
+umazává	umazávat	k5eAaImIp3nS
+ztráty	ztráta	k1gFnPc4
+,	,	kIx,
+ING	ing	kA
+doporučuje	doporučovat	k5eAaImIp3nS
+Lotos	lotos	k1gInSc1
+a	a	k8xC
+PGNiG	PGNiG	k1gFnSc1
+k	k	k7c3
+nákupu	nákup	k1gInSc3
+.	.	kIx.
+</s>
+<s desamb="1">
+Nákupní	nákupní	k2eAgNnSc1d1
+doporučení	doporučení	k1gNnSc1
+bylo	být	k5eAaImAgNnS
+z	z	k7c2
+prodejního	prodejní	k2eAgInSc2d1
+změněno	změnit	k5eAaPmNgNnS
+u	u	k7c2
+Lotosu	lotos	k1gInSc2
+(	(	kIx(
+LTS	LTS	kA
++0,0	+0,0	k?
+%	%	kIx~
+)	)	kIx)
+a	a	k8xC
+PGNiG	PGNiG	k1gMnPc4
+(	(	kIx(
+PGN	PGN	kA
+-1,88	-1,88	k?
+%	%	kIx~
+)	)	kIx)
+.	.	kIx.
+</s>
+<s desamb="1">
+Pfizer	Pfizer	k1gInSc1
+(	(	kIx(
+PFE	PFE	kA
+)	)	kIx)
+si	se	k3xPyFc3
+připisuje	připisovat	k5eAaImIp3nS
+2,31	2,31	k?
+%	%	kIx~
+díky	díky	k7c3
+zvýšenému	zvýšený	k2eAgNnSc3d1
+doporučení	doporučení	k1gNnSc3
+od	od	k7c2
+Jefferies	Jefferiesa	k1gFnPc2
+&	&	kIx~
+Co.	Co.	k1gMnSc1
+na	na	k7c6
+kupovat	kupovat	k5eAaImF
+"	"	kIx"
+díky	díky	k7c3
+slibným	slibný	k2eAgInPc3d1
+testům	test	k1gInPc3
+nového	nový	k2eAgInSc2d1
+léku	lék	k1gInSc2
+na	na	k7c4
+rakovinu	rakovina	k1gFnSc4
+.	.	kIx.
+</s>
+<s desamb="1">
+WIG20	WIG20	k1gMnSc1
+klesá	klesat	k5eAaImIp3nS
+o	o	k7c6
+0,02	0,02	k?
+%	%	kIx~
+na	na	k7c4
+2432,35	2432,35	k?
+b.	b.	k?
+Asseco	Asseca	k1gMnSc5
+Poland	Polanda	k1gFnPc2
+(	(	kIx(
+ACP	ACP	kA
+)	)	kIx)
+posiluje	posilovat	k5eAaImIp3nS
+o	o	k7c4
+1,78	1,78	k?
+%	%	kIx~
+a	a	k8xC
+roste	růst	k5eAaImIp3nS
+na	na	k7c4
+dvoutýdenní	dvoutýdenní	k2eAgNnSc4d1
+maximum	maximum	k1gNnSc4
+v	v	k7c6
+reakci	reakce	k1gFnSc6
+na	na	k7c4
+zvýšené	zvýšený	k2eAgNnSc4d1
+doporučení	doporučení	k1gNnSc4
+od	od	k7c2
+Raiffeisen	Raiffeisna	k1gFnPc2
+z	z	k7c2
+redukovat	redukovat	k5eAaBmF
+"	"	kIx"
+na	na	k7c4
+kupovat	kupovat	k5eAaImF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Zajišťovna	zajišťovna	k1gFnSc1
+MunichRe	MunichR	k1gFnSc2
+obdržela	obdržet	k5eAaPmAgFnS
+prodejní	prodejní	k2eAgNnSc4d1
+doporučení	doporučení	k1gNnSc4
+.	.	kIx.
+</s>
+<s desamb="1">
+Societe	Societ	k1gMnSc5
+Generale	General	k1gMnSc5
+změnila	změnit	k5eAaPmAgFnS
+doporučení	doporučení	k1gNnPc4
+pro	pro	k7c4
+zajišťovnu	zajišťovna	k1gFnSc4
+MunichRe	MunichR	k1gFnSc2
+na	na	k7c4
+prodat	prodat	k5eAaPmF
+"	"	kIx"
+z	z	k7c2
+držet	držet	k5eAaImF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+S	s	k7c7
+nejvyšším	vysoký	k2eAgInSc7d3
+cílovou	cílový	k2eAgFnSc7d1
+cenou	cena	k1gFnSc7
+přišli	přijít	k5eAaPmAgMnP
+analytici	analytik	k1gMnPc1
+Goldman	Goldman	k1gMnSc1
+Sachs	Sachsa	k1gFnPc2
+,	,	kIx,
+kteří	který	k3yRgMnPc1
+očekávají	očekávat	k5eAaImIp3nP
+cenu	cena	k1gFnSc4
+69	#num#	k4
+USD	USD	kA
+,	,	kIx,
+a	a	k8xC
+dávají	dávat	k5eAaImIp3nP
+doporučení	doporučení	k1gNnSc4
+"	"	kIx"
+Koupit	koupit	k5eAaPmF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+JPMorgan	JPMorgan	k1gInSc1
+:	:	kIx,
+cílová	cílový	k2eAgFnSc1d1
+cena	cena	k1gFnSc1
+44	#num#	k4
+USD	USD	kA
+,	,	kIx,
+doporučení	doporučení	k1gNnPc4
+"	"	kIx"
+Neutral	Neutral	k1gMnPc1
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Nomura	Nomura	k1gFnSc1
+:	:	kIx,
+cena	cena	k1gFnSc1
+60	#num#	k4
+USD	USD	kA
+,	,	kIx,
+doporučení	doporučení	k1gNnPc4
+"	"	kIx"
+Neutral	Neutral	k1gMnPc1
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Deutsche	Deutsche	k1gFnSc4
+Bank	banka	k1gFnPc2
+:	:	kIx,
+cena	cena	k1gFnSc1
+65	#num#	k4
+USD	USD	kA
+,	,	kIx,
+doporučení	doporučení	k1gNnPc4
+"	"	kIx"
+Koupit	koupit	k5eAaPmF
+"	"	kIx"
+.	.	kIx.
+</s>
+<s desamb="1">
+Nomura	Nomura	k1gFnSc1
+:	:	kIx,
+cena	cena	k1gFnSc1
+60	#num#	k4
+USD	USD	kA
+,	,	kIx,
+doporučení	doporučení	k1gNnPc4
+"	"	kIx"
+Neutral	Neutral	k1gMnPc1
+"	"	kIx"
+.	.	kIx.
+</s>
