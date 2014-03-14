@@ -1,5 +1,4 @@
 ''' reads file and outputs each sentence to a new file '''
-
 text = open('data/02162014-filtered.txt', 'r')
 
 i = 1
