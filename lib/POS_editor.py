@@ -110,9 +110,10 @@ def editTags(buffered_sentences):
             if (new_sentence[i][2] == 'kA' and new_sentence[i][0].find('(') == -1) and (getValueFromTag(new_sentence[i-1][2], 'k') == '7' or getValueFromTag(new_sentence[i-1][2], 'k') == '2'):
                 new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(new_sentence[i-1][2], 'c')
             # change tag for kA if preceeded noun - genitiv case (in order to be included in same noun phrase)
+            # if succeeded by verb, ignore - it is case, when kA splits PP and VP and has function of subject
             # commented version - abreviation of type (_EU_) doesn't connect to previous noun - not sure if that is pleasable
             # elif (new_sentence[i][2] == 'kA' and new_sentence[i][0].find('(') == -1) and getValueFromTag(new_sentence[i-1][2], 'k') == '1':
-            elif new_sentence[i][2] == 'kA' and getValueFromTag(new_sentence[i-1][2], 'k') == '1':
+            elif new_sentence[i][2] == 'kA' and getValueFromTag(new_sentence[i-1][2], 'k') == '1' and inContextAfter(i, sentence, 1, 'k5') == None:
                 new_sentence[i][2] = 'k1nPgIc2'
             # change tag for kA if preceeded by verb - almost solely followed by case 1, exception: pokryvat + c4
             # elif (new_sentence[i][2] == 'kA' and new_sentence[i][0].find('(') == -1) and getValueFromTag(new_sentence[i-1][2], 'k') == '5' and new_sentence[i-1][1] != 'pokrývat':
@@ -142,7 +143,8 @@ def editTags(buffered_sentences):
                     if inContextAfter(i, new_sentence, 3, 'c1') == None:
                         new_sentence[i][2] = 'k4c1'
             # if preceeds conjunction or comma (comma + pronoun too), or particle, or adverb
-            elif new_sentence[i][2] == 'kA' and (getValueFromTag(new_sentence[i-1][2], 'k') == '8' or getValueFromTag(new_sentence[i-1][2], 'k') == '9' or getValueFromTag(new_sentence[i-1][2], 'k') == '6' or getValueFromTag(new_sentence[i-1][2], 'k') == '5' or new_sentence[i-1][0] == ',' or (i > 1 and new_sentence[i-2][0] == ',')):
+            # ridiculously long condition, should do this for every other case
+            elif new_sentence[i][2] == 'kA' and (getValueFromTag(new_sentence[i-1][2], 'k') == '8' or getValueFromTag(new_sentence[i-1][2], 'k') == '9' or getValueFromTag(new_sentence[i-1][2], 'k') == '6' or getValueFromTag(new_sentence[i-1][2], 'k') == '5' or getValueFromTag(new_sentence[i-1][2], 'k') == '1' or new_sentence[i-1][0] == ',' or (i > 1 and new_sentence[i-2][0] == ',')):
                 # if succeeded by verb
                 if inContextAfter(i, new_sentence, 2, 'k5') != None:
                     verb = inContextAfter(i, new_sentence, 2, 'k5')
