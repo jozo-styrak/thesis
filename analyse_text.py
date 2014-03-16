@@ -26,12 +26,11 @@ print '************************* MATCHING FRAMES *******************************
 all = 0
 correct = 0
 for sentence in sentences:
-    if frame_matcher.matchFrames(sentence):
+    relations = frame_matcher.matchFrames(sentence)
+    if relations:
         print sentence
-        for clause in sentence.clauses:
-            for phrase in clause.phrases:
-                if len(phrase.semantic_roles) > 0:
-                    print phrase
+        for relation in relations:
+            print relation
         correct += 1
     all += 1
 

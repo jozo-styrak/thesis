@@ -30,14 +30,18 @@ class FrameMatcher:
 
     # try all verbal frames for given sentence
     def matchFrames(self, sentence):
-        matches = False
+        relations = []  # buffer for extracted relations for given sentence
         for clause in sentence.clauses:
             for verb in self.verbs:
                 # match given verb for given clause from sentence
-                if len(verb.matchClause(clause)) > 0:  # if at least one match was found, return True
-                    matches = True
+                for relation in verb.matchClause(clause):
+                    relations.append(relation)
                 verb.resetFrames()
-        return matches
+        return relations
+
+    # returns semantic information from given text
+    def getTextInformation(self, sentences):
+        pass
 
     def printFrames(self):
         for verb in self.verbs:

@@ -1,40 +1,44 @@
+#!/bin/sh
 # processing script
 # uses unitok to tokenize text
 # added preprocessing and postprocessing of tagged output
 
 # tokenization
 cat $1 |\
-/home/xstyrak/utils/unitok.py -n  |\
+/home/xstyrak/thesis/shell_scripts/unitok.py -n  |\
 iconv -f utf-8 -t iso-8859-2 -c |\
-/home/xstyrak/utils/desamb/add_s_tags.py |\
-/home/xstyrak/utils/desamb/preprocess.py |\
 
+# desamb preprocessing
+/home/xstyrak/thesis/shell_scripts/add_s_tags.py |\
+/home/xstyrak/thesis/shell_scripts/preprocess.py |\
+
+# desamb script
 /nlp/projekty/ajka/bin/ajka -n -c - |\
 perl -pe '
 	BEGIN { $m = shift(@ARGV) || "" }
-	# ajka kouskuje pøíli¹ dlouhé øádky po 254 znacích, tak to musíme
-	# napravovat (vadí to u pøíli¹ dlouhých znaèek, zejména <doc ...>)
+	# ajka kouskuje pï¿½ï¿½liï¿½ dlouhï¿½ ï¿½ï¿½dky po 254 znacï¿½ch, tak to musï¿½me
+	# napravovat (vadï¿½ to u pï¿½ï¿½liï¿½ dlouhï¿½ch znaï¿½ek, zejmï¿½na <doc ...>)
 	s/^(.{254}) \n$/$1/;
 
 	if ($m eq "q" || $m eq "w") {
-		# vyhození lemmat, které Marx nechce (malý jako k1)
+		# vyhozenï¿½ lemmat, kterï¿½ Marx nechce (malï¿½ jako k1)
 		s/ <c>\S+qM//g;
 		s/ <l>[^<\s]+(?= <l>|$)//g;
 		}
 	else {
-		# nebo vyhození qM, èím¾ jsou tato lemmata signalizována
+		# nebo vyhozenï¿½ qM, ï¿½ï¿½mï¿½ jsou tato lemmata signalizovï¿½na
 		s/<c>\S+\KqM//g;
 		}' $2 |\
 perl -pe 's/^(\d+)( ?)$/$1 <l>#num# <c>k4$2/' |\
 /nlp/projekty/rule_ind/stat/remove.mSmDwH.pl |\
 /nlp/projekty/rule_ind/stat/guesser.pl /nlp/projekty/rule_ind/stat/guesser.data $2 |\
 perl -pe '
-	# Znaèky nechceme upravovat (mohou mít v uvozovkách libovolný text
-	# --- a pøihodilo se, ¾e nìco z následujícího zahoøelo ;-)
+	# Znaï¿½ky nechceme upravovat (mohou mï¿½t v uvozovkï¿½ch libovolnï¿½ text
+	# --- a pï¿½ihodilo se, ï¿½e nï¿½co z nï¿½sledujï¿½cï¿½ho zahoï¿½elo ;-)
 	next if /^</; 
 	1 while s/(?:;\S+\K|;)q.//g;
-	1 while s/>(který|jen¾ (?:(?!<l>).)+)y(.)/>$1x$2/;
-	1 while s/^ne.*<l>být (?:(?!<l>).)+\KeA/eN/; # "chyba" (známá, principiální a "neopravitelná") v ajce
+	1 while s/>(kterï¿½|jenï¿½ (?:(?!<l>).)+)y(.)/>$1x$2/;
+	1 while s/^ne.*<l>bï¿½t (?:(?!<l>).)+\KeA/eN/; # "chyba" (znï¿½mï¿½, principiï¿½lnï¿½ a "neopravitelnï¿½") v ajce
 	s/>se <c>k3c4;xPyF/>sebe <c>k3xPyFc4/;
 	s/>si <c>k3c3;xPyF/>sebe <c>k3xPyFc3/;
 	s/k3([^;\s]*);(?:h.)?(x.y.|x.|y.)/k3$2$1/g;
@@ -59,15 +63,15 @@ perl -pe '
 perl -pe 's/\(\\\)/\\/' |\
 perl -pe '
 	next if /^</;
-	# Správnì by to nemìlo být zakomentované, ale Ale¹ chtìl k3xD atp.
-	# Tak¾e teï vracené znaèky neodpovídají ajce, co¾ asi není pøíli¹ problém.
+	# Sprï¿½vnï¿½ by to nemï¿½lo bï¿½t zakomentovanï¿½, ale Aleï¿½ chtï¿½l k3xD atp.
+	# Takï¿½e teï¿½ vracenï¿½ znaï¿½ky neodpovï¿½dajï¿½ ajce, coï¿½ asi nenï¿½ pï¿½ï¿½liï¿½ problï¿½m.
 	# 1 while s/k3[yx]./k3/g;
 	s/>sebe <c>k3c3/>si <c>k3c3/;
 	s/>sebe <c>k3c4/>se <c>k3c4/;
 	s/k5([^\s])t./k5$1/g;
 	s/k5([^\s]*)p([^\d])/k5${1}g$2/g;
 	' |\
-perl -ne 'BEGIN { $/ = "</s>\n" } # odstranìní hacku v tecky.pl
+perl -ne 'BEGIN { $/ = "</s>\n" } # odstranï¿½nï¿½ hacku v tecky.pl
 	$old =~ s~<g />\n\.\n$/~~ if s~<s hack="1">\n~~;
 	print $old if $old;
 	$old = $_;
@@ -79,5 +83,4 @@ perl -pe 's/<[^\t]+>\K\t.*//' |\
 
 # output postprocessing
 iconv -f iso-8859-2 -t utf-8 2>/dev/null |\
-/home/xstyrak/utils/desamb/postprocess.py /home/xstyrak/utils/desamb/data/replacement.utf8.data
-#/home/xstyrak/utils/desamb/connect_abbrs.py
+/home/xstyrak/thesis/shell_scripts/postprocess.py /home/xstyrak/thesis/desamb/replacement.utf8.data
