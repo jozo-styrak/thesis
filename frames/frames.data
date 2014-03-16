@@ -1,0 +1,38 @@
+# Valence Frame file
+
+* snížit; snižovat
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:doporučení})+++PAT(pro co4;<stock:1>;obl;{dependency:3})+++ATTR(z čeho2;<state:1>;opt;{dependency:-1})+++ATTR(na co4;<state:2>;opt;{dependency:-1})
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})+++PAT(pro co4;<stock:1>;obl;{dependency:3})+++ATTR(z čeho2;<value:1>;opt;{dependency:-1})+++ATTR(na co4;<value:2>;opt;{dependency:-1})+++ATTR(čem6;<state:1>;opt;{lemma:doporučení;dependency:-1})
+
+* zvýšit; zvyšovat
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:doporučení})+++PAT(pro co4;<stock:1>;obl;{dependency:3})+++ATTR(z čeho2;<state:1>;opt;{dependency:-1})+++ATTR(na co4;<state:2>;opt;{dependency:-1})
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})+++PAT(pro co4;<stock:1>;obl;{dependency:3})+++ATTR(z čeho2;<value:1>;opt;{dependency:-1})+++ATTR(na co4;<value:2>;opt;{dependency:-1})+++ATTR(čem6;<state:1>;opt;{lemma:doporučení;dependency:-1})
+
+* začít
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(inf;<action:1>;obl;{lemma:pokrývat;dependency:-1})+++PAT(co4;<stock:1>;obl;{dependency:3})+++ATTR(s čím7;<state:1>;obl;{dependency:-1})
+
+* doporučovat
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<stock:1>;obl;{lemma:titul})+++PAT(komu3;<investor:1>;opt;{dependency:-1})
+AG(kdo1;<agency:1>;obl)+++VERB+++PAT(co4;<stock:1>;obl)+++ATTR(k čemu3;<state:1>;obl;{dependency:-1})+++PAT(komu3;<investor:1>;opt;{dependency:-1})
+AG(kdo1;<agency:1>;obl)+++VERB+++PAT(co4;<stock:1>;obl)+++OBJ(inf;<state:1>;obl;{dependency:-1})+++PAT(komu3;<investor:1>;opt;{dependency:-1})
+AG(kdo1;<agency:1>;obl;{dependency:-1})+++VERB+++OBJ(inf;<state:1>;obl;{dependency:-1})+++PAT(co4;<stock:1>;obl;{dependency:3})+++PAT(komu3;<investor:1>;opt;{dependency:-1})
+
+* reagovat
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(čím7;<state:1>;obl;{lemma:doporučení})
+
+* změnit
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:doporučení})+++PAT(pro4|u čeho2;<stock:1>;obl;{dependency:-1})+++ATTR(z čeho2;<state:1>;opt;{dependency:-1})+++ATTR(na co4;<state:2>;opt;{dependency:-1})
+
+* obdržet; získat
+AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:doporučení})
+AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})+++ATTR(z čeho2|ze čeho2;<info:1>;opt;{dependency:-1})+++ATTR(na co4;<info:2>;opt;{dependency:-1})+++ATTR(pri čem6;<state:1>;opt;{lemma:doporučení;dependency:-1})
+
+* stanovit; dávat; ponechat
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})+++ATTR(s čím7;<state:1>;opt;{lemma:doporučení;dependency:-1})
+AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:doporučení})
+
+* prodávat
+AG(kdo1;<agency:1>;obl)+++VERB+++PAT(co4;<stock:1>;obl)
+
+* radit
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(inf;<action:1>;obl;{lemma:prodat;dependency:-1})+++PAT(co4;<stock:1>;opt)

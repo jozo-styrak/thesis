@@ -17,7 +17,7 @@ for sentence in sentences:
             print phrase
     print
 
-f = open('data/patterns.data', 'r')
+f = open('frames/frames.data', 'r')
 frame_matcher = FrameMatcher(f)
 # frame_matcher.printFrames()
 
