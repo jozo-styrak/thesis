@@ -4,8 +4,8 @@
 iconv -f utf-8 -t iso-8859-2 -c |\
 
 # desamb preprocessing
-/home/xstyrak/thesis/shell_scripts/add_s_tags.py |\
-/home/xstyrak/thesis/shell_scripts/preprocess.py |\
+/home/xstyrak/thesis/add_s_tags.py |\
+/home/xstyrak/thesis/preprocess.py |\
 
 /nlp/projekty/ajka/bin/ajka -n -c - |\
 perl -pe '
@@ -77,4 +77,4 @@ perl -pe 's/<[^\t]+>\K\t.*//' |\
 
 # output postprocessing
 iconv -f iso-8859-2 -t utf-8 2>/dev/null |\
-/home/xstyrak/thesis/shell_scripts/postprocess.py /home/xstyrak/thesis/desamb/replacement.utf8.data
+/home/xstyrak/thesis/postprocess.py /home/xstyrak/thesis/desamb/replacement.utf8.data
