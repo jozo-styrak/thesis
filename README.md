@@ -1,4 +1,4 @@
-thesis
+Thesis
 ======
 
 diploma thesis - stock market information extraction
