@@ -86,6 +86,6 @@ class NPhrase(Phrase):
     def __str__(self):
         ret_value = 'Case ' + str(self.case) + ': ' + Phrase.__str__(self)
         if self.dependent_on != None:
-            ret_value += ' ->>> ' + str(self.dependent_on)
+            ret_value += ' ->>> ' + str(self.dependent_on.head)
         return ret_value
 

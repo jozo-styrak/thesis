@@ -94,6 +94,7 @@ class Frame:
         
     def __str__(self):
         slot_str = ''
+        verb_str = '' if self.verb == None else 'verb ' + self.verb + ' : '
         for slot in self.active_frame_slots:
             slot_str += str(slot) + ' | '
-        return '<frame> ' + slot_str[:-3] + ' </frame>'
+        return '<frame> ' + verb_str + slot_str[:-3] + ' </frame>'

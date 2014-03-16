@@ -47,7 +47,7 @@ def inContextBefore(position, sentence, count, tag_value):
 def inContextAfter(position, sentence, count, tag_value):
     token = None
     i = 0
-    while i < count and position + i < len(sentence) and token == None:
+    while i < count and position + i + 1 < len(sentence) and token == None:
         i += 1
         if tag_value in sentence[position + i][2]:
             token = sentence[position + i]
@@ -110,7 +110,9 @@ def editTags(buffered_sentences):
             if (new_sentence[i][2] == 'kA' and new_sentence[i][0].find('(') == -1) and (getValueFromTag(new_sentence[i-1][2], 'k') == '7' or getValueFromTag(new_sentence[i-1][2], 'k') == '2'):
                 new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(new_sentence[i-1][2], 'c')
             # change tag for kA if preceeded noun - genitiv case (in order to be included in same noun phrase)
-            elif (new_sentence[i][2] == 'kA' and new_sentence[i][0].find('(') == -1) and getValueFromTag(new_sentence[i-1][2], 'k') == '1':
+            # commented version - abreviation of type (_EU_) doesn't connect to previous noun - not sure if that is pleasable
+            # elif (new_sentence[i][2] == 'kA' and new_sentence[i][0].find('(') == -1) and getValueFromTag(new_sentence[i-1][2], 'k') == '1':
+            elif new_sentence[i][2] == 'kA' and getValueFromTag(new_sentence[i-1][2], 'k') == '1':
                 new_sentence[i][2] = 'k1nPgIc2'
             # change tag for kA if preceeded by verb - almost solely followed by case 1, exception: pokryvat + c4
             # elif (new_sentence[i][2] == 'kA' and new_sentence[i][0].find('(') == -1) and getValueFromTag(new_sentence[i-1][2], 'k') == '5' and new_sentence[i-1][1] != 'pokrývat':

@@ -28,8 +28,12 @@ correct = 0
 for sentence in sentences:
     if frame_matcher.matchFrames(sentence):
         print sentence
-        print
+        for clause in sentence.clauses:
+            for phrase in clause.phrases:
+                if len(phrase.semantic_roles) > 0:
+                    print phrase
         correct += 1
     all += 1
+
 
 print str(correct) + '/' + str(all)

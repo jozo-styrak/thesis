@@ -1,3 +1,4 @@
+# class representing semantic role which translates to verbalex roles
 class SemanticRole:
 
     def __init__(self, first_lvl_role, second_lvl_role):

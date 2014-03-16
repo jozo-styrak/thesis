@@ -34,15 +34,8 @@ class FrameMatcher:
         for clause in sentence.clauses:
             for verb in self.verbs:
                 # match given verb for given clause from sentence
-                for match in verb.matchClause(clause):
+                if len(verb.matchClause(clause)) > 0:  # if at least one match was found, return True
                     matches = True
-                    print 'Matches: ' + str(match)
-                    for phrase in clause.phrases:
-                        if len(phrase.semantic_roles) > 0:
-                            print phrase
-                    # for slot in match.slots:
-                    #     print slot.match_item
-                    # print
                 verb.resetFrames()
         return matches
 
