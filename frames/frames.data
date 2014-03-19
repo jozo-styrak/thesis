@@ -23,12 +23,13 @@ AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(čím7;<state:1>;obl;{lemma:doporučení})
 * změnit
 AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:doporučení})+++PAT(pro4|u čeho2;<stock:1>;obl;{dependency:-1})+++ATTR(z čeho2;<state:1>;opt;{dependency:-1})+++ATTR(na co4;<state:2>;opt;{dependency:-1})
 
-* obdržet; získat; získavat
+* obdržet; získat; získavat; dostat; dostávat
 AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:doporučení})
-AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})+++ATTR(z čeho2|ze čeho2;<info:1>;opt;{dependency:-1})+++ATTR(na co4;<info:2>;opt;{dependency:-1})+++ATTR(pri čem6;<state:1>;opt;{lemma:doporučení;dependency:-1})
+AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})+++ATTR(z čeho2|ze čeho2;<info:1>;opt;{dependency:-1})+++ATTR(na co4;<info:2>;opt;{dependency:-1})+++ATTR(při čem6;<state:1>;opt;{lemma:doporučení;dependency:-1})
 
-* stanovit; dávat; ponechat; ponechávat
+* stanovit; stanovovat; dávat; ponechat; ponechávat
 AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})+++ATTR(s čím7;<state:1>;opt;{lemma:doporučení;dependency:-1})
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})+++PAT(u čeho2;<stock:1>;obl;{dependency:-1})
 AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:doporučení})
 
 * prodávat; prodat

@@ -143,8 +143,9 @@ def editTags(buffered_sentences):
                     if inContextAfter(i, new_sentence, 3, 'c1') == None:
                         new_sentence[i][2] = 'k4c1'
             # if preceeds conjunction or comma (comma + pronoun too), or particle, or adverb
+            # valid for abreviation and number value such as percentage, money amount, etc.
             # ridiculously long condition, should do this for every other case
-            elif new_sentence[i][2] == 'kA' and (getValueFromTag(new_sentence[i-1][2], 'k') == '8' or getValueFromTag(new_sentence[i-1][2], 'k') == '9' or getValueFromTag(new_sentence[i-1][2], 'k') == '6' or getValueFromTag(new_sentence[i-1][2], 'k') == '5' or getValueFromTag(new_sentence[i-1][2], 'k') == '1' or new_sentence[i-1][0] == ',' or (i > 1 and new_sentence[i-2][0] == ',')):
+            elif (new_sentence[i][2] == 'kA' or (new_sentence[i][2] == 'k4' and not '(' in new_sentence[i][0])) and (getValueFromTag(new_sentence[i-1][2], 'k') == '8' or getValueFromTag(new_sentence[i-1][2], 'k') == '9' or getValueFromTag(new_sentence[i-1][2], 'k') == '6' or getValueFromTag(new_sentence[i-1][2], 'k') == '5' or getValueFromTag(new_sentence[i-1][2], 'k') == '1' or new_sentence[i-1][0] == ',' or (i > 1 and new_sentence[i-2][0] == ',')):
                 # if succeeded by verb
                 if inContextAfter(i, new_sentence, 2, 'k5') != None:
                     verb = inContextAfter(i, new_sentence, 2, 'k5')
