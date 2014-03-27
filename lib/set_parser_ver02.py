@@ -46,7 +46,7 @@ def parse(f):
             # add identificator for dependency relation for latter processing
             if dependency != None:
                 dependencies[line2.value[line2.value.find('):')+3:]] = dependency
-            sentences[len(sentences)-1].addNewNounPhrase(newLine.value[newLine.value.find('):')+3:], line1.value, line2.value[line2.value.find('):')+3:], line3.value)
+            sentences[len(sentences)-1].addNewNounPhrase(newLine.value[newLine.value.find('):')+3:], line1.value, line2.value[line2.value.find('):')+3:], line3.value, newLine.tag == 'coord')
             i += i_shift
         # end of sentence, resolve dependencies
         elif newLine.isTag and newLine.tag == '/s':

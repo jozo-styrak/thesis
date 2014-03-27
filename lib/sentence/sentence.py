@@ -64,12 +64,12 @@ class Sentence:
                 vp.tokens = phrase_tokens
                 clause.phrases.append(vp)
 
-    def addNewNounPhrase(self, phrase_value, tag, num, head):
+    def addNewNounPhrase(self, phrase_value, tag, num, head, is_coord):
         for clause in self.clauses:
             if clause.inClause(num):
                 phrase_tokens = self.getPhraseTokens(phrase_value)
                 #np = NPhrase(tag, num, phrase_tokens[num.split().index(head)])
-                np = NPhrase(tag, num, self.getTokenByNum(head))
+                np = NPhrase(tag, num, self.getTokenByNum(head), is_coord)
                 np.tokens = phrase_tokens
                 clause.phrases.append(np)
 

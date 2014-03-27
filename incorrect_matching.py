@@ -1,14 +1,15 @@
 #!/usr/bin/env python
-from lib import set_parser_ver02
-from lib.frames.frame_matcher import FrameMatcher
 import sys
+
+from lib import set_parser_ver02
+from lib.frames.verb_frames.verb_frame_matcher import VerbFrameMatcher
 
 
 set_output_file = open(sys.argv[1], 'r')
 sentences = set_parser_ver02.parse(set_output_file)
 
 f = open('data/patterns.data', 'r')
-frame_matcher = FrameMatcher(f)
+frame_matcher = VerbFrameMatcher(f)
 # frame_matcher.printFrames()
 
 all = 0

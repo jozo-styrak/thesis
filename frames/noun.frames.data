@@ -1,0 +1,19 @@
+* doporučení; titul; ranking; stupen
++ role:<state>
+pro co4;<stock>
+od čeho2;<agency>
+z čeho2;<state_from>
+na co4;<state_from>
+pri čem6;<price>
+
+* cena; cíl
++ role:<price>
+pro co4;<stock>
+od čeho2;<agency>
+z čeho2;<price_from>
+na co4;<price_from>
+pri čem6;<state>
+co4;<value>
+
+* {kA}
+s čím7|čím7;<state>

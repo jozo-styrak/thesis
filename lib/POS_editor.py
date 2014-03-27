@@ -104,17 +104,20 @@ def editTags(buffered_sentences):
         # if first element is abreviation, assume case 1
         if new_sentence[0][2] == 'kA':
             new_sentence[0][2] = 'k1gInSc1'
+            new_sentence[0][0] += '_kA'
         i = 1
         while i < len(new_sentence):
             # change tag for kA if preceeded by preposition or adjective
             if (new_sentence[i][2] == 'kA' and new_sentence[i][0].find('(') == -1) and (getValueFromTag(new_sentence[i-1][2], 'k') == '7' or getValueFromTag(new_sentence[i-1][2], 'k') == '2'):
                 new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(new_sentence[i-1][2], 'c')
+                new_sentence[i][0] += '_kA'
             # change tag for kA if preceeded noun - genitiv case (in order to be included in same noun phrase)
             # if succeeded by verb, ignore - it is case, when kA splits PP and VP and has function of subject
             # commented version - abreviation of type (_EU_) doesn't connect to previous noun - not sure if that is pleasable
             # elif (new_sentence[i][2] == 'kA' and new_sentence[i][0].find('(') == -1) and getValueFromTag(new_sentence[i-1][2], 'k') == '1':
             elif new_sentence[i][2] == 'kA' and getValueFromTag(new_sentence[i-1][2], 'k') == '1' and inContextAfter(i, sentence, 1, 'k5') == None:
                 new_sentence[i][2] = 'k1nPgIc2'
+                new_sentence[i][0] += '_kA'
             # change tag for kA if preceeded by verb - almost solely followed by case 1, exception: pokryvat + c4
             # elif (new_sentence[i][2] == 'kA' and new_sentence[i][0].find('(') == -1) and getValueFromTag(new_sentence[i-1][2], 'k') == '5' and new_sentence[i-1][1] != 'pokrývat':
             #     new_sentence[i][2] = 'k1nPgIc1'
@@ -127,6 +130,7 @@ def editTags(buffered_sentences):
             # change tag for abreviation if preceeded by ; or : to case 1
             elif new_sentence[i][2] == 'kA' and new_sentence[i-1][0] in ';:':
                 new_sentence[i][2] = 'k1nPgIc1'
+                new_sentence[i][0] += '_kA'
             # change tag for number if preceeded by preposition or adjective
             elif new_sentence[i][2] == 'k4' and (getValueFromTag(new_sentence[i-1][2], 'k') == '7' or getValueFromTag(new_sentence[i-1][2], 'k') == '2'):
                 new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(new_sentence[i-1][2], 'c')
@@ -158,19 +162,23 @@ def editTags(buffered_sentences):
                     # else it probably a subject
                     else:
                         new_sentence[i][2] = 'k1nPgIc1'
+                    new_sentence[i][0] += '_kA'
                 # if preceeded by verb
                 elif inContextBefore(i, new_sentence, 2, 'k5') != None:
                     if inContextBefore(i, new_sentence, 4, 'c1') != None:
                         new_sentence[i][2] = 'k1nPgIc4'
                     else:
                         new_sentence[i][2] = 'k1nPgIc1'
+                    new_sentence[i][0] += '_kA'
                 # if it is a agency then it is probably a subject
                 elif new_sentence[i][0] in AGENCIES:
                     new_sentence[i][2] = 'k1nPgIc1'
+                    new_sentence[i][0] += '_kA'
                 # if there is a noun before, then get the same case
                 elif inContextBefore(i, new_sentence, 3, 'k1') != None:
                     noun = inContextBefore(i, new_sentence, 3, 'k1')
                     new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(noun[2], 'c')
+                    new_sentence[i][1] += '_kA'
 
             i += 1
         new_sentences.append(new_sentence)

@@ -3,11 +3,16 @@
 # class representing semantic role which translates to verbalex roles
 class SemanticRole:
 
-    def __init__(self, first_lvl_role, second_lvl_role):
+    def __init__(self, first_lvl_role, second_lvl_role, relation):
         self.first_level_role = first_lvl_role
         self.second_level_role = second_lvl_role
         # referring phrase
         self.phrase = None
+        # containing relation
+        self.relation = relation
+
+    def getRelation(self):
+        return self.relation
 
     def isAgent(self):
         return self.first_level_role == 'AG'

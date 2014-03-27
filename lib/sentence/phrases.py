@@ -35,6 +35,10 @@ class Clause:
                 phr.append(phrase)
         return phr
 
+    # returns nps that succeeds given phrase
+    def getSucceedingPhrases(self, phrase):
+        return self.phrases[self.phrases.index(phrase)+1:]
+
     # return phrases which are dependent on specified phrase
     def getDependentPhrases(self, phrase):
         dependent = []
@@ -62,10 +66,10 @@ class Phrase:
         values = []
         for token in self.tokens:
             values.append(token.value)
-        semantics = ''
-        for role in self.semantic_roles:
-            semantics += str(role)
-        return ' '.join(values) + ' ' + semantics
+        # semantics = ''
+        # for role in self.semantic_roles:
+        #     semantics += str(role)
+        return ' '.join(values)
 
 class VPhrase(Phrase):
 
@@ -78,10 +82,11 @@ class VPhrase(Phrase):
         
 class NPhrase(Phrase):
 
-    def __init__(self, tag, num, head):
+    def __init__(self, tag, num, head, is_coord):
         Phrase.__init__(self, num, head)
         self.case = int(tag[tag.find('c')+1]) if tag.split()[0].find('c') != -1 else 0
         self.dependent_on = None
+        self.is_coordination = is_coord
         
     def __str__(self):
         ret_value = 'Case ' + str(self.case) + ': ' + Phrase.__str__(self)

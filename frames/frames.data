@@ -37,3 +37,9 @@ AG(kdo1;<agency:1>;obl)+++VERB+++PAT(co4;<stock:1>;obl)
 
 * radit
 AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(inf;<action:1>;obl;{lemma:prodat;dependency:-1})+++PAT(co4;<stock:1>;opt)
+
+* čekat; očekávat
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})
+
+* přijít; příst
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(s čím7;<info:1>;obl;{lemma:cena})

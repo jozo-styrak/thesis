@@ -1,8 +1,10 @@
-from lib.frames.slots import VerbSlot, CommonSlot
-from lib.frames.forms import CaseForm
+import copy
+
+from lib.frames.verb_frames.slots import VerbSlot, CommonSlot
+from lib.frames.verb_frames.forms import CaseForm
 from lib.semantics.semantic_role import SemanticRole
 from lib.semantics.semantic_relation import SemanticRelation
-import copy
+
 
 # class containing one frame for given verb
 class Frame:
@@ -78,12 +80,6 @@ class Frame:
             # fail if match was not found and slot is obligatory and can't be ellipsed
             failed = (not phrase_matches) and slots[i].isObligatory() and not slots[i].canBeEllipsed()
             i += 1
-        # assign matched slots
-        # if not failed:
-        #     self.matched_slots = slots
-        #     for slot in self.matched_slots:
-        #         if isinstance(slot, CommonSlot) and slot.match_item != None:
-        #             slot.match_item.addSemanticRole(SemanticRole(slot.first_level_role, slot.second_level_role))
         # generate semantic relation and occupy given roles
         relation = SemanticRelation() if not failed else None
         if not failed:
@@ -91,9 +87,12 @@ class Frame:
             for slot in self.matched_slots:
                 # create role for every occupied slot and for slot, which is ellipsable
                 if isinstance(slot, CommonSlot) and (slot.match_item != None or slot.canBeEllipsed()):
-                    role = SemanticRole(slot.first_level_role, slot.second_level_role)
+                    role = SemanticRole(slot.first_level_role, slot.second_level_role, relation)
                     if slot.match_item != None:
+                        # set role phrase
                         role.phrase = slot.match_item
+                        # set link to role into phrase
+                        slot.match_item.semantic_roles.append(role)
                     relation.roles.append(role)
         return relation
 

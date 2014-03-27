@@ -1,5 +1,5 @@
-from lib.frames.forms import CaseForm, InfinitiveForm
-from lib.frames.attributes import DependencyAttribute, LemmaAttribute
+from lib.frames.verb_frames.forms import CaseForm, InfinitiveForm
+from lib.frames.verb_frames.attributes import DependencyAttribute, LemmaAttribute
 
 # class representing slot in verbal frame
 class AbstractSlot:
