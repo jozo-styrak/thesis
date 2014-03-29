@@ -103,6 +103,10 @@ class NPhrase(Phrase):
         self.case = int(tag[tag.find('c')+1]) if tag.split()[0].find('c') != -1 else 0
         self.dependent_on = None
         self.is_coordination = is_coord
+
+    # check whether phrase is part of coordination
+    def isInCoordination(self):
+        return False if self.dependent_on == None else isinstance(self.dependent_on, NPhrase) and self.dependent_on.is_coordination
         
     def __str__(self):
         ret_value = 'Case ' + str(self.case) + ': ' + Phrase.__str__(self)

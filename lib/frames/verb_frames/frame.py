@@ -93,7 +93,7 @@ class Frame:
                         role.phrase = slot.match_item
                         # set link to role into phrase
                         slot.match_item.semantic_roles.append(role)
-                    relation.roles.append(role)
+                    relation.addNewRole(role)
         return relation
 
     # after matching remove matched items

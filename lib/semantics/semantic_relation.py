@@ -8,6 +8,10 @@ class SemanticRelation:
     def __init__(self):
         self.roles = []
 
+    def addNewRole(self, role):
+        self.roles.append(role)
+        role.relation = self
+
     def __str__(self):
         ret = 'Relation:\n'
         for role in self.roles:

@@ -43,7 +43,8 @@ class FrameNoun:
         for phrase in clause.phrases:
 
             # does any frame noun match some phrase in clause?
-            if isinstance(phrase, NPhrase) and self.matchesPhrase(phrase) and not phrase.roleConflict(self.role):
+            # takes coordination phrases as one
+            if isinstance(phrase, NPhrase) and not phrase.isInCoordination() and self.matchesPhrase(phrase) and not phrase.roleConflict(self.role):
                 relation = None
                 roles = []
 
@@ -80,7 +81,7 @@ class FrameNoun:
                 # add roles to relation
                 for r in roles:
                     r.relation = relation
-                    relation.roles.append(r)
+                    relation.addNewRole(r)
 
                 relations.append(relation)
         return relations
