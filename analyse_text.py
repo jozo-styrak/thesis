@@ -19,7 +19,7 @@ for sentence in sentences:
             print phrase
     print
 
-f_v = open('frames/frames.data', 'r')
+f_v = open('frames/verb.frames.data', 'r')
 verb_matcher = VerbFrameMatcher(f_v)
 
 f_n = open('frames/noun.frames.data', 'r')

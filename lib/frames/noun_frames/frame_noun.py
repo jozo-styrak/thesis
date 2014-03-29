@@ -5,28 +5,9 @@ from lib.semantics.semantic_role import SemanticRole
 # abstract class for all types of noun phrase types
 class FrameNoun:
 
-    # abstract method
-    # frame tries to find one of frame nouns/identifier in given clause and then tries to match given complements
-    def  matchClauseTokens(self, clause):
-        pass
-
-# general type of phrase - matching of given lemma
-class GeneralPhrase(FrameNoun):
-
-    def __init__(self, noun_str):
-        self.nouns = []
-        for noun in noun_str.split(';'):
-            self.nouns.append(noun.strip())
+    def __init__(self):
         self.complements = []
         self.role = None
-
-    # whether the phrase contains one of frame nouns
-    def containsFrameNoun(self, phrase):
-        contains = False
-        for token in phrase.tokens:
-            if token.lemma in self.nouns:
-                contains = True
-        return contains
 
     # create list of phrases from dependency tree based on given phrase
     def generateDependencyTree(self, clause, phrase):
@@ -51,43 +32,97 @@ class GeneralPhrase(FrameNoun):
                 phrases.append(phr)
         return phrases
 
+    # unmatch all complements after usage
+    def resetFrame(self):
+        for complement in self.complements:
+            complement.matched = False
+
+    # whole matching method
     def matchClauseTokens(self, clause):
         relations = []
         for phrase in clause.phrases:
 
             # does any frame noun match some phrase in clause?
-            if isinstance(phrase, NPhrase) and self.containsFrameNoun(phrase):
-
-                # does for matched phrase already exist relation?
-                relation = SemanticRelation() if len(phrase.semantic_roles) == 0 else phrase.semantic_roles[0].getRelation()
+            if isinstance(phrase, NPhrase) and self.matchesPhrase(phrase):
+                relation = None
+                roles = []
 
                 # if phrase doesn't have one, add new semantic role
-                if len(phrase.semantic_roles) == 0:
-                    sec_lvl_role = self.role if self.role != None else '<unknown>'
-                    role = SemanticRole('OBJ', sec_lvl_role, relation)
+                sec_lvl_role = self.role if self.role != None else '<unknown>'
+                if not phrase.hasRole(sec_lvl_role):
+                    role = SemanticRole('OBJ', sec_lvl_role)
                     role.phrase = phrase
                     phrase.addSemanticRole(role)
-                    relation.roles.append(role)
+                    roles.append(role)
+                else:
+                    # use this relation
+                    relation = phrase.hasRole(sec_lvl_role).getRelation()
 
                 # match complements
                 for phr in self.getCandidatePhrases(clause, phrase):
                     for complement in self.complements:
                         if not complement.matched:
+                            # does complement match?
                             if complement.matchPhrase(phr):
-                                if len(phr.semantic_roles) == 0:
-                                    role = SemanticRole('COMPL', complement.role, relation)
+                                # does given phrase already have given role?
+                                if not phr.hasRole(complement.role):
+                                    role = SemanticRole('COMPL', complement.role)
                                     role.phrase = phr
                                     phr.addSemanticRole(role)
-                                    relation.roles.append(role)
+                                    roles.append(role)
+                                elif phr.hasRole(complement.role) and relation == None:  # if given phrase already has given role, use this relation
+                                    relation = phr.hasRole(complement.role).getRelation()
+
+                # if there was no relation detected, create new one
+                if relation == None:
+                    relation = SemanticRelation()
+
+                # add roles to relation
+                for r in roles:
+                    r.relation = relation
+                    relation.roles.append(r)
+
                 relations.append(relation)
         return relations
 
-    def resetFrame(self):
-        for complement in self.complements:
-            complement.matched = False
+    # abstract method
+    def matchesPhrase(self, phrase):
+        return False
+
+
+# general type of phrase - matching of given lemma
+class GeneralPhrase(FrameNoun):
+
+    def __init__(self, noun_str):
+        FrameNoun.__init__(self);
+        self.nouns = []
+        for noun in noun_str.split(';'):
+            self.nouns.append(noun.strip())
+
+    # whether the phrase contains one of frame nouns
+    def matchesPhrase(self, phrase):
+        contains = False
+        for token in phrase.tokens:
+            if token.lemma in self.nouns:
+                contains = True
+        return contains
 
     def __str__(self):
         ret_str = 'nouns: ' + ','.join(self.nouns) + '\nrole: ' + str(self.role) + '\ncomplements: '
         for complement in self.complements:
             ret_str += str(complement) + ' '
         return ret_str.strip()
+
+
+# class for named entities in text
+class NamedEntity(FrameNoun):
+
+    def __init__(self):
+        FrameNoun.__init__(self)
+
+    def matchesPhrase(self, phrase):
+        contains = False
+        for token in phrase.tokens:
+            if token.value.endswith('_kA'):
+                contains = True
+        return contains

@@ -87,7 +87,7 @@ class Frame:
             for slot in self.matched_slots:
                 # create role for every occupied slot and for slot, which is ellipsable
                 if isinstance(slot, CommonSlot) and (slot.match_item != None or slot.canBeEllipsed()):
-                    role = SemanticRole(slot.first_level_role, slot.second_level_role, relation)
+                    role = SemanticRole(slot.first_level_role, slot.second_level_role)
                     if slot.match_item != None:
                         # set role phrase
                         role.phrase = slot.match_item

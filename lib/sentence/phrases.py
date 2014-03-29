@@ -61,6 +61,14 @@ class Phrase:
     # add semantic role
     def addSemanticRole(self, role):
         self.semantic_roles.append(role)
+
+    # check, whether phrase has given role
+    def hasRole(self, role_str):
+        has = False
+        for role in self.semantic_roles:
+            if role_str == role.second_level_role:
+                has = role
+        return has
     
     def __str__(self):
         values = []

@@ -1,0 +1,50 @@
+# Valence Frame file
+# verb frames
+# newer version, complements for noun phrases are in different file
+
+* snížit; snižovat
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení})
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:cena})
+
+
+* zvýšit; zvyšovat
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:doporučení})
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})
+
+
+* začít; začínat
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(inf;<action:1>;obl;{lemma:pokrývat;dependency:-1})+++PAT(co4;<stock:1>;obl;{dependency:3})
+
+* doporučovat
+AG(kdo1;<agency:1>;obl)+++VERB+++PAT(co4;<stock:1>;obl;{lemma:titul})
+AG(kdo1;<agency:1>;obl)+++VERB+++PAT(co4;<stock:1>;obl)
+AG(kdo1;<agency:1>;obl)+++VERB+++PAT(co4;<stock:1>;obl)+++OBJ(inf;<state:1>;obl;{dependency:-1})
+AG(kdo1;<agency:1>;obl;{dependency:-1})+++VERB+++OBJ(inf;<state:1>;obl;{dependency:-1})+++PAT(co4;<stock:1>;obl;{dependency:3})
+
+* reagovat
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(čím7;<state:1>;obl;{lemma:doporučení})
+
+* změnit
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení})
+
+
+* obdržet; získat; získavat; dostat; dostávat
+AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:doporučení})
+AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})
+
+* stanovit; stanovovat; dávat; ponechat; ponechávat
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})
+AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:doporučení})
+
+* prodávat; prodat
+AG(kdo1;<agency:1>;obl)+++VERB+++PAT(co4;<stock:1>;obl)
+
+* radit
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(inf;<action:1>;obl;{lemma:prodat;dependency:-1})+++PAT(co4;<stock:1>;opt)
+
+* čekat; očekávat
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})
+
+* přijít; příst
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(s čím7;<info:1>;obl;{lemma:cena})
