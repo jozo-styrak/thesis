@@ -27,9 +27,9 @@ class FrameNoun:
     # return candidate phrases for complements for given phrase for containing clause
     def getCandidatePhrases(self, clause, phrase):
         phrases = self.generateDependencyTree(clause, phrase)
-        for phr in clause.getSucceedingPhrases(phrase):
-            if phr not in phrases:
-                phrases.append(phr)
+        # for phr in clause.getSucceedingPhrases(phrase):
+        #     if isinstance(phr, NPhrase) and phr.dependent_on == None and phr not in phrases:
+        #         phrases.append(phr)
         return phrases
 
     # unmatch all complements after usage
