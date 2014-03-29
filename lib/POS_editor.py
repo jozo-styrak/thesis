@@ -178,7 +178,7 @@ def editTags(buffered_sentences):
                 elif inContextBefore(i, new_sentence, 3, 'k1') != None:
                     noun = inContextBefore(i, new_sentence, 3, 'k1')
                     new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(noun[2], 'c')
-                    new_sentence[i][1] += '_kA'
+                    new_sentence[i][0] += '_kA'
 
             i += 1
         new_sentences.append(new_sentence)

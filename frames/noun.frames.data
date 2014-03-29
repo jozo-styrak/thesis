@@ -1,3 +1,7 @@
+# Noun frames
+# for each noun there are possible complements
+# every noun should contain role
+
 * doporučení; titul; ranking; stupen
 + role:<state:1>
 pro co4|u čeho2;<stock:1>
@@ -17,6 +21,9 @@ co4;<value:1>
 pri čem6|s čím7;<state:1>
 
 * {kA}
-+ role:<organization:1>
++ role:<stock:1>
 s čím7|čím7;<state:1>
 k čemu3;<state:1>
+
+* {kA}
++ role:<organization:1>

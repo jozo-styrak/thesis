@@ -43,20 +43,20 @@ class FrameNoun:
         for phrase in clause.phrases:
 
             # does any frame noun match some phrase in clause?
-            if isinstance(phrase, NPhrase) and self.matchesPhrase(phrase):
+            if isinstance(phrase, NPhrase) and self.matchesPhrase(phrase) and not phrase.roleConflict(self.role):
                 relation = None
                 roles = []
 
-                # if phrase doesn't have one, add new semantic role
-                sec_lvl_role = self.role if self.role != None else '<unknown>'
-                if not phrase.hasRole(sec_lvl_role):
-                    role = SemanticRole('OBJ', sec_lvl_role)
+                # add semantic role to matching phrase
+                # sec_lvl_role = self.role if self.role != None else '<unknown>'
+                if not phrase.hasRole(self.role):
+                    role = SemanticRole('OBJ', self.role)
                     role.phrase = phrase
                     phrase.addSemanticRole(role)
                     roles.append(role)
                 else:
                     # use this relation
-                    relation = phrase.hasRole(sec_lvl_role).getRelation()
+                    relation = phrase.hasRole(self.role).getRelation()
 
                 # match complements
                 for phr in self.getCandidatePhrases(clause, phrase):

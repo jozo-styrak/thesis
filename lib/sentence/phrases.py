@@ -69,6 +69,14 @@ class Phrase:
             if role_str == role.second_level_role:
                 has = role
         return has
+
+    # check whether there is conflict with given role
+    # for now, conflicts are in group of kA roles, agency, stock, organization
+    def roleConflict(self, role_str):
+        conflict = False
+        if (self.hasRole('<agency:1>') and (role_str == '<stock:1>' or role_str == '<organization:1>')) or (self.hasRole('<stock:1>') and (role_str == '<agency:1>' or role_str == '<organization:1>')):
+            conflict = True
+        return conflict
     
     def __str__(self):
         values = []

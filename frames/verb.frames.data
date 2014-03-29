@@ -16,7 +16,7 @@ AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})
 AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(inf;<action:1>;obl;{lemma:pokrývat;dependency:-1})+++PAT(co4;<stock:1>;obl;{dependency:3})
 
 * doporučovat
-AG(kdo1;<agency:1>;obl)+++VERB+++PAT(co4;<stock:1>;obl;{lemma:titul})
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<stock:1>;obl;{lemma:titul})
 AG(kdo1;<agency:1>;obl)+++VERB+++PAT(co4;<stock:1>;obl)
 AG(kdo1;<agency:1>;obl)+++VERB+++PAT(co4;<stock:1>;obl)+++OBJ(inf;<state:1>;obl;{dependency:-1})
 AG(kdo1;<agency:1>;obl;{dependency:-1})+++VERB+++OBJ(inf;<state:1>;obl;{dependency:-1})+++PAT(co4;<stock:1>;obl;{dependency:3})
