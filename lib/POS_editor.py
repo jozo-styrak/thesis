@@ -111,6 +111,12 @@ def editTags(buffered_sentences):
             if (new_sentence[i][2] == 'kA' and new_sentence[i][0].find('(') == -1) and (getValueFromTag(new_sentence[i-1][2], 'k') == '7' or getValueFromTag(new_sentence[i-1][2], 'k') == '2'):
                 new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(new_sentence[i-1][2], 'c')
                 new_sentence[i][0] += '_kA'
+            # change tag for recommendation if preceeded by preposition - same case
+            elif new_sentence[i][0].lower() in RECOMMENDATIONS and getValueFromTag(new_sentence[i-1][2], 'k') == '7':
+                new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(new_sentence[i-1][2], 'c')
+            # change tag for recommendation if preceeded by noun - from rec. synonym set - case 2
+            elif new_sentence[i][0].lower() in RECOMMENDATIONS and new_sentence[i-1][1] in RECOMMENDATION_SYNONYMS:
+                new_sentence[i][2] = 'k1nPgIc2'
             # change tag for kA if preceeded noun - genitiv case (in order to be included in same noun phrase)
             # if succeeded by verb, ignore - it is case, when kA splits PP and VP and has function of subject
             # commented version - abreviation of type (_EU_) doesn't connect to previous noun - not sure if that is pleasable
@@ -118,15 +124,6 @@ def editTags(buffered_sentences):
             elif new_sentence[i][2] == 'kA' and getValueFromTag(new_sentence[i-1][2], 'k') == '1' and inContextAfter(i, sentence, 1, 'k5') == None:
                 new_sentence[i][2] = 'k1nPgIc2'
                 new_sentence[i][0] += '_kA'
-            # change tag for kA if preceeded by verb - almost solely followed by case 1, exception: pokryvat + c4
-            # elif (new_sentence[i][2] == 'kA' and new_sentence[i][0].find('(') == -1) and getValueFromTag(new_sentence[i-1][2], 'k') == '5' and new_sentence[i-1][1] != 'pokrývat':
-            #     new_sentence[i][2] = 'k1nPgIc1'
-            # change tag for recommendation if preceeded by preposition - same case
-            elif new_sentence[i][0] in RECOMMENDATIONS and getValueFromTag(new_sentence[i-1][2], 'k') == '7':
-                new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(new_sentence[i-1][2], 'c')
-            # change tag for recommendation if preceeded by noun - from rec. synonym set - case 2
-            elif new_sentence[i][0] in RECOMMENDATIONS and new_sentence[i-1][1] in RECOMMENDATION_SYNONYMS:
-                new_sentence[i][2] = 'k1nPgIc2'
             # change tag for abreviation if preceeded by ; or : to case 1
             elif new_sentence[i][2] == 'kA' and new_sentence[i-1][0] in ';:':
                 new_sentence[i][2] = 'k1nPgIc1'
@@ -134,6 +131,9 @@ def editTags(buffered_sentences):
             # change tag for number if preceeded by preposition or adjective
             elif new_sentence[i][2] == 'k4' and (getValueFromTag(new_sentence[i-1][2], 'k') == '7' or getValueFromTag(new_sentence[i-1][2], 'k') == '2'):
                 new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(new_sentence[i-1][2], 'c')
+            # if k4 is preceeded by noun, then (as with noun kA) set case to c2
+            elif new_sentence[i][2] == 'k4' and getValueFromTag(new_sentence[i-1][2], 'k') == '1':
+                new_sentence[i][2] = 'k1nPgIc2'
             # change tag for positive number, when isn't preceeded by preposition or adjective - apriori assume c1
             elif new_sentence[i][0].isdigit() and not (getValueFromTag(new_sentence[i-1][2], 'k') == '7' or getValueFromTag(new_sentence[i-1][2], 'k') == '2'):
                 if int(new_sentence[i][0]) > 1:
