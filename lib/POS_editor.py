@@ -150,6 +150,8 @@ def editTags(buffered_sentences):
             # valid for abreviation and number value such as percentage, money amount, etc.
             # ridiculously long condition, should do this for every other case
             elif (new_sentence[i][2] == 'kA' or (new_sentence[i][2] == 'k4' and not '(' in new_sentence[i][0])) and (getValueFromTag(new_sentence[i-1][2], 'k') == '8' or getValueFromTag(new_sentence[i-1][2], 'k') == '9' or getValueFromTag(new_sentence[i-1][2], 'k') == '6' or getValueFromTag(new_sentence[i-1][2], 'k') == '5' or getValueFromTag(new_sentence[i-1][2], 'k') == '1' or new_sentence[i-1][0] == ',' or (i > 1 and new_sentence[i-2][0] == ',')):
+                # whether is numbered value - for adding kA tag to phrase
+                is_number = new_sentence[i][2] == 'k4'
                 # if succeeded by verb
                 if inContextAfter(i, new_sentence, 2, 'k5') != None:
                     verb = inContextAfter(i, new_sentence, 2, 'k5')
@@ -162,23 +164,26 @@ def editTags(buffered_sentences):
                     # else it probably a subject
                     else:
                         new_sentence[i][2] = 'k1nPgIc1'
-                    new_sentence[i][0] += '_kA'
+                    if not is_number:
+                        new_sentence[i][0] += '_kA'
                 # if preceeded by verb
                 elif inContextBefore(i, new_sentence, 2, 'k5') != None:
                     if inContextBefore(i, new_sentence, 4, 'c1') != None:
                         new_sentence[i][2] = 'k1nPgIc4'
                     else:
                         new_sentence[i][2] = 'k1nPgIc1'
-                    new_sentence[i][0] += '_kA'
+                    if not is_number:
+                        new_sentence[i][0] += '_kA'
                 # if it is a agency then it is probably a subject
                 elif new_sentence[i][0] in AGENCIES:
                     new_sentence[i][2] = 'k1nPgIc1'
                     new_sentence[i][0] += '_kA'
-                # if there is a noun before, then get the same case
+                # if there is a noun before, then get the same case - conjunction case
                 elif inContextBefore(i, new_sentence, 3, 'k1') != None:
                     noun = inContextBefore(i, new_sentence, 3, 'k1')
                     new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(noun[2], 'c')
-                    new_sentence[i][0] += '_kA'
+                    if not is_number:
+                        new_sentence[i][0] += '_kA'
 
             i += 1
         new_sentences.append(new_sentence)
