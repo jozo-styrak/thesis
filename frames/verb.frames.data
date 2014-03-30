@@ -7,7 +7,7 @@
 AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení})
 # example: Nomura snižuje doporučení
 
-AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:cena})
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:cena})+++ATTR(na co4;<price_to:1>;opt)
 # example: Nomura snižuje cílovou cenu
 
 
@@ -16,7 +16,7 @@ AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:cena})
 AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení})
 # example: Nomura zvyšuje doporučení
 
-AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:cena})
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:cena})+++ATTR(na co4;<price_to:1>;opt)
 # example: Nomura zvyšuje cílovou cenu
 
 
