@@ -13,10 +13,10 @@ AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:cena})
 
 * zvýšit; zvyšovat
 
-AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:doporučení})
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení})
 # example: Nomura zvyšuje doporučení
 
-AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:cena})
 # example: Nomura zvyšuje cílovou cenu
 
 
@@ -57,10 +57,10 @@ AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení})
 
 * obdržet; získat; získavat; dostat; dostávat
 
-AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:doporučení})
+AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení})
 # example: Apple obdrželo nové doporučení
 
-AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})
+AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:cena})
 # example: Apple získalo novou cílovou cenu
 
 
@@ -87,11 +87,11 @@ AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(inf;<action:1>;obl;{dependency:-1})+++PAT(c
 
 * čekat; očekávat
 
-AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:cena})
 # example: Nomura očekáva cenu 65USD
 
 
 * přijít; příst
 
-AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(s čím7;<info:1>;obl;{lemma:cena})
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(s čím7;<state:1>;obl;{lemma:cena})
 # example: Nomura přisla s novou cílovou cenou

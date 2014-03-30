@@ -74,7 +74,7 @@ class Phrase:
     # for now, conflicts are in group of kA roles, agency, stock, organization
     def roleConflict(self, role_str):
         conflict = False
-        if (self.hasRole('<agency:1>') and (role_str == '<stock:1>' or role_str == '<organization:1>')) or (self.hasRole('<stock:1>') and (role_str == '<agency:1>' or role_str == '<organization:1>')):
+        if (self.hasRole('<agency:1>') and (role_str == '<stock:1>' or role_str == '<organization:1>')) or (self.hasRole('<stock:1>') and (role_str == '<agency:1>' or role_str == '<organization:1>')) or (self.hasRole('<organization:1>') and (role_str == '<agency:1>' or role_str == '<stock:1>')):
             conflict = True
         return conflict
     
