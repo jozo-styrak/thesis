@@ -97,4 +97,4 @@ AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(s čím7;<price:1>;obl;{lemma:cena})
 # example: Nomura přisla s novou cílovou cenou
 
 * připsat
-AG(kdo1;<stock:1>;obl)+++VERB+++PAT(od čeho2;<agency>;obl)+++OBJ(co4;<price>;opt)
+AG(kdo1;<stock:1>;obl)+++VERB+++PAT(od čeho2;<agency:1>;obl)+++OBJ(co4;<price:1>;opt)
