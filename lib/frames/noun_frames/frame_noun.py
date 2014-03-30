@@ -1,6 +1,11 @@
 from lib.sentence.phrases import NPhrase
 from lib.semantics.semantic_relation import SemanticRelation
 from lib.semantics.semantic_role import SemanticRole
+import re
+
+
+# pattern to identify real numbers
+REAL_NUMBER_PATTERN = re.compile('[\+-]*\d+[\.,/:]*\d*')
 
 # abstract class for all types of noun phrase types
 class FrameNoun:
@@ -125,5 +130,19 @@ class NamedEntity(FrameNoun):
         contains = False
         for token in phrase.tokens:
             if token.value.endswith('_kA'):
+                contains = True
+        return contains
+
+
+# class for numbers with number follow - price, percentage,...
+class NumberEntity(FrameNoun):
+
+    def __init__(self):
+        FrameNoun.__init__(self)
+
+    def matchesPhrase(self, phrase):
+        contains = False
+        for token in phrase.tokens:
+            if REAL_NUMBER_PATTERN.match(token.value.split('_')[0]):
                 contains = True
         return contains

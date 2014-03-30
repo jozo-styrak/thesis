@@ -1,5 +1,5 @@
 from lib.frames.frame_matcher import FrameMatcher
-from lib.frames.noun_frames.frame_noun import GeneralPhrase, NamedEntity
+from lib.frames.noun_frames.frame_noun import GeneralPhrase, NamedEntity, NumberEntity
 from lib.frames.noun_frames.complement import Complement
 
 # class handling matching of noun frames
@@ -13,10 +13,13 @@ class NounFrameMatcher(FrameMatcher):
         for line in frame_file.readlines():
             if not line.startswith('#') and len(line.strip()) > 0:
                 if line.startswith('*'):  # new noun entry
-                    if line.find('{kA}') == -1:
-                        self.noun_frames.append(GeneralPhrase(line[1:].strip()))
-                    else:
+                    if line.find('{kA}') != -1:
                         self.noun_frames.append(NamedEntity())
+                    elif line.find('{k4}') != -1:
+                        self.noun_frames.append(NumberEntity())
+                    else:
+                        self.noun_frames.append(GeneralPhrase(line[1:].strip()))
+
                 elif line.startswith('+'):
                     # add role for given noun frame
                     self.noun_frames[len(self.noun_frames)-1].role = line.strip()[line.strip().find(':')+1:]
