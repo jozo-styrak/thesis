@@ -6,6 +6,7 @@ import sys
 from lib import set_parser_ver02
 from lib.frames.verb_frames.verb_frame_matcher import VerbFrameMatcher
 from lib.frames.noun_frames.noun_frame_matcher import NounFrameMatcher
+from lib.semantics.text_information import TextInformation
 
 
 set_output_file = open(sys.argv[1], 'r')
@@ -29,6 +30,7 @@ print '************************* MATCHING FRAMES *******************************
 
 all = 0
 correct = 0
+relations = []
 for sentence in sentences:
     relations = verb_matcher.matchFrames(sentence)
     noun_relations = noun_matcher.matchFrames(sentence)
@@ -42,5 +44,10 @@ for sentence in sentences:
         correct += 1
     all += 1
 
+text_information = TextInformation(relations, sentences)
+information_objects = text_information.getTextInformation()
+for inf in information_objects:
+    print '***'
+    print inf
 
 print str(correct) + '/' + str(all)

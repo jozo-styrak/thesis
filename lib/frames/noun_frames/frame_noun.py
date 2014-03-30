@@ -53,8 +53,11 @@ class FrameNoun:
                 relation = None
                 roles = []
 
+                # for now, if phrase is already in a relation, use this relation
+                if len(phrase.semantic_roles) > 0:
+                    relation = phrase.semantic_roles[0].getRelation()  # use first, but they're all the same
+
                 # add semantic role to matching phrase
-                # sec_lvl_role = self.role if self.role != None else '<unknown>'
                 if not phrase.hasRole(self.role):
                     role = SemanticRole('OBJ', self.role)
                     role.phrase = phrase

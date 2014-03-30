@@ -14,14 +14,20 @@ class SemanticRole:
     def getRelation(self):
         return self.relation
 
-    def isAgent(self):
-        return self.first_level_role == 'AG'
+    # def isAgent(self):
+    #     return self.first_level_role == 'AG'
+    #
+    # def isPatient(self):
+    #     return self.first_level_role == 'PAT'
 
-    def isPatient(self):
-        return self.first_level_role == 'PAT'
-
-    def isEllipsed(self):
-        return self.phrase == None
+    # check whether this role's phrase has kA as subpart
+    def isFilledWithNE(self):
+        filled = False
+        if self.phrase != None:
+            for token in self.phrase.tokens:
+                if token.value.endswith('kA'):
+                    filled = True
+        return filled
 
     def __str__(self):
         ret = 'Phrase \'' + str(self.phrase) + '\': ' if self.phrase != None else 'Ellipsed : '
