@@ -3,48 +3,95 @@
 # newer version, complements for noun phrases are in different file
 
 * snížit; snižovat
+
 AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení})
+# example: Nomura snižuje doporučení
+
 AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:cena})
+# example: Nomura snižuje cílovou cenu
 
 
 * zvýšit; zvyšovat
+
 AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:doporučení})
+# example: Nomura zvyšuje doporučení
+
 AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})
+# example: Nomura zvyšuje cílovou cenu
 
 
 * začít; začínat
+
 AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(inf;<action:1>;obl;{lemma:pokrývat;dependency:-1})+++PAT(co4;<stock:1>;obl;{dependency:3})
+# example: Nomura začína pokrývat akcie Apple
+
 
 * doporučovat
-AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<stock:1>;obl;{lemma:titul})
+
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:titul})
+# example: Nomura doporučuje titul Neutral
+# note: add PAT?
+
 AG(kdo1;<agency:1>;obl)+++VERB+++PAT(co4;<stock:1>;obl)
-AG(kdo1;<agency:1>;obl)+++VERB+++PAT(co4;<stock:1>;obl)+++OBJ(inf;<state:1>;obl;{dependency:-1})
+# example: Nomura doporučuje akcie Apple (k čemu,...)
+
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(inf;<state:1>;obl;{dependency:-1})+++PAT(co4;<stock:1>;obl)
+# example: Nomura doporučuje kupovat akcie Apple
+
 AG(kdo1;<agency:1>;obl;{dependency:-1})+++VERB+++OBJ(inf;<state:1>;obl;{dependency:-1})+++PAT(co4;<stock:1>;obl;{dependency:3})
+# example: Nomura doporučuje kupovat akcie Apple
+# note: because of dependencies, probably will delete
+
 
 * reagovat
+
 AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(čím7;<state:1>;obl;{lemma:doporučení})
+# example: Nomura reaguje doporučením Neutral
+
 
 * změnit
+
 AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení})
+# example: Nomura změnila doporučení
 
 
 * obdržet; získat; získavat; dostat; dostávat
+
 AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:doporučení})
+# example: Apple obdrželo nové doporučení
+
 AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})
+# example: Apple získalo novou cílovou cenu
+
 
 * stanovit; stanovovat; dávat; ponechat; ponechávat
-AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})
-AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})
-AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:doporučení})
+
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:cena})
+# example: Nomura dáva novú cenu
+
+AG(kdo1;<stock:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:doporučení})
+# example: Nomura ponecháva doporučení Neutral
+
 
 * prodávat; prodat
+
 AG(kdo1;<agency:1>;obl)+++VERB+++PAT(co4;<stock:1>;obl)
+# example: Nomura by prodávala akcie Apple
+
 
 * radit
-AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(inf;<action:1>;obl;{lemma:prodat;dependency:-1})+++PAT(co4;<stock:1>;opt)
+
+AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(inf;<action:1>;obl;{dependency:-1})+++PAT(co4;<stock:1>;opt)
+# example: Nomura radí prodávat akcie Apple
+
 
 * čekat; očekávat
+
 AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(co4;<info:1>;obl;{lemma:cena})
+# example: Nomura očekáva cenu 65USD
+
 
 * přijít; příst
+
 AG(kdo1;<agency:1>;obl)+++VERB+++OBJ(s čím7;<info:1>;obl;{lemma:cena})
+# example: Nomura přisla s novou cílovou cenou
