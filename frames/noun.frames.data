@@ -8,6 +8,7 @@ pro co4|u čeho2;<stock:1>
 od čeho2;<agency:1>
 z čeho2;<state_from:1>
 na co4;<state_to:1>
+na čem6;<state_to:1>
 pri čem6;<price:1>
 komu3;<investor:1>
 
