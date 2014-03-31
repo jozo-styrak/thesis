@@ -1,0 +1,33 @@
+# Noun frames
+# for each noun there are possible complements
+# every noun should contain role
+
+* doporučení; titul; ranking; stupen
++ role:<state:1>
+pro co4|u čeho2;<actor_stock:1>
+od čeho2;<actor_agency:1>
+z čeho2;<state_past:1>
+na co4;<state_current:1>
+na čem6;<state_current:1>
+pri čem6;<price_current:1>
+komu3;<actor_investor:1>
+
+* cena; cíl
++ role:<price:1>
+pro co4;<actor_stock:1>
+od čeho2;<actor_agency:1>
+z čeho2;<price_past:1>
+na co4;<price_current:1>
+co4;<price:1>
+pri čem6|s čím7;<state_current:1>
+o co4;<price_change:1>
+
+* {kA}
++ role:<actor:1>
+s čím7|čím7;<state_current:1>
+k čemu3;<state_current:1>
+
+* {k4}
++ role:<price:1>
+na co4;<price_current:1>
+o co4;<price_change:1>

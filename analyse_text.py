@@ -20,10 +20,10 @@ for sentence in sentences:
             print phrase
     print
 
-f_v = open('frames/verb.frames.data', 'r')
+f_v = open('frames/verb.frames.02.data', 'r')
 verb_matcher = VerbFrameMatcher(f_v)
 
-f_n = open('frames/noun.frames.data', 'r')
+f_n = open('frames/noun.frames.02.data', 'r')
 noun_matcher = NounFrameMatcher(f_n)
 
 print '************************* MATCHING FRAMES *************************************************'

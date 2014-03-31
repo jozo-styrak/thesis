@@ -63,19 +63,34 @@ class Phrase:
         self.semantic_roles.append(role)
 
     # check, whether phrase has given role
+    # if base role is found, then upgrade the role
     def hasRole(self, role_str):
         has = False
         for role in self.semantic_roles:
             if role_str == role.second_level_role:
                 has = role
+            elif '_' in role_str and not '_' in role.second_level_role and role_str[1:-3].split('_')[0] == role.second_level_role[1:-3]:
+                role.second_level_role = role_str
+                has = role
+            elif '_' in role.second_level_role and not '_' in role_str and role.second_level_role[1:-3].split('_')[0] == role_str[1:-3]:
+                has = role
         return has
 
     # check whether there is conflict with given role
     # for now, conflicts are in group of kA roles, agency, stock, organization
+    # def roleConflict(self, role_str):
+    #     conflict = False
+    #     if (self.hasRole('<agency:1>') and (role_str == '<stock:1>' or role_str == '<organization:1>')) or (self.hasRole('<stock:1>') and (role_str == '<agency:1>' or role_str == '<organization:1>')) or (self.hasRole('<organization:1>') and (role_str == '<agency:1>' or role_str == '<stock:1>')):
+    #         conflict = True
+    #     return conflict
+
+    # new role conflict method - syntax base_specific for role name
+    # conflict between specific roles
     def roleConflict(self, role_str):
         conflict = False
-        if (self.hasRole('<agency:1>') and (role_str == '<stock:1>' or role_str == '<organization:1>')) or (self.hasRole('<stock:1>') and (role_str == '<agency:1>' or role_str == '<organization:1>')) or (self.hasRole('<organization:1>') and (role_str == '<agency:1>' or role_str == '<stock:1>')):
-            conflict = True
+        for role in self.semantic_roles:
+            if '_' in role.second_level_role and '_' in role_str and role.second_level_role[1:-3].split('_')[0] == role_str[1:-3].split('_')[0] and role.second_level_role[1:-3].split('_')[1] != role_str[1:-3].split('_')[1]:
+                conflict = True
         return conflict
     
     def __str__(self):
