@@ -61,14 +61,14 @@ class FrameNoun:
                 # if role does not exist, create new one
                 # if exists, use this one
                 # and at same time tries to upgrade existing base role to specific role
-                if not phrase.hasRole(self.role):
+                if not phrase.findRoleAndUpgrade(self.role):
                     role = SemanticRole('OBJ', self.role)
-                    role.phrase = phrase
+                    role.setPhrase(phrase)
                     phrase.addSemanticRole(role)
                     roles.append(role)
                 else:
                     # use this relation
-                    relation = phrase.hasRole(self.role).getRelation()
+                    relation = phrase.findRoleAndUpgrade(self.role).getRelation()
 
                 # match complements
                 for phr in self.getCandidatePhrases(clause, phrase):
@@ -77,13 +77,13 @@ class FrameNoun:
                             # does complement match?
                             if complement.matchPhrase(phr):
                                 # does given phrase already have given role?
-                                if not phr.hasRole(complement.role):
+                                if not phr.findRoleAndUpgrade(complement.role):
                                     role = SemanticRole('COMPL', complement.role)
-                                    role.phrase = phr
+                                    role.setPhrase(phr)
                                     phr.addSemanticRole(role)
                                     roles.append(role)
-                                elif phr.hasRole(complement.role) and relation == None:  # if given phrase already has given role, use this relation
-                                    relation = phr.hasRole(complement.role).getRelation()
+                                elif phr.findRoleAndUpgrade(complement.role) and relation == None:  # if given phrase already has given role, use this relation
+                                    relation = phr.findRoleAndUpgrade(complement.role).getRelation()
 
                 # if there was no relation detected, create new one
                 if relation == None:

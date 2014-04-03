@@ -10,18 +10,20 @@ class SemanticRole:
         self.phrase = None
         # containing relation
         self.relation = None
+        # corefering phrase
+        self.coreferent = None
 
+    # return containing relation
     def getRelation(self):
         return self.relation
 
-    # def isAgent(self):
-    #     return self.first_level_role == 'AG'
-    #
-    # def isPatient(self):
-    #     return self.first_level_role == 'PAT'
+    # set refering phrase (and coreferent)
+    def setPhrase(self, phrase):
+        self.phrase = phrase
+        self.coreferent = self.phrase
 
     # check whether this role's phrase has kA as subpart
-    def isFilledWithNE(self):
+    def filledWithNE(self):
         filled = False
         if self.phrase != None:
             for token in self.phrase.tokens:

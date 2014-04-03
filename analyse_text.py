@@ -26,11 +26,10 @@ verb_matcher = VerbFrameMatcher(f_v)
 f_n = open('frames/noun.frames.02.data', 'r')
 noun_matcher = NounFrameMatcher(f_n)
 
-print '************************* MATCHING FRAMES *************************************************'
 
 all = 0
 correct = 0
-relations = []
+all_relations = []
 for sentence in sentences:
     relations = verb_matcher.matchFrames(sentence)
     noun_relations = noun_matcher.matchFrames(sentence)
@@ -38,13 +37,13 @@ for sentence in sentences:
         if not noun_relation in relations:
             relations.append(noun_relation)
     if relations:
-        print sentence
         for relation in relations:
-            print relation
+            if not relation in all_relations:
+                all_relations.append(relation)
         correct += 1
     all += 1
 
-text_information = TextInformation(relations, sentences)
+text_information = TextInformation(all_relations, sentences)
 information_objects = text_information.getTextInformation()
 for inf in information_objects:
     print '***'

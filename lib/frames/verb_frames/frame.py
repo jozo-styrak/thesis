@@ -90,7 +90,7 @@ class Frame:
                     role = SemanticRole(slot.first_level_role, slot.second_level_role)
                     if slot.match_item != None:
                         # set role phrase
-                        role.phrase = slot.match_item
+                        role.setPhrase(slot.match_item)
                         # set link to role into phrase
                         slot.match_item.semantic_roles.append(role)
                     relation.addNewRole(role)

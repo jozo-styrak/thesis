@@ -7,6 +7,8 @@ class SemanticRelation:
 
     def __init__(self):
         self.roles = []
+        # one relation = one clause... at least for now
+        self.containing_clause = None
 
     # add new role to this relation
     def addNewRole(self, role):
@@ -21,78 +23,53 @@ class SemanticRelation:
                 contains = True
         return contains
 
-    # check whether any important role is omitted
-    # for now, check organization roles
-    def anyRoleOmitted(self):
-        return self.isAgencyOmitted() or self.isStockOmitted()
-
-    # check whether agency role is omitted
-    def isAgencyOmitted(self):
+    # check whether given role is filled with named entity
+    # for actor roles
+    def filledWithNE(self, role_name):
         omitted = True
         for role in self.roles:
-            if role.second_level_role == '<agency:1>' and role.isFilledWithNE():
+            if role.second_level_role == role_name and role.filledWithNE():
                 omitted = False
-        return omitted
+        return not omitted
 
-    # check whether stock role is omitted
-    def isStockOmitted(self):
-        omitted = True
+    # return role by second level id
+    def getSecondLevelRole(self, role_name):
+        role = None
+        for r in self.roles:
+            if role_name == r.second_level_role:
+                role = r
+        return role
+
+    # return roles with specific base
+    def getRolesWithBase(self, base_str):
+        roles = []
         for role in self.roles:
-            if role.second_level_role == '<stock:1>' and role.isFilledWithNE():
-                omitted = False
-        return omitted
+            if base_str in role.second_level_role:
+                roles.append(role)
+        return roles
 
     # return information object
     def getInformationObject(self):
-        ret_str = 'who changed recommendation? ' + str(self.getAgencyRole().phrase) + ' {' + str(self.getAgencyRole().second_level_role) + '}\n'
-        ret_str += 'to whom? ' + str(self.getStockRole().phrase) + ' {' + str(self.getStockRole().second_level_role) + '}\n'
-        for recommendation in self.getRecommendationRoles():
-            if recommendation.second_level_role == '<state_from:1>':
+        ret_str = ''
+        if self.getSecondLevelRole('<actor_agency:1>') != None:
+            ret_str += 'who changed recommendation? ' + str(self.getSecondLevelRole('<actor_agency:1>').coreferent) + ' {' + str(self.getSecondLevelRole('<actor_agency:1>').second_level_role) + '}\n'
+        if self.getSecondLevelRole('<actor_stock:1>') != None:
+            ret_str += 'to whom? ' + str(self.getSecondLevelRole('<actor_stock:1>').coreferent) + ' {' + str(self.getSecondLevelRole('<actor_stock:1>').second_level_role) + '}\n'
+        for recommendation in self.getRolesWithBase('state'):
+            if recommendation.second_level_role == '<state_past:1>':
                 ret_str += 'past recommendation ' + str(recommendation.phrase) + ' {' + str(recommendation.second_level_role) + '}\n'
-            elif recommendation.second_level_role == '<state_to:1>':
+            elif recommendation.second_level_role == '<state_current:1>':
                 ret_str += 'current recommendation ' + str(recommendation.phrase) + ' {' + str(recommendation.second_level_role) + '}\n'
             else:
                 ret_str += 'recommendation ' + str(recommendation.phrase) + ' {' + str(recommendation.second_level_role) + '}\n'
-        for price in self.getPriceRoles():
-            if price.second_level_role == '<price_from:1>':
+        for price in self.getRolesWithBase('price'):
+            if price.second_level_role == '<price_past:1>':
                 ret_str += 'past price ' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
-            elif price.second_level_role == '<price_to:1>':
+            elif price.second_level_role == '<price_current:1>':
                 ret_str += 'current price ' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
             else:
                 ret_str += 'price ' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
         return ret_str
-
-    # return agency
-    def getAgencyRole(self):
-        agency = None
-        for role in self.roles:
-            if 'agency' in role.second_level_role:
-                agency = role
-        return agency
-
-    # return stock role
-    def getStockRole(self):
-        stock = None
-        for role in self.roles:
-            if 'stock' in role.second_level_role:
-                stock = role
-        return stock
-
-    # return recommendation objects
-    def getRecommendationRoles(self):
-        recommendations = []
-        for role in self.roles:
-            if 'state' in role.second_level_role:
-                recommendations.append(role)
-        return recommendations
-
-    # return recommendation objects
-    def getPriceRoles(self):
-        prices = []
-        for role in self.roles:
-            if 'price' in role.second_level_role:
-                prices.append(role)
-        return prices
 
     def __str__(self):
         ret = 'Relation:\n'
