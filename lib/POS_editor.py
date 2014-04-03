@@ -58,6 +58,37 @@ def inContextAfter(position, sentence, count, tag_value):
 def connectParenthesis(tokens):
     return tokens
 
+# connect quotes -  everything inside is tagged as kA
+# for recommendations
+def connectQuotes(tokens):
+    # execute this method only if there is even count of quotes
+    quote_count = 0
+    for token in tokens:
+        if token[0] == '\"':
+            quote_count += 1
+    if quote_count == 0 or quote_count % 2 == 1:
+        return tokens
+    else:
+        # connect object in quotes
+        quote_start = False
+        new_tokens = []
+        quote_content = ['','','kA']
+        for token in tokens:
+            if not quote_start and token[0] != '\"':
+                new_tokens.append(token)
+            elif not quote_start and token[0] == '\"':
+                quote_start = True
+            elif quote_start and token[0] != '\"':
+                quote_content[0] = quote_content[0] + '_' + token[0] if quote_content[0] != '' else token[0]
+                quote_content[1] = quote_content[1] + '_' + token[1] if quote_content[1] != '' else token[1]
+            elif quote_start and token[0] == '\"':
+                new_tokens.append(quote_content)
+                quote_start = False
+                # BONUS! if quote content is not in recommendations, add it there
+                if not quote_content[0].lower() in RECOMMENDATIONS:
+                    RECOMMENDATIONS.append(quote_content[0].lower())
+        return new_tokens
+
 # main function of script
 # connect some tokens and edit tags
 def editTags(buffered_sentences):
@@ -67,13 +98,10 @@ def editTags(buffered_sentences):
         new_sentence.append(sentence[0])
 
         # first traverse - joining && removing
-        i = 1
+        i = 1 if sentence[0][0] != '\"' else 2
         while i < len(sentence):
-            # skip " character
-            if sentence[i][0] == "\"":
-                pass
             # connects more abbreviations in a row
-            elif sentence[i][2] == 'kA' and new_sentence[len(new_sentence)-1][2] == 'kA':
+            if sentence[i][2] == 'kA' and new_sentence[len(new_sentence)-1][2] == 'kA':
                 new_sentence[len(new_sentence)-1][0] += '_' + sentence[i][0]
                 new_sentence[len(new_sentence)-1][1] += '_' + sentence[i][1]
             # connects real number and sufix
@@ -99,7 +127,7 @@ def editTags(buffered_sentences):
             i += 1
 
         # connect tokens inside parenthesis
-        new_sentence = connectParenthesis(new_sentence)
+        new_sentence = connectQuotes(new_sentence)
 
         # second traverse - editing tags based on some rules
         # if first element is abreviation, assume case 1
