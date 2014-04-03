@@ -54,9 +54,35 @@ def inContextAfter(position, sentence, count, tag_value):
     return token
 
 # method for connecting objects inside parenthesis
-# yeah, currently doing nothing
 def connectParenthesis(tokens):
-    return tokens
+    # execute this method only if there is even count of parethesis
+    count = 0
+    for token in tokens:
+        if token[0] == '(' or token[0] == ')':
+            count += 1
+    if count == 0 or count % 2 == 1:
+        return tokens
+    else:
+        # connect object in parenthesis
+        start = False
+        new_tokens = []
+        parenthesis_content = ['','','kA']
+        for token in tokens:
+            if not start and token[0] != '(':
+                new_tokens.append(token)
+            elif not start and token[0] == '(':
+                start = True
+                parenthesis_content[0] = '('
+                parenthesis_content[1] = '('
+            elif start and token[0] != ')':
+                parenthesis_content[0] += '_' + token[0]
+                parenthesis_content[1] += '_' + token[1]
+            elif start and token[0] == ')':
+                parenthesis_content[0] += '_)'
+                parenthesis_content[1] += '_)'
+                new_tokens.append(parenthesis_content)
+                start = False
+        return new_tokens
 
 # connect quotes -  everything inside is tagged as kA
 # for recommendations
@@ -126,8 +152,8 @@ def editTags(buffered_sentences):
                 new_sentence.append(sentence[i])
             i += 1
 
-        # connect tokens inside parenthesis
-        new_sentence = connectQuotes(new_sentence)
+        # connect tokens inside parenthesis and parenthesis
+        new_sentence = connectParenthesis(connectQuotes(new_sentence))
 
         # second traverse - editing tags based on some rules
         # if first element is abreviation, assume case 1
