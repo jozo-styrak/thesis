@@ -62,7 +62,7 @@ AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení
 # example: Nomura změnila doporučení
 
 
-* obdržet; získat; získavat; dostat; dostávat
+* obdržet; získat; získavat; dostat; dostávat; vysloužit
 
 AG(kdo1;<actor_stock:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení})
 # example: Apple obdrželo nové doporučení
