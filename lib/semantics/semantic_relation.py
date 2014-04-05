@@ -51,25 +51,43 @@ class SemanticRelation:
     # return information object
     def getInformationObject(self):
         ret_str = ''
-        if self.getSecondLevelRole('<actor_agency:1>') != None:
-            ret_str += 'who changed recommendation? ' + str(self.getSecondLevelRole('<actor_agency:1>').coreferent) + ' {' + str(self.getSecondLevelRole('<actor_agency:1>').second_level_role) + '}\n'
-        if self.getSecondLevelRole('<actor_stock:1>') != None:
-            ret_str += 'to whom? ' + str(self.getSecondLevelRole('<actor_stock:1>').coreferent) + ' {' + str(self.getSecondLevelRole('<actor_stock:1>').second_level_role) + '}\n'
-        for recommendation in self.getRolesWithBase('state'):
-            if recommendation.second_level_role == '<state_past:1>':
-                ret_str += 'past recommendation ' + str(recommendation.phrase) + ' {' + str(recommendation.second_level_role) + '}\n'
-            elif recommendation.second_level_role == '<state_current:1>':
-                ret_str += 'current recommendation ' + str(recommendation.phrase) + ' {' + str(recommendation.second_level_role) + '}\n'
-            else:
-                ret_str += 'recommendation ' + str(recommendation.phrase) + ' {' + str(recommendation.second_level_role) + '}\n'
-        for price in self.getRolesWithBase('price'):
-            if price.second_level_role == '<price_past:1>':
-                ret_str += 'past price ' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
-            elif price.second_level_role == '<price_current:1>':
-                ret_str += 'current price ' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
-            else:
-                ret_str += 'price ' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
+        if self.isOutputSuitable():
+            if self.getSecondLevelRole('<actor_agency:1>') != None and self.getSecondLevelRole('<actor_agency:1>').coreferent != None:
+                ret_str += 'who changed recommendation/price? \n\t' + str(self.getSecondLevelRole('<actor_agency:1>').coreferent) + ' {' + str(self.getSecondLevelRole('<actor_agency:1>').second_level_role) + '}\n'
+            if self.getSecondLevelRole('<actor_stock:1>') != None and self.getSecondLevelRole('<actor_stock:1>').coreferent != None:
+                ret_str += 'to whom? \n\t' + str(self.getSecondLevelRole('<actor_stock:1>').coreferent) + ' {' + str(self.getSecondLevelRole('<actor_stock:1>').second_level_role) + '}\n'
+            for recommendation in self.getRolesWithBase('state'):
+                if recommendation.second_level_role == '<state_past:1>':
+                    ret_str += 'past recommendation \n\t' + str(recommendation.phrase) + ' {' + str(recommendation.second_level_role) + '}\n'
+                elif recommendation.second_level_role == '<state_current:1>':
+                    ret_str += 'current recommendation \n\t' + str(recommendation.phrase) + ' {' + str(recommendation.second_level_role) + '}\n'
+                # else:
+                #     ret_str += 'recommendation ' + str(recommendation.phrase) + ' {' + str(recommendation.second_level_role) + '}\n'
+            for price in self.getRolesWithBase('price'):
+                if price.second_level_role == '<price_past:1>':
+                    ret_str += 'past price \n\t' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
+                elif price.second_level_role == '<price_current:1>':
+                    ret_str += 'current price \n\t' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
+                elif price.second_level_role == '<price_change:1>':
+                    ret_str += 'price change \n\t' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
+                # else:
+                #     ret_str += 'price ' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
+
         return ret_str
+
+    # check whether relation contains output information
+    def isOutputSuitable(self):
+        suitable = False
+        for price in self.getRolesWithBase('price'):
+            if '_' in price.second_level_role:
+                suitable = True
+        if suitable:
+            return suitable
+        else:
+            for recommendation in self.getRolesWithBase('state'):
+                if '_' in recommendation.second_level_role:
+                    suitable = True
+            return suitable
 
     def __str__(self):
         ret = 'Relation:\n'

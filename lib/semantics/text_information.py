@@ -12,13 +12,14 @@ class TextInformation:
     def getTextInformation(self):
 
         # debug
-        self.printRelations()
+        # self.printRelations()
+
+        # resolve <actor> roles
+        self.resolveActorRoles()
 
         # join relations within the same clause
         self.preprocessRelations()
 
-        # resolve <actor> roles
-        self.resolveActorRoles()
 
         # apply constraints
         constraints_checker = ConstraintsChecker()

@@ -22,10 +22,26 @@ class ConstraintsChecker:
                     if 'state_' in role.second_level_role:
                         if not self.isRecommendationValue(phrase):
                             role.invalid = True
+                    # try to expand role
+                    elif role.second_level_role == '<state:1>':
+                        if self.isRecommendationValue(phrase):
+                            if 'c2' in phrase.tokens[0].tag:
+                                role.second_level_role = '<state_past:1>'
+                            else:
+                                role.second_level_role = '<state_current:1>'
                     # check price values
                     elif 'price_' in role.second_level_role:
                         if not self.isPriceEntity(phrase):
                             role.invalid = True
+                    # try to expand role
+                    elif role.second_level_role == '<price:1>':
+                        if self.isPriceEntity(phrase):
+                            if phrase.tokens[0].value == 'o' or phrase.containsSequence('%'):
+                                role.second_level_role = '<price_change:1>'
+                            elif 'c2' in phrase.tokens[0].tag:
+                                role.second_level_role = '<price_past:1>'
+                            else:
+                                role.second_level_role = '<price_current:1>'
 
     # check whether given phrase is named entity
     def isNamedEntity(self, phrase):

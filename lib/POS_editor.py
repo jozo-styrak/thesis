@@ -109,6 +109,7 @@ def connectQuotes(tokens):
                 quote_content[1] = quote_content[1] + '_' + token[1] if quote_content[1] != '' else token[1]
             elif quote_start and token[0] == '\"':
                 new_tokens.append(quote_content)
+                quote_content = ['','','kA']
                 quote_start = False
                 # BONUS! if quote content is not in recommendations, add it there
                 if not quote_content[0].lower() in RECOMMENDATIONS:

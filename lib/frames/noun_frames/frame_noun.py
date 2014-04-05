@@ -94,9 +94,11 @@ class FrameNoun:
                     relation = SemanticRelation()
 
                 # add roles to relation
+                # remove unnecessary ellipsed roles
                 for r in roles:
-                    r.relation = relation
-                    relation.addNewRole(r)
+                    if not (r.phrase == None and relation.getSecondLevelRole(r.second_level_role) != None):
+                        r.relation = relation
+                        relation.addNewRole(r)
 
                 relations.append(relation)
         return relations

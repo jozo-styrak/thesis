@@ -95,13 +95,6 @@ class Phrase:
                 has = role
         return has
 
-    def hasRoleWithGivenBase(self, base_str):
-        has = False
-        for role in self.semantic_roles:
-            if base_str in role.second_level_role:
-                has = role
-        return has
-
     # new role conflict method - syntax base_specific for role name
     # conflict between specific roles
     def roleConflict(self, role_str):
@@ -110,6 +103,14 @@ class Phrase:
             if '_' in role.second_level_role and '_' in role_str and role.second_level_role[1:-3].split('_')[0] == role_str[1:-3].split('_')[0] and role.second_level_role[1:-3].split('_')[1] != role_str[1:-3].split('_')[1]:
                 conflict = True
         return conflict
+
+    # whether there is given sequence among phrase tokens
+    def containsSequence(self, seq):
+        contains = False
+        for token in self.tokens:
+            if seq in token.value:
+                contains = True
+        return contains
     
     def __str__(self):
         values = []
