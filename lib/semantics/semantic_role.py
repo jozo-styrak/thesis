@@ -12,6 +12,8 @@ class SemanticRole:
         self.relation = None
         # corefering phrase
         self.coreferent = None
+        # if the role is invalid for given phrase, done in constraints check
+        self.invalid = False
 
     # return containing relation
     def getRelation(self):
@@ -33,4 +35,5 @@ class SemanticRole:
 
     def __str__(self):
         ret = 'Phrase \'' + str(self.phrase) + '\': ' if self.phrase != None else 'Ellipsed : '
-        return ret + '{ ' + self.second_level_role + ' as ' + self.first_level_role + ' }'
+        invalid_note = '' if not self.invalid else ' [invalid role]'
+        return ret + '{ ' + self.second_level_role + ' as ' + self.first_level_role + ' }' + invalid_note

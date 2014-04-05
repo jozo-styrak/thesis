@@ -1,4 +1,4 @@
-from lib.sentence.phrases import NPhrase
+from lib.frames.constraints_checker import ConstraintsChecker
 
 # grouping object for all the relations and roles in the text
 # for now also doing coreference, ellipse and named entity resolution
@@ -12,13 +12,18 @@ class TextInformation:
     def getTextInformation(self):
 
         # debug
-        # self.printRelations()
+        self.printRelations()
 
         # join relations within the same clause
         self.preprocessRelations()
 
         # resolve <actor> roles
         self.resolveActorRoles()
+
+        # apply constraints
+        constraints_checker = ConstraintsChecker()
+        for sentence in self.sentences:
+            constraints_checker.applyConstraints(sentence)
 
         # debug
         self.printRelations()
@@ -133,11 +138,10 @@ class TextInformation:
         # get possible candidates from given order
         for sentence in sentence_order:
             for clause in sentence.clauses:
-                if clause != role.getRelation().containing_clause:
-                    for phrase in clause.phrases:
-                        phrase_role = phrase.hasRole(role.second_level_role)
-                        if phrase_role and phrase_role.filledWithNE():
-                            candidates.append(phrase)
+                for phrase in clause.phrases:
+                    phrase_role = phrase.hasRole(role.second_level_role)
+                    if phrase_role and phrase_role.filledWithNE():
+                        candidates.append(phrase)
 
         return candidates
 

@@ -71,20 +71,24 @@ class FrameNoun:
                     relation = phrase.findRoleAndUpgrade(self.role).getRelation()
 
                 # match complements
-                for phr in self.getCandidatePhrases(clause, phrase):
-                    for complement in self.complements:
-                        if not complement.matched:
+                for complement in self.complements:
+                    if not complement.matched:
+                        for phr in self.getCandidatePhrases(clause, phrase):
                             # does complement match?
                             if complement.matchPhrase(phr):
                                 # does given phrase already have given role?
-                                if not phr.findRoleAndUpgrade(complement.role):
-                                    role = SemanticRole('COMPL', complement.role)
+                                if not phr.findRoleAndUpgrade(complement.second_level_role):
+                                    role = SemanticRole(complement.first_level_role, complement.second_level_role)
                                     role.setPhrase(phr)
                                     phr.addSemanticRole(role)
                                     roles.append(role)
-                                elif phr.findRoleAndUpgrade(complement.role) and relation == None:  # if given phrase already has given role, use this relation
-                                    relation = phr.findRoleAndUpgrade(complement.role).getRelation()
-
+                                elif phr.findRoleAndUpgrade(complement.second_level_role) and relation == None:  # if given phrase already has given role, use this relation
+                                    relation = phr.findRoleAndUpgrade(complement.second_level_role).getRelation()
+                                complement.matched = True
+                        # if complement is obligatory, then later it has to be resolved, for now is ellipsed
+                        if not complement.matched and complement.isObligatory():
+                            role = SemanticRole(complement.first_level_role, complement.second_level_role)
+                            roles.append(role)
                 # if there was no relation detected, create new one
                 if relation == None:
                     relation = SemanticRelation()

@@ -165,9 +165,11 @@ def editTags(buffered_sentences):
             # change tag for recommendation if preceeded by preposition - same case
             if new_sentence[i][0].lower() in RECOMMENDATIONS and getValueFromTag(new_sentence[i-1][2], 'k') == '7':
                 new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(new_sentence[i-1][2], 'c')
+                new_sentence[i][0] += '_kR'
             # change tag for recommendation if preceeded by noun - from rec. synonym set - case 2
             elif new_sentence[i][0].lower() in RECOMMENDATIONS and new_sentence[i-1][1] in RECOMMENDATION_SYNONYMS:
                 new_sentence[i][2] = 'k1nPgIc2'
+                new_sentence[i][0] += '_kR'
             # change tag for kA if preceeded by preposition or adjective
             elif (new_sentence[i][2] == 'kA' and new_sentence[i][0].find('(') == -1) and (getValueFromTag(new_sentence[i-1][2], 'k') == '7' or getValueFromTag(new_sentence[i-1][2], 'k') == '2'):
                 new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(new_sentence[i-1][2], 'c')

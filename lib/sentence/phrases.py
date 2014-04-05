@@ -95,6 +95,13 @@ class Phrase:
                 has = role
         return has
 
+    def hasRoleWithGivenBase(self, base_str):
+        has = False
+        for role in self.semantic_roles:
+            if base_str in role.second_level_role:
+                has = role
+        return has
+
     # new role conflict method - syntax base_specific for role name
     # conflict between specific roles
     def roleConflict(self, role_str):
