@@ -40,6 +40,14 @@ class SemanticRelation:
                 role = r
         return role
 
+    # return role by second level id
+    def getSecondLevelRoles(self, role_name):
+        roles = []
+        for r in self.roles:
+            if role_name == r.second_level_role:
+                roles.append(r)
+        return roles
+
     # return roles with specific base
     def getRolesWithBase(self, base_str):
         roles = []

@@ -71,7 +71,7 @@ class CommonSlot(AbstractSlot):
     # currently, slot with first role as AG or PAT can be ellipsed (zamlcany podmet)
     # that means, name of agency or stock does not have to be mentioned in given sentence
     def canBeEllipsed(self):
-        return self.first_level_role == 'AG' or self.first_level_role == 'PAT'
+        return self.first_level_role == 'AG' or (self.first_level_role == 'PAT' and self.obligatory)
 
     def __str__(self):
         attr_str = ''

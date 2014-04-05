@@ -20,11 +20,14 @@ class TextInformation:
         # join relations within the same clause
         self.preprocessRelations()
 
-
-        # apply constraints
+        # apply constraints and remove invalid roles
         constraints_checker = ConstraintsChecker()
         for sentence in self.sentences:
             constraints_checker.applyConstraints(sentence)
+        for relation in self.relations:
+            for role in relation.roles:
+                if role.invalid:
+                    relation.roles.remove(role)
 
         # debug
         self.printRelations()
@@ -79,6 +82,10 @@ class TextInformation:
             for clause in sentence.clauses:
                 clause_relations = clause.getSemanticRelations()
                 if len(clause_relations) == 1:
+                    # remove unnecessary ellipsed roles
+                    for role in clause_relations[0].roles:
+                        if role.phrase == None and len(clause_relations[0].getSecondLevelRoles(role.second_level_role)) > 1:
+                            clause_relations[0].roles.remove(role)
                     clause_relations[0].containing_clause = clause
                     new_relations.append(clause_relations[0])
                 elif len(clause_relations) > 1:

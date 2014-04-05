@@ -4,7 +4,7 @@
 
 * snížit; snižovat
 
-AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení})
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení})+++ATTR(na co4;<state_current:1>;opt)+++ATTR(z čeho2;<state_past:1>;opt)
 # example: Nomura snižuje doporučení
 
 AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:cena})+++ATTR(na co4;<price_current:1>;opt)
@@ -106,7 +106,7 @@ AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(s čím7;<price:1>;obl;{lemma:cena})
 
 
 * připsat
-AG(kdo1;<actor_stock:1>;obl)+++VERB+++PAT(od čeho2;<actor_agency:1>;obl)+++OBJ(co4;<price:1>;opt)
+AG(kdo1;<actor_stock:1>;obl)+++VERB+++PAT(od čeho2;<actor_agency:1>;opt)+++OBJ(co4;<price:1>;opt)
 
 
 * oslabovat; růst
