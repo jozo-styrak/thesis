@@ -81,20 +81,25 @@ class Frame:
             failed = (not phrase_matches) and slots[i].isObligatory() and not slots[i].canBeEllipsed()
             i += 1
         # generate semantic relation and occupy given roles
-        relation = SemanticRelation() if not failed else None
+        # relation = SemanticRelation() if not failed else None
+        # newer version - if clause already has relation, use this
         if not failed:
+            if clause.containing_relation == None:
+                clause.containing_relation = SemanticRelation()
+                clause.containing_relation.containing_clause = clause
             self.matched_slots = slots
             for slot in self.matched_slots:
                 # create role for every occupied slot and for slot, which is ellipsable
-                if isinstance(slot, CommonSlot) and (slot.match_item != None or slot.canBeEllipsed()):
+                # check if given phrase already has given role
+                if isinstance(slot, CommonSlot) and (slot.match_item != None or slot.canBeEllipsed()) and ((slot.match_item == None and slot.canBeEllipsed()) or (slot.match_item != None and not slot.match_item.hasRole(slot.second_level_role))):
                     role = SemanticRole(slot.first_level_role, slot.second_level_role)
                     if slot.match_item != None:
                         # set role phrase
                         role.setPhrase(slot.match_item)
                         # set link to role into phrase
                         slot.match_item.semantic_roles.append(role)
-                    relation.addNewRole(role)
-        return relation
+                    clause.containing_relation.addNewRole(role)
+        return clause.containing_relation
 
     # after matching remove matched items
     def resetFrame(self):

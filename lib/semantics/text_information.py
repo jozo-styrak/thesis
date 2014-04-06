@@ -11,14 +11,8 @@ class TextInformation:
     # wrapping output method
     def getTextInformation(self):
 
-        # debug
-        # self.printRelations()
-
         # resolve <actor> roles
         self.resolveActorRoles()
-
-        # join relations within the same clause
-        self.preprocessRelations()
 
         # apply constraints and remove invalid roles
         constraints_checker = ConstraintsChecker()
@@ -28,9 +22,12 @@ class TextInformation:
             for role in relation.roles:
                 if role.invalid:
                     relation.roles.remove(role)
-
         # debug
         self.printRelations()
+        print '---------------------------------------------------'
+
+        # join relations within the same clause
+        # self.preprocessRelations()
 
         # for now it returns just arrays with filtered phrases
         ret_objects = []
@@ -42,12 +39,16 @@ class TextInformation:
             if relation.containsMainInformation():
 
                 # check whether agens or patient is omitted
-                if not relation.filledWithNE('<actor_agency:1>') or not relation.filledWithNE('<actor_stock:1>'):
+                # if not relation.filledWithNE('<actor_agency:1>') or not relation.filledWithNE('<actor_stock:1>'):
 
-                    # first find agency
-                    agency_role = relation.getSecondLevelRole('<actor_agency:1>')
+                # first find agency
+                # agency_role = relation.getSecondLevelRole('<actor_agency:1>')
+                agency_roles = relation.getSecondLevelRoles('<actor_agency:1>')
+                for agency_role in agency_roles:
                     if agency_role != None:
-                        if not relation.filledWithNE('<actor_agency:1>'):
+                        # before there was relation.filledWithNE
+                        # so it would mean, there would be sufficient to have one agency_role in clause, which is NE
+                        if not agency_role.filledWithNE():
                             candidates = self.getCandidateCoreferents(agency_role)
                             # print "\ncandidate phrases for " + str(agency_role)
                             # for phrase in candidates:
@@ -57,9 +58,10 @@ class TextInformation:
                                 agency_role.coreferent = candidates[0]
 
                     # ...then resolve stock role
-                    stock_role = relation.getSecondLevelRole('<actor_stock:1>')
+                stock_roles = relation.getSecondLevelRoles('<actor_stock:1>')
+                for stock_role in stock_roles:
                     if stock_role != None:
-                        if not relation.filledWithNE('<actor_stock:1>'):
+                        if not stock_role.filledWithNE():
                             candidates = self.getCandidateCoreferents(stock_role)
                             # print "\ncandidate phrases for " + str(stock_role)
                             # for phrase in candidates:

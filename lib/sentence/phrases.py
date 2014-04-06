@@ -10,6 +10,7 @@ class Clause:
         self.num = num
         self.conj = conj
         self.phrases = []
+        self.containing_relation = None
 
     # return whether phrase with specified numeric representation is part of the clause
     def inClause(self, phr_num):

@@ -50,12 +50,17 @@ class FrameNoun:
             # does any frame noun match some phrase in clause?
             # takes coordination phrases as one
             if isinstance(phrase, NPhrase) and not phrase.isInCoordination() and self.matchesPhrase(phrase) and not phrase.roleConflict(self.role):
-                relation = None
+                # relation = None
                 roles = []
 
                 # for now, if phrase is already in a relation, use this relation
-                if len(phrase.semantic_roles) > 0:
-                    relation = phrase.semantic_roles[0].getRelation()  # use first, but they're all the same
+                # if len(phrase.semantic_roles) > 0:
+                #     relation = phrase.semantic_roles[0].getRelation()  # use first, but they're all the same
+
+                # if clause doesn't have containing relation, create one
+                if clause.containing_relation == None:
+                    clause.containing_relation = SemanticRelation()
+                    clause.containing_relation.containing_clause = clause
 
                 # add semantic role to matching phrase
                 # if role does not exist, create new one
@@ -66,9 +71,9 @@ class FrameNoun:
                     role.setPhrase(phrase)
                     phrase.addSemanticRole(role)
                     roles.append(role)
-                else:
-                    # use this relation
-                    relation = phrase.findRoleAndUpgrade(self.role).getRelation()
+                # else:
+                #     # use this relation
+                #     relation = phrase.findRoleAndUpgrade(self.role).getRelation()
 
                 # match complements
                 for complement in self.complements:
@@ -82,25 +87,27 @@ class FrameNoun:
                                     role.setPhrase(phr)
                                     phr.addSemanticRole(role)
                                     roles.append(role)
-                                elif phr.findRoleAndUpgrade(complement.second_level_role) and relation == None:  # if given phrase already has given role, use this relation
-                                    relation = phr.findRoleAndUpgrade(complement.second_level_role).getRelation()
+                                # elif phr.findRoleAndUpgrade(complement.second_level_role) and relation == None:  # if given phrase already has given role, use this relation
+                                #     relation = phr.findRoleAndUpgrade(complement.second_level_role).getRelation()
                                 complement.matched = True
                         # if complement is obligatory, then later it has to be resolved, for now is ellipsed
                         if not complement.matched and complement.isObligatory():
                             role = SemanticRole(complement.first_level_role, complement.second_level_role)
                             roles.append(role)
-                # if there was no relation detected, create new one
-                if relation == None:
-                    relation = SemanticRelation()
+                # # if there was no relation detected, create new one
+                # if relation == None:
+                #     relation = SemanticRelation()
 
                 # add roles to relation
-                # remove unnecessary ellipsed roles
+                # remove unnecessary ellipsed roles -  not in current version
                 for r in roles:
-                    if not (r.phrase == None and relation.getSecondLevelRole(r.second_level_role) != None):
-                        r.relation = relation
-                        relation.addNewRole(r)
+                    # if not (r.phrase == None and clause.containing_relation.getSecondLevelRole(r.second_level_role) != None):
+                    #     r.relation = clause.containing_relation
+                    #     clause.containing_relation.addNewRole(r)
+                    r.relation = clause.containing_relation
+                    clause.containing_relation.addNewRole(r)
 
-                relations.append(relation)
+                relations.append(clause.containing_relation)
         return relations
 
     # abstract method

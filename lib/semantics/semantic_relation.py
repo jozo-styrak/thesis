@@ -1,3 +1,5 @@
+from lib.semantics.output_formatter import OutputFormatter
+
 # this goes for all the classes in semantics:
 # i have to think about the necessity of grouping roles into relations
 # currently the reason is to connect agent and patient, to resolve coreference
@@ -60,26 +62,26 @@ class SemanticRelation:
     def getInformationObject(self):
         ret_str = ''
         if self.isOutputSuitable():
+
             if self.getSecondLevelRole('<actor_agency:1>') != None and self.getSecondLevelRole('<actor_agency:1>').coreferent != None:
-                ret_str += 'who changed recommendation/price? \n\t' + str(self.getSecondLevelRole('<actor_agency:1>').coreferent) + ' {' + str(self.getSecondLevelRole('<actor_agency:1>').second_level_role) + '}\n'
+                ret_str += 'who changed recommendation/price? \n\t' + OutputFormatter.getNamedEntity(self.getSecondLevelRole('<actor_agency:1>').coreferent) + ' / ' + str(self.getSecondLevelRole('<actor_agency:1>').coreferent) + ' {' + str(self.getSecondLevelRole('<actor_agency:1>').second_level_role) + '}\n'
+
             if self.getSecondLevelRole('<actor_stock:1>') != None and self.getSecondLevelRole('<actor_stock:1>').coreferent != None:
-                ret_str += 'to whom? \n\t' + str(self.getSecondLevelRole('<actor_stock:1>').coreferent) + ' {' + str(self.getSecondLevelRole('<actor_stock:1>').second_level_role) + '}\n'
+                ret_str += 'to whom? \n\t' + OutputFormatter.getNamedEntity(self.getSecondLevelRole('<actor_stock:1>').coreferent) + ' / ' + str(self.getSecondLevelRole('<actor_stock:1>').coreferent) + ' {' + str(self.getSecondLevelRole('<actor_stock:1>').second_level_role) + '}\n'
+
             for recommendation in self.getRolesWithBase('state'):
                 if recommendation.second_level_role == '<state_past:1>':
-                    ret_str += 'past recommendation \n\t' + str(recommendation.phrase) + ' {' + str(recommendation.second_level_role) + '}\n'
+                    ret_str += 'past recommendation \n\t' + OutputFormatter.getRecommendation(recommendation.phrase) + ' / ' + str(recommendation.phrase) + ' {' + str(recommendation.second_level_role) + '}\n'
                 elif recommendation.second_level_role == '<state_current:1>':
-                    ret_str += 'current recommendation \n\t' + str(recommendation.phrase) + ' {' + str(recommendation.second_level_role) + '}\n'
-                # else:
-                #     ret_str += 'recommendation ' + str(recommendation.phrase) + ' {' + str(recommendation.second_level_role) + '}\n'
+                    ret_str += 'current recommendation \n\t' + OutputFormatter.getRecommendation(recommendation.phrase) + ' / ' + str(recommendation.phrase) + ' {' + str(recommendation.second_level_role) + '}\n'
+
             for price in self.getRolesWithBase('price'):
                 if price.second_level_role == '<price_past:1>':
-                    ret_str += 'past price \n\t' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
+                    ret_str += 'past price \n\t' + OutputFormatter.getNumberEntity(price.phrase) + ' / ' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
                 elif price.second_level_role == '<price_current:1>':
-                    ret_str += 'current price \n\t' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
+                    ret_str += 'current price \n\t' + OutputFormatter.getNumberEntity(price.phrase) + ' / ' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
                 elif price.second_level_role == '<price_change:1>':
-                    ret_str += 'price change \n\t' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
-                # else:
-                #     ret_str += 'price ' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
+                    ret_str += 'price change \n\t' + OutputFormatter.getNumberEntity(price.phrase) + ' / ' + str(price.phrase)  + ' {' + str(price.second_level_role) + '}\n'
 
         return ret_str
 

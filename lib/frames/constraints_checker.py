@@ -70,6 +70,6 @@ class ConstraintsChecker:
     def isPriceEntity(self, phrase):
         contains = False
         for token in phrase.tokens:
-            if self.REAL_NUMBER_PATTERN.match(token.value.split('_')[0]):
+            if '_' in token.value and self.REAL_NUMBER_PATTERN.match(token.value.split('_')[0]):
                 contains = True
         return contains
