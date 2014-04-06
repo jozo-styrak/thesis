@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 # -*- coding: utf-8 -*-
 ''' adds <s> and </s> tags to delimit sentences        '''
 ''' removes empty spaces caused by errors in encodings '''

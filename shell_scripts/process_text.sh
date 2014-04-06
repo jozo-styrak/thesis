@@ -9,7 +9,7 @@ cat $1 |\
 iconv -f utf-8 -t iso-8859-2 -c |\
 
 # desamb preprocessing
-/home/xstyrak/thesis/add_s_tags.py |\
+python /home/xstyrak/thesis/add_s_tags.py |\
 /home/xstyrak/thesis/preprocess.py |\
 
 # desamb script
