@@ -18,7 +18,7 @@ for t in sys.stdin:
         if pre1_token in SENTENCE_DELIMITERS:
             if token[0].islower():
                 pass
-            elif pre1_token is '.' and pre2_token in DOTTED_ABBRS and (not token[0].isupper() or token.decode("iso-8859-2").encode("utf-8") in ABBR_FOLLOWERS):
+            elif pre1_token is '.' and pre2_token in DOTTED_ABBRS and (token[0].islower() or token.decode("iso-8859-2").encode("utf-8") in ABBR_FOLLOWERS):
                 pass # no end of sentence here!
             else:
                 print "</s>"

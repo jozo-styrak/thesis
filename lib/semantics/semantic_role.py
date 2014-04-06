@@ -34,8 +34,8 @@ class SemanticRole:
             for token in self.phrase.tokens:
                 if token.value.endswith('kA'):
                     filled = True
-                elif token.lemma in ['banka', 'společnost']:
-                    filled = True
+                # elif token.lemma in ['banka', 'společnost']:
+                #     filled = True
         return filled
 
     def __str__(self):

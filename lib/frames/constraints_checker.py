@@ -52,8 +52,8 @@ class ConstraintsChecker:
         for token in phrase.tokens:
             if token.value.endswith('_kA'):
                 contains = True
-            elif token.lemma in self.NAMED_ENTITIES:
-                contains = True
+            # elif token.lemma in self.NAMED_ENTITIES:
+            #     contains = True
         return contains
 
     def isRecommendationValue(self, phrase):

@@ -8,6 +8,7 @@ class AbstractSlot:
         self.match_item = None
         self.obligatory = True
         self.dependent_on = 1
+        self.attributes = []
 
     def isObligatory(self):
         return self.obligatory

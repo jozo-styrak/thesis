@@ -106,8 +106,8 @@ AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(s čím7;<price:1>;obl;{lemma:cena})
 # example: Nomura přisla s novou cílovou cenou
 
 
-* připsat
-AG(kdo1;<actor_stock:1>;obl)+++VERB+++PAT(od čeho2;<actor_agency:1>;opt)+++OBJ(co4;<price:1>;opt)
+* připsat; připísat; připisovat
+AG(kdo1;<actor_stock:1>;obl)+++VERB+++PAT(od čeho2;<actor_agency:1>;opt)+++OBJ(co4;<price_change:1>;opt)
 
 
 * růst; oslabovat; posilovat; posílit
