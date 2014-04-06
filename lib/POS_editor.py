@@ -81,6 +81,7 @@ def connectParenthesis(tokens):
                 parenthesis_content[0] += '_)'
                 parenthesis_content[1] += '_)'
                 new_tokens.append(parenthesis_content)
+                parenthesis_content = ['','','kA']
                 start = False
         return new_tokens
 
@@ -141,14 +142,14 @@ def editTags(buffered_sentences):
                 new_sentence[len(new_sentence)-1][1] += '_' + sentence[i][1]
             # connect ending parenthese
             # elif sentence[i][2] == 'kIx)' and (new_sentence[len(new_sentence)-1][2] == 'k4' or (new_sentence[len(new_sentence)-1][2] == 'kA' and not new_sentence[len(new_sentence)-1][1]) in RECOMMENDATIONS):
-            elif sentence[i][2] == 'kIx)' and (sentence[i-1][2] == 'k4' or (sentence[i-1][2] == 'kA' and not sentence[i-1][1] in RECOMMENDATIONS) or sentence[i-1][1] in NUM_FOLLOW):
-                new_sentence[len(new_sentence)-1][0] += '_' + sentence[i][0]
-                new_sentence[len(new_sentence)-1][1] += '_' + sentence[i][1]
-            # connect beginning parenthese
-            elif new_sentence[len(new_sentence)-1][2] == 'kIx(' and (sentence[i][2] == 'k4' or sentence[i][2] == 'kA'):
-                new_sentence[len(new_sentence)-1][0] += '_' + sentence[i][0]
-                new_sentence[len(new_sentence)-1][1] += '_' + sentence[i][1]
-                new_sentence[len(new_sentence)-1][2] = 'kA'
+            # elif sentence[i][2] == 'kIx)' and (sentence[i-1][2] == 'k4' or (sentence[i-1][2] == 'kA' and not sentence[i-1][1] in RECOMMENDATIONS) or sentence[i-1][1] in NUM_FOLLOW):
+            #     new_sentence[len(new_sentence)-1][0] += '_' + sentence[i][0]
+            #     new_sentence[len(new_sentence)-1][1] += '_' + sentence[i][1]
+            # # connect beginning parenthese
+            # elif new_sentence[len(new_sentence)-1][2] == 'kIx(' and (sentence[i][2] == 'k4' or sentence[i][2] == 'kA'):
+            #     new_sentence[len(new_sentence)-1][0] += '_' + sentence[i][0]
+            #     new_sentence[len(new_sentence)-1][1] += '_' + sentence[i][1]
+            #     new_sentence[len(new_sentence)-1][2] = 'kA'
             else:
                 new_sentence.append(sentence[i])
             i += 1

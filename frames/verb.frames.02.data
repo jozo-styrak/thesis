@@ -65,7 +65,7 @@ AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení
 
 * obdržet; získat; získavat; dostat; dostávat; vysloužit
 
-AG(kdo1;<actor_stock:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení})
+AG(kdo1;<actor_stock:1>;obl)+++VERB+++OBJ(co4;<state:1>;opt;{lemma:doporučení})
 # example: Apple obdrželo nové doporučení
 
 AG(kdo1;<actor_stock:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:cena})
@@ -110,12 +110,17 @@ AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(s čím7;<price:1>;obl;{lemma:cena})
 AG(kdo1;<actor_stock:1>;obl)+++VERB+++PAT(od čeho2;<actor_agency:1>;opt)+++OBJ(co4;<price:1>;opt)
 
 
-* růst; oslabovat
+* růst; oslabovat; posilovat; posílit
 
-AG(kdo1;<actor_stock:1>;obl)+++VERB+++OBJ(na co4;<price_current:1>;opt)+++COMPL(o co4;<price_change:1>;opt)
+AG(kdo1;<actor_stock:1>;obl)+++VERB+++OBJ(na co4;<price_current:1>;opt)+++ATTR(na co4;<price_current:1>;opt;{dependency:-1})+++ATTR(o co4;<price_change:1>;opt;{dependency:-1})+++ATTR(z ceho2;<price_past:1>;opt;{dependency:-1})
 # example: Akcie Apple oslabují o 1,5% na 60USD
 
 
 * obchodovat
 
 AG(kdo1;<actor_stock:1>;obl)+++VERB+++ATTR(za co4;<price_current:1>;opt)
+
+
+* klesat; padat
+
+AG(kdo1;<actor_stock:1>;obl)+++VERB+++ATTR(na co4;<price_current:1>;opt;{dependency:-1})+++ATTR(o co4;<price_change:1>;opt;{dependency:-1})+++ATTR(z ceho2;<price_past:1>;opt;{dependency:-1})

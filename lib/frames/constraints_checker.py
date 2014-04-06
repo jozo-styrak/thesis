@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import re
 
 # utility class to check if roles are relevant for given phrases
@@ -7,6 +9,7 @@ class ConstraintsChecker:
     def __init__(self):
         # pattern to identify real numbers
         self.REAL_NUMBER_PATTERN = re.compile('[\+-]*\d+[\.,/:]*\d*')
+        self.NAMED_ENTITIES = ['banka', 'společnost']
 
     # apply constraints on given sentence
     def applyConstraints(self, sentence):
@@ -49,6 +52,8 @@ class ConstraintsChecker:
         for token in phrase.tokens:
             if token.value.endswith('_kA'):
                 contains = True
+            elif token.lemma in self.NAMED_ENTITIES:
+                contains = True
         return contains
 
     def isRecommendationValue(self, phrase):
@@ -57,6 +62,8 @@ class ConstraintsChecker:
             if token.value.endswith('_kR'):
                 contains = True
             elif 'k5' in token.lemma:
+                contains = True
+            elif token.value.endswith('_kA') and 'k7' in phrase.tokens[0].tag:
                 contains = True
         return contains
 

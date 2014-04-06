@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 # does role need to have information about the referencing phrase/token??
 
 # class representing semantic role which translates to verbalex roles
@@ -30,6 +33,8 @@ class SemanticRole:
         if self.phrase != None:
             for token in self.phrase.tokens:
                 if token.value.endswith('kA'):
+                    filled = True
+                elif token.lemma in ['banka', 'společnost']:
                     filled = True
         return filled
 
