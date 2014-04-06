@@ -25,5 +25,10 @@ class OutputFormatter:
 
     @staticmethod
     def getRecommendation(phrase):
-        # generalization - last token contains recommendation value
-        return phrase.tokens[len(phrase.tokens)-1].value[:-3].replace('_', ' ')
+        value = ''
+        for token in phrase.tokens:
+            if token.value.endswith('kR'):
+                value = token.value[:-3].replace('_', ' ')
+            elif 'mF' in token.tag:
+                value = token.lemma
+        return value
