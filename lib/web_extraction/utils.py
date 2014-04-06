@@ -19,7 +19,7 @@ def getPatternMatch(pattern, text):
     
 def processText(text):
     text_htmlStripped = re.sub("<[^<]+?>", " ", text.replace("</p>", ".")) # if there is one sentence per paragraph and which is not delimited by '.'
-    return re.sub("[ ]+", " ", text_htmlStripped.replace("\r\n", " ").replace("&amp;", "&").replace("&quot;", "\"").replace("„","\"").replace("�", "\"").replace("\n", " ").replace(". .", ". ").replace('..', '.').strip().decode('windows-1250', errors='replace').encode('utf-8', errors='replace'))
+    return re.sub("[ ]+", " ", text_htmlStripped.replace("\r\n", " ").replace("&amp;", "&").replace("&quot;", "\"").replace("„","\"").replace("“", "\"").replace("�", "\"").replace("\n", " ").replace(". .", ". ").replace('..', '.').strip().decode('windows-1250', errors='replace').encode('utf-8', errors='replace'))
 
 def readArticle(pageContent, link):
     item = {'link' : link}
@@ -58,11 +58,11 @@ def getXmlPage(parsedPage, out):
     
 def getTextPage(parsedPage, out):
     # out.write('Dátum ' + parsedPage['date'] + '.\n')
-    out.write(parsedPage['headline'].replace("&amp;", "&").replace("„","\"").replace("&quot;", "\"").replace("�", "\"")+".\n")
+    out.write(parsedPage['headline'].replace("&amp;", "&").replace("„","\"").replace("“", "\"").replace("&quot;", "\"").replace("�", "\"")+".\n")
     if parsedPage['perex'] != '':
-        out.write(parsedPage['perex'].replace("&amp;", "&").replace("„","\"").replace("&quot;", "\"").replace("�", "\"")+"\n")
+        out.write(parsedPage['perex'].replace("&amp;", "&").replace("„","\"").replace("“", "\"").replace("&quot;", "\"").replace("�", "\"")+"\n")
     if parsedPage['content'] != '':
-        out.write(parsedPage['content'].replace("&amp;", "&").replace("„","\"").replace("&quot;", "\"").replace("�", "\"")+"\n")
+        out.write(parsedPage['content'].replace("&amp;", "&").replace("„","\"").replace("“", "\"").replace("&quot;", "\"").replace("�", "\"")+"\n")
         
 def crawlWebPage(link, max_count):
     links = []
