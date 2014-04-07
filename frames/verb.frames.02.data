@@ -110,9 +110,9 @@ AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(s čím7;<price:1>;obl;{lemma:cena})
 AG(kdo1;<actor_stock:1>;obl)+++VERB+++PAT(od čeho2;<actor_agency:1>;opt)+++OBJ(co4;<price_change:1>;opt)
 
 
-* růst; oslabovat; posilovat; posílit
+* růst; oslabovat; posilovat; posílit; vzrůst
 
-AG(kdo1;<actor_stock:1>;obl)+++VERB+++OBJ(na co4;<price_current:1>;opt)+++ATTR(na co4;<price_current:1>;opt;{dependency:-1})+++ATTR(o co4;<price_change:1>;opt;{dependency:-1})+++ATTR(z ceho2;<price_past:1>;opt;{dependency:-1})
+AG(kdo1;<actor_stock:1>;obl)+++VERB+++ATTR(na co4;<price_current:1>;opt;{dependency:-1})+++ATTR(o co4;<price_change:1>;opt;{dependency:-1})+++ATTR(z ceho2;<price_past:1>;opt;{dependency:-1})
 # example: Akcie Apple oslabují o 1,5% na 60USD
 
 
@@ -121,6 +121,6 @@ AG(kdo1;<actor_stock:1>;obl)+++VERB+++OBJ(na co4;<price_current:1>;opt)+++ATTR(n
 AG(kdo1;<actor_stock:1>;obl)+++VERB+++ATTR(za co4;<price_current:1>;opt)
 
 
-* klesat; padat
+* klesat; padat; oslabovat; oslabit
 
 AG(kdo1;<actor_stock:1>;obl)+++VERB+++ATTR(na co4;<price_current:1>;opt;{dependency:-1})+++ATTR(o co4;<price_change:1>;opt;{dependency:-1})+++ATTR(z ceho2;<price_past:1>;opt;{dependency:-1})

@@ -19,7 +19,7 @@ REAL_NUMBER_PATTERN = re.compile('[\+-]*\d+[\.,/:]*\d*')
 
 # lists of words used for tag editing
 NUM_FOLLOW = ['KČ', 'Kč', '%', 'euro', 'USD', 'mil', 'tis', 'PLN', 'NOK', 'HUN', 'GBP', 'AUD', 'JPY', 'CHF', 'RUB', 'eur', 'dolar', 'jen', 'CZK', 'czk']
-RECOMMENDATIONS = ['držet', 'koupit', 'kupovat', 'redukovat', 'akumulovat', 'prodat', 'strong', 'buy', 'strong_buy', 'hold', 'sell', 'neutral', 'market', 'perform', 'underperform', 'underweight', 'accumulate', 'outperform', 'swap', 'overweight', 'reduce', 'equalweight', 'nadvážit', 'podvážit', 'market_perform']
+RECOMMENDATIONS = ['nákup', 'prodej', 'držet', 'koupit', 'kupovat', 'redukovat', 'akumulovat', 'prodat', 'strong', 'buy', 'strong_buy', 'hold', 'sell', 'neutral', 'market', 'perform', 'underperform', 'underweight', 'accumulate', 'outperform', 'swap', 'overweight', 'reduce', 'equalweight', 'nadvážit', 'podvážit', 'market_perform']
 RECOMMENDATION_SYNONYMS = ['doporučení', 'titul', 'předchozí', 'stupeň']
 AGENCIES = ['Goldman_Sachs', 'Morgan_Stanley', 'Credit_Suisse', 'Erste_Group', 'Nomura', 'Barclays']
 
@@ -165,11 +165,11 @@ def editTags(buffered_sentences):
         i = 1
         while i < len(new_sentence):
             # change tag for recommendation if preceeded by preposition - same case
-            if new_sentence[i][0].lower() in RECOMMENDATIONS and (getValueFromTag(new_sentence[i-1][2], 'k') == '7' or getValueFromTag(new_sentence[i-1][2], 'k') == '2'):
+            if new_sentence[i][1].lower() in RECOMMENDATIONS and (getValueFromTag(new_sentence[i-1][2], 'k') == '7' or getValueFromTag(new_sentence[i-1][2], 'k') == '2'):
                 new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(new_sentence[i-1][2], 'c')
                 new_sentence[i][0] += '_kR'
             # change tag for recommendation if preceeded by noun - from rec. synonym set - case 2
-            elif new_sentence[i][0].lower() in RECOMMENDATIONS and new_sentence[i-1][1] in RECOMMENDATION_SYNONYMS:
+            elif new_sentence[i][1].lower() in RECOMMENDATIONS and new_sentence[i-1][1] in RECOMMENDATION_SYNONYMS:
                 new_sentence[i][2] = 'k1nPgIc2'
                 new_sentence[i][0] += '_kR'
             # change tag for kA if preceeded by preposition or adjective

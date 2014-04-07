@@ -30,7 +30,7 @@ def formatDesambOutput(sentences):
         i += 1
 
 if len(sys.argv) > 1:
-    f = open('data/desamb_out_4', 'r')
+    f = open('data/desamb_out_2', 'r')
     formatDesambOutput(editTags(bufferSentences(f.readlines())))
 else:
     formatDesambOutput(editTags(bufferSentences(sys.stdin.readlines())))
