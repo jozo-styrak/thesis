@@ -1,13 +1,13 @@
 from lib.sentence.phrases import NPhrase
 from lib.semantics.semantic_relation import SemanticRelation
 from lib.semantics.semantic_role import SemanticRole
-import re
+from lib.frames.constraints_checker import ConstraintsChecker
 
 
 # pattern to identify real numbers
 # REAL_NUMBER_PATTERN = re.compile('[\+-]*\d+[\.,/:]*\d*')
-
-PRICE_PATTERN = re.compile('[\+-]*\d+[\.,/:]*\d*_.*')
+#
+# PRICE_PATTERN = re.compile('[\+-]*\d+[\.,/:]*\d*_.*')
 
 # abstract class for all types of noun phrase types
 class FrameNoun:
@@ -148,11 +148,12 @@ class NamedEntity(FrameNoun):
         FrameNoun.__init__(self)
 
     def matchesPhrase(self, phrase):
-        contains = False
-        for token in phrase.tokens:
-            if token.value.endswith('_kA'):
-                contains = True
-        return contains
+        # contains = False
+        # for token in phrase.tokens:
+        #     if token.value.endswith('_kA'):
+        #         contains = True
+        # return contains
+        return ConstraintsChecker.isNamedEntity(phrase)
 
 
 # class for numbers with number follow - price, percentage,...
@@ -162,8 +163,9 @@ class NumberEntity(FrameNoun):
         FrameNoun.__init__(self)
 
     def matchesPhrase(self, phrase):
-        contains = False
-        for token in phrase.tokens:
-            if PRICE_PATTERN.match(token.value):
-                contains = True
-        return contains
+        # contains = False
+        # for token in phrase.tokens:
+        #     if PRICE_PATTERN.match(token.value):
+        #         contains = True
+        # return contains
+        return ConstraintsChecker.isPriceEntity(phrase)

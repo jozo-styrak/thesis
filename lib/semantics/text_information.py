@@ -15,9 +15,8 @@ class TextInformation:
         self.resolveActorRoles()
 
         # apply constraints and remove invalid roles
-        constraints_checker = ConstraintsChecker()
         for sentence in self.sentences:
-            constraints_checker.applyConstraints(sentence)
+            ConstraintsChecker.applyConstraints(sentence)
         for relation in self.relations:
             for role in relation.roles:
                 if role.invalid:
