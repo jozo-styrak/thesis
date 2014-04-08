@@ -5,7 +5,9 @@ import re
 
 
 # pattern to identify real numbers
-REAL_NUMBER_PATTERN = re.compile('[\+-]*\d+[\.,/:]*\d*')
+# REAL_NUMBER_PATTERN = re.compile('[\+-]*\d+[\.,/:]*\d*')
+
+PRICE_PATTERN = re.compile('[\+-]*\d+[\.,/:]*\d*_.*')
 
 # abstract class for all types of noun phrase types
 class FrameNoun:
@@ -162,6 +164,6 @@ class NumberEntity(FrameNoun):
     def matchesPhrase(self, phrase):
         contains = False
         for token in phrase.tokens:
-            if REAL_NUMBER_PATTERN.match(token.value.split('_')[0]):
+            if PRICE_PATTERN.match(token.value):
                 contains = True
         return contains

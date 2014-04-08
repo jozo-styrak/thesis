@@ -61,7 +61,7 @@ class ConstraintsChecker:
         for token in phrase.tokens:
             if token.value.endswith('_kR'):
                 contains = True
-            elif 'k5' in token.lemma:
+            elif 'k5' in token.tag:
                 contains = True
             elif token.value.endswith('_kA') and 'k7' in phrase.tokens[0].tag:
                 contains = True

@@ -23,6 +23,7 @@ class TextInformation:
                 if role.invalid:
                     relation.roles.remove(role)
         # debug
+        print '\n---------------------------------------------------'
         self.printRelations()
         print '---------------------------------------------------'
 
@@ -75,32 +76,32 @@ class TextInformation:
 
         return ret_objects
 
-    # preprocessing method
-    # join relations within the same sentence clause
-    # basicaly compressing relations
-    def preprocessRelations(self):
-        new_relations = []
-        for sentence in self.sentences:
-            for clause in sentence.clauses:
-                clause_relations = clause.getSemanticRelations()
-                if len(clause_relations) == 1:
-                    # remove unnecessary ellipsed roles
-                    for role in clause_relations[0].roles:
-                        if role.phrase == None and len(clause_relations[0].getSecondLevelRoles(role.second_level_role)) > 1:
-                            clause_relations[0].roles.remove(role)
-                    clause_relations[0].containing_clause = clause
-                    new_relations.append(clause_relations[0])
-                elif len(clause_relations) > 1:
-                    # take roles from relations and stack them to relation created as first
-                    for i in range(1,len(clause_relations)):
-                        for role in clause_relations[i].roles:
-                            if clause_relations[0].getSecondLevelRole(role.second_level_role) == None:
-                                clause_relations[0].addNewRole(role)
-                        clause_relations[i] = None
-                    clause_relations[0].containing_clause = clause
-                    new_relations.append(clause_relations[0])
-        # new relations
-        self.relations = new_relations
+    # # preprocessing method
+    # # join relations within the same sentence clause
+    # # basicaly compressing relations
+    # def preprocessRelations(self):
+    #     new_relations = []
+    #     for sentence in self.sentences:
+    #         for clause in sentence.clauses:
+    #             clause_relations = clause.getSemanticRelations()
+    #             if len(clause_relations) == 1:
+    #                 # remove unnecessary ellipsed roles
+    #                 for role in clause_relations[0].roles:
+    #                     if role.phrase == None and len(clause_relations[0].getSecondLevelRoles(role.second_level_role)) > 1:
+    #                         clause_relations[0].roles.remove(role)
+    #                 clause_relations[0].containing_clause = clause
+    #                 new_relations.append(clause_relations[0])
+    #             elif len(clause_relations) > 1:
+    #                 # take roles from relations and stack them to relation created as first
+    #                 for i in range(1,len(clause_relations)):
+    #                     for role in clause_relations[i].roles:
+    #                         if clause_relations[0].getSecondLevelRole(role.second_level_role) == None:
+    #                             clause_relations[0].addNewRole(role)
+    #                     clause_relations[i] = None
+    #                 clause_relations[0].containing_clause = clause
+    #                 new_relations.append(clause_relations[0])
+    #     # new relations
+    #     self.relations = new_relations
 
     # resolve actor roles
     # currently just make them agencies

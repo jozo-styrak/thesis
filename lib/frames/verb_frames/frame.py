@@ -80,6 +80,7 @@ class Frame:
             # fail if match was not found and slot is obligatory and can't be ellipsed
             failed = (not phrase_matches) and slots[i].isObligatory() and not slots[i].canBeEllipsed()
             i += 1
+
         # generate semantic relation and occupy given roles
         # relation = SemanticRelation() if not failed else None
         # newer version - if clause already has relation, use this

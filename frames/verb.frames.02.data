@@ -40,13 +40,13 @@ AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<state_current:1>;obl;{lemma:titu
 # example: Nomura doporučuje titul Neutral
 # note: add PAT?
 
-AG(kdo1;<actor_agency:1>;obl)+++VERB+++PAT(co4;<actor_stock:1>;obl)
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++PAT(co4;<actor_stock:1>;obl)+++ATTR(k čemu3;<state_current:1>;opt)
 # example: Nomura doporučuje akcie Apple (k čemu,...)
 
-AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(inf;<state:1>;obl;{dependency:-1})+++PAT(co4;<actor_stock:1>;obl)
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(inf;<state_current:1>;obl;{dependency:-1})+++PAT(co4;<actor_stock:1>;obl)
 # example: Nomura doporučuje kupovat akcie Apple
 
-AG(kdo1;<actor_agency:1>;obl;{dependency:-1})+++VERB+++OBJ(inf;<state_current:1>;obl;{dependency:-1})+++PAT(co4;<actor_stock:1>;obl;{dependency:3})
+#AG(kdo1;<actor_agency:1>;obl;{dependency:-1})+++VERB+++OBJ(inf;<state_current:1>;obl;{dependency:-1})+++PAT(co4;<actor_stock:1>;obl;{dependency:3})
 # example: Nomura doporučuje kupovat akcie Apple
 # note: because of dependencies, probably will delete
 
@@ -59,7 +59,7 @@ AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(čím7;<state_current:1>;obl;{lemma:d
 
 * změnit
 
-AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení})
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení})+++PAT(pro co4|u čeho2;<actor_stock:1>;obl;{dependency:-1})+++ATTR(na co4;<state_current:1>;opt;{dependency:-1})+++ATTR(z ceho2;<state_past:1>;opt;{dependency:-1})
 # example: Nomura změnila doporučení
 
 
@@ -124,3 +124,8 @@ AG(kdo1;<actor_stock:1>;obl)+++VERB+++ATTR(za co4;<price_current:1>;opt)
 * klesat; padat; oslabovat; oslabit
 
 AG(kdo1;<actor_stock:1>;obl)+++VERB+++ATTR(na co4;<price_current:1>;opt;{dependency:-1})+++ATTR(o co4;<price_change:1>;opt;{dependency:-1})+++ATTR(z ceho2;<price_past:1>;opt;{dependency:-1})
+
+
+* nakupovat; kupovat
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++PAT(co4;<actor_stock:1>;obl)
