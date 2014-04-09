@@ -15,12 +15,8 @@ class TextInformation:
         self.resolveActorRoles()
 
         # apply constraints and remove invalid roles
-        for sentence in self.sentences:
-            ConstraintsChecker.applyConstraints(sentence)
-        for relation in self.relations:
-            for role in relation.roles:
-                if role.invalid:
-                    relation.roles.remove(role)
+        self.applyConstraints()
+
         # debug
         print '\n---------------------------------------------------'
         self.printRelations()
@@ -36,71 +32,24 @@ class TextInformation:
         for relation in self.relations:
 
             # check whether relation contains state/price information
+            # what's the point?
             if relation.containsMainInformation():
-
-                # check whether agens or patient is omitted
-                # if not relation.filledWithNE('<actor_agency:1>') or not relation.filledWithNE('<actor_stock:1>'):
 
                 # first find agency
                 # agency_role = relation.getSecondLevelRole('<actor_agency:1>')
                 agency_roles = relation.getSecondLevelRoles('<actor_agency:1>')
                 for agency_role in agency_roles:
-                    if agency_role != None:
-                        # before there was relation.filledWithNE
-                        # so it would mean, there would be sufficient to have one agency_role in clause, which is NE
-                        if not agency_role.filledWithNE():
-                            candidates = self.getCandidateCoreferents(agency_role)
-                            # print "\ncandidate phrases for " + str(agency_role)
-                            # for phrase in candidates:
-                            #     print phrase
-                            # just take the first one here
-                            if len(candidates) > 0:
-                                agency_role.coreferent = candidates[0]
+                    self.findNamedEntityCoreferent(agency_role)
 
                     # ...then resolve stock role
                 stock_roles = relation.getSecondLevelRoles('<actor_stock:1>')
                 for stock_role in stock_roles:
-                    if stock_role != None:
-                        if not stock_role.filledWithNE():
-                            candidates = self.getCandidateCoreferents(stock_role)
-                            # print "\ncandidate phrases for " + str(stock_role)
-                            # for phrase in candidates:
-                            #     print phrase
-                            # just take the first one here
-                            if len(candidates) > 0:
-                                stock_role.coreferent = candidates[0]
+                    self.findNamedEntityCoreferent(stock_role)
 
                 # fill object with values from relation
                 ret_objects.append(relation.getInformationObject())
 
         return ret_objects
-
-    # # preprocessing method
-    # # join relations within the same sentence clause
-    # # basicaly compressing relations
-    # def preprocessRelations(self):
-    #     new_relations = []
-    #     for sentence in self.sentences:
-    #         for clause in sentence.clauses:
-    #             clause_relations = clause.getSemanticRelations()
-    #             if len(clause_relations) == 1:
-    #                 # remove unnecessary ellipsed roles
-    #                 for role in clause_relations[0].roles:
-    #                     if role.phrase == None and len(clause_relations[0].getSecondLevelRoles(role.second_level_role)) > 1:
-    #                         clause_relations[0].roles.remove(role)
-    #                 clause_relations[0].containing_clause = clause
-    #                 new_relations.append(clause_relations[0])
-    #             elif len(clause_relations) > 1:
-    #                 # take roles from relations and stack them to relation created as first
-    #                 for i in range(1,len(clause_relations)):
-    #                     for role in clause_relations[i].roles:
-    #                         if clause_relations[0].getSecondLevelRole(role.second_level_role) == None:
-    #                             clause_relations[0].addNewRole(role)
-    #                     clause_relations[i] = None
-    #                 clause_relations[0].containing_clause = clause
-    #                 new_relations.append(clause_relations[0])
-    #     # new relations
-    #     self.relations = new_relations
 
     # resolve actor roles
     # currently just make them agencies
@@ -110,54 +59,88 @@ class TextInformation:
                 if role.second_level_role == '<actor:1>':
                     role.second_level_role = '<actor_agency:1>'
 
-    # returns candidate coreferents for given role type from text
-    # return type: Phrase
-    def getCandidateCoreferents(self, role):
-        candidates = []
+    # apply constraints to all identified roles and delete invalid roles
+    def applyConstraints(self):
+        for sentence in self.sentences:
+            ConstraintsChecker.applyConstraints(sentence)
+        for relation in self.relations:
+            for role in relation.roles:
+                if role.invalid:
+                    relation.roles.remove(role)
 
-        # split sentences among previous, current and next
-        previous = []
-        current = None
-        next = []
+    # # returns candidate coreferents for given role type from text
+    # # return type: Phrase
+    # def getCandidateCoreferents(self, role):
+    #     candidates = []
+    #
+    #
+    #
+    #     # create order of sentences
+    #     sentence_order = []
+    #     sentence_order.append(current)
+    #     # previous sentences in reversed order
+    #     for sentence in previous[::-1]:
+    #         sentence_order.append(sentence)
+    #     # next sentences in normal order
+    #     for sentence in next:
+    #         sentence_order.append(sentence)
+    #
+    #
+    #     # get possible candidates from given order
+    #     for sentence in sentence_order:
+    #         for clause in sentence.clauses:
+    #             for phrase in clause.phrases:
+    #                 phrase_role = phrase.hasRole(role.second_level_role)
+    #                 if phrase_role and phrase_role.filledWithNE():
+    #                     candidates.append(phrase)
+    #
+    #     return candidates
+
+    # new coreference resolution method
+    # slightly changed algorithm & returns just one item
+    def getCoreferent(self, role):
+        coreferent_phrase = None
+
+        # sequentially add clauses to the list order
+        clauses = []
         clause_found = False
         for sentence in self.sentences:
-            found_now = False  # help variable
             for clause in sentence.clauses:
                 # found containing clause
                 if clause == role.getRelation().containing_clause:
                     clause_found = True
-                    found_now = True
-            if found_now:
-                current = sentence
-            elif not clause_found:
-                previous.append(sentence)
-            else:
-                next.append(sentence)
+                    # if clause was just found and the antecedent is not a pronoun, search also current clause
+                    if role.phrase == None or  (role.phrase != None and not 'k3yR' in role.phrase.tokens[0].tag):
+                        clauses.insert(0, clause)
+                # clause wasn't found yet, add clause at the beginning
+                elif not clause_found:
+                    clauses.insert(0, clause)
+                # clause was found, add clause at the end
+                else:
+                    clauses.append(clause)
 
-        # create order of sentences
-        sentence_order = []
-        sentence_order.append(current)
-        # previous sentences in reversed order
-        for sentence in previous[::-1]:
-            sentence_order.append(sentence)
-        # next sentences in normal order
-        for sentence in next:
-            sentence_order.append(sentence)
+        # find coreferent
+        i = 0
+        while i < len(clauses) and coreferent_phrase == None:
+            j = 0
+            while j < len(clauses[i].phrases) and coreferent_phrase == None:
+                phrase_role = clauses[i].phrases[j].hasRole(role.second_level_role)
+                if phrase_role and phrase_role.filledWithNE():
+                    coreferent_phrase = clauses[i].phrases[j]
+                j += 1
+            i += 1
+
+        return coreferent_phrase
 
 
-        # get possible candidates from given order
-        for sentence in sentence_order:
-            for clause in sentence.clauses:
-                for phrase in clause.phrases:
-                    phrase_role = phrase.hasRole(role.second_level_role)
-                    if phrase_role and phrase_role.filledWithNE():
-                        candidates.append(phrase)
-
-        return candidates
+    # wrapping method for resolution
+    def findNamedEntityCoreferent(self, role):
+        if role != None:
+            if not role.filledWithNE():
+                # new version, returns just one
+                role.coreferent = self.getCoreferent(role)
 
     # debug method
     def printRelations(self):
         for relation in self.relations:
             print relation
-
-

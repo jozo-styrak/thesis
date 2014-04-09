@@ -22,6 +22,7 @@ NUM_FOLLOW = ['KČ', 'Kč', '%', 'euro', 'USD', 'mil', 'tis', 'PLN', 'NOK', 'HUN
 RECOMMENDATIONS = ['nákup', 'prodej', 'držet', 'koupit', 'kupovat', 'redukovat', 'akumulovat', 'prodat', 'strong', 'buy', 'strong_buy', 'hold', 'sell', 'neutral', 'market', 'perform', 'underperform', 'underweight', 'accumulate', 'outperform', 'swap', 'overweight', 'reduce', 'equalweight', 'nadvážit', 'podvážit', 'market_perform']
 RECOMMENDATION_SYNONYMS = ['doporučení', 'titul', 'předchozí', 'stupeň']
 AGENCIES = ['Goldman_Sachs', 'Morgan_Stanley', 'Credit_Suisse', 'Erste_Group', 'Nomura', 'Barclays']
+NO_NAMED_ENTITIES = ['D']
 
 
 # simple function to get value of a marker from morphologic tag, missing tag proof
@@ -161,7 +162,7 @@ def editTags(buffered_sentences):
         # if first element is abreviation, assume case 1
         if new_sentence[0][2] == 'kA':
             new_sentence[0][2] = 'k1gInSc1'
-            new_sentence[0][0] += '_kA'
+            if not new_sentence[0][1] in NO_NAMED_ENTITIES: new_sentence[0][0] += '_kA'
         i = 1
         while i < len(new_sentence):
             # change tag for recommendation if preceeded by preposition - same case
@@ -175,18 +176,18 @@ def editTags(buffered_sentences):
             # change tag for kA if preceeded by preposition or adjective
             elif (new_sentence[i][2] == 'kA' and new_sentence[i][0].find('(') == -1) and (getValueFromTag(new_sentence[i-1][2], 'k') == '7' or getValueFromTag(new_sentence[i-1][2], 'k') == '2'):
                 new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(new_sentence[i-1][2], 'c')
-                new_sentence[i][0] += '_kA'
+                if not new_sentence[i][1] in NO_NAMED_ENTITIES: new_sentence[i][0] += '_kA'
             # change tag for kA if preceeded noun - genitiv case (in order to be included in same noun phrase)
             # if succeeded by verb, ignore - it is case, when kA splits PP and VP and has function of subject
             # commented version - abreviation of type (_EU_) doesn't connect to previous noun - not sure if that is pleasable
             # elif (new_sentence[i][2] == 'kA' and new_sentence[i][0].find('(') == -1) and getValueFromTag(new_sentence[i-1][2], 'k') == '1':
             elif new_sentence[i][2] == 'kA' and getValueFromTag(new_sentence[i-1][2], 'k') == '1' and inContextAfter(i, sentence, 1, 'k5') == None:
                 new_sentence[i][2] = 'k1nPgIc2'
-                new_sentence[i][0] += '_kA'
+                if not new_sentence[i][1] in NO_NAMED_ENTITIES: new_sentence[i][0] += '_kA'
             # change tag for abreviation if preceeded by ; or : to case 1
             elif new_sentence[i][2] == 'kA' and new_sentence[i-1][0] in ';:':
                 new_sentence[i][2] = 'k1nPgIc1'
-                new_sentence[i][0] += '_kA'
+                if not new_sentence[i][1] in NO_NAMED_ENTITIES: new_sentence[i][0] += '_kA'
             # change tag for number if preceeded by preposition or adjective
             elif new_sentence[i][2] == 'k4' and (getValueFromTag(new_sentence[i-1][2], 'k') == '7' or getValueFromTag(new_sentence[i-1][2], 'k') == '2'):
                 new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(new_sentence[i-1][2], 'c')
@@ -224,7 +225,7 @@ def editTags(buffered_sentences):
                     else:
                         new_sentence[i][2] = 'k1nPgIc1'
                     if not is_number:
-                        new_sentence[i][0] += '_kA'
+                        if not new_sentence[i][1] in NO_NAMED_ENTITIES: new_sentence[i][0] += '_kA'
                 # if preceeded by verb
                 elif inContextBefore(i, new_sentence, 2, 'k5') != None:
                     # there is already subject before
@@ -237,17 +238,17 @@ def editTags(buffered_sentences):
                     else:
                         new_sentence[i][2] = 'k1nPgIc1'
                     if not is_number:
-                        new_sentence[i][0] += '_kA'
+                        if not new_sentence[i][1] in NO_NAMED_ENTITIES: new_sentence[i][0] += '_kA'
                 # if it is a agency then it is probably a subject
                 elif new_sentence[i][0] in AGENCIES:
                     new_sentence[i][2] = 'k1nPgIc1'
-                    new_sentence[i][0] += '_kA'
+                    if not new_sentence[i][1] in NO_NAMED_ENTITIES: new_sentence[i][0] += '_kA'
                 # if there is a noun before, then get the same case - conjunction case
                 elif inContextBefore(i, new_sentence, 3, 'k1') != None:
                     noun = inContextBefore(i, new_sentence, 3, 'k1')
                     new_sentence[i][2] = 'k1nPgIc' + getValueFromTag(noun[2], 'c')
                     if not is_number:
-                        new_sentence[i][0] += '_kA'
+                        if not new_sentence[i][1] in NO_NAMED_ENTITIES: new_sentence[i][0] += '_kA'
 
             i += 1
         new_sentences.append(new_sentence)
