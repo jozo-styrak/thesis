@@ -1,4 +1,4 @@
-from lib.frames.constraints_checker import ConstraintsChecker
+from lib.semantics.utils.utils import Utils
 
 # grouping object for all the relations and roles in the text
 # for now also doing coreference, ellipse and named entity resolution
@@ -62,7 +62,7 @@ class TextInformation:
     # apply constraints to all identified roles and delete invalid roles
     def applyConstraints(self):
         for sentence in self.sentences:
-            ConstraintsChecker.applyConstraints(sentence)
+            Utils.applyConstraints(sentence)
         for relation in self.relations:
             for role in relation.roles:
                 if role.invalid:

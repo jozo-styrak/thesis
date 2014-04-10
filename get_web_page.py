@@ -3,7 +3,7 @@
 from urllib import urlopen
 import sys
 
-from lib.web_extraction import utils
+from lib.web_extraction import web_utils
 
 
-utils.getTextPage(utils.readArticle(urlopen(sys.argv[1]).read(), sys.argv[1]), sys.stdout)
+web_utils.getTextPage(web_utils.readArticle(urlopen(sys.argv[1]).read(), sys.argv[1]), sys.stdout)

@@ -1,7 +1,7 @@
 from lib.sentence.phrases import NPhrase
 from lib.semantics.semantic_relation import SemanticRelation
 from lib.semantics.semantic_role import SemanticRole
-from lib.frames.constraints_checker import ConstraintsChecker
+from lib.semantics.utils.utils import Utils
 
 
 # pattern to identify real numbers
@@ -153,7 +153,7 @@ class NamedEntity(FrameNoun):
         #     if token.value.endswith('_kA'):
         #         contains = True
         # return contains
-        return ConstraintsChecker.isNamedEntity(phrase)
+        return Utils.isNamedEntity(phrase)
 
 
 # class for numbers with number follow - price, percentage,...
@@ -168,4 +168,4 @@ class NumberEntity(FrameNoun):
         #     if PRICE_PATTERN.match(token.value):
         #         contains = True
         # return contains
-        return ConstraintsChecker.isPriceEntity(phrase)
+        return Utils.isPriceEntity(phrase)

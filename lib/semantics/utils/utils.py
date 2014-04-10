@@ -4,12 +4,7 @@ import re
 
 # utility class to check if roles are relevant for given phrases
 # note: checking for actor for now doesn't have sense, because the role can contain pronouns, general nouns, ...
-class ConstraintsChecker:
-
-    # def __init__(self):
-    #     # pattern to identify real numbers
-    #     self.REAL_NUMBER_PATTERN = re.compile('[\+-]*\d+[\.,/:]*\d*')
-    #     self.NAMED_ENTITIES = ['banka', 'společnost']
+class Utils:
 
     # apply constraints on given sentence
     @staticmethod
@@ -24,22 +19,22 @@ class ConstraintsChecker:
                     #         role.invalid = True
                     # check for recommendation value roles
                     if 'state_' in role.second_level_role:
-                        if not ConstraintsChecker.isRecommendationValue(phrase):
+                        if not Utils.isRecommendationValue(phrase):
                             role.invalid = True
                     # try to expand role
                     elif role.second_level_role == '<state:1>':
-                        if ConstraintsChecker.isRecommendationValue(phrase):
+                        if Utils.isRecommendationValue(phrase):
                             if 'c2' in phrase.tokens[0].tag:
                                 role.second_level_role = '<state_past:1>'
                             else:
                                 role.second_level_role = '<state_current:1>'
                     # check price values
                     elif 'price_' in role.second_level_role:
-                        if not ConstraintsChecker.isPriceEntity(phrase):
+                        if not Utils.isPriceEntity(phrase):
                             role.invalid = True
                     # try to expand role
                     elif role.second_level_role == '<price:1>':
-                        if ConstraintsChecker.isPriceEntity(phrase):
+                        if Utils.isPriceEntity(phrase):
                             if phrase.tokens[0].value == 'o' or phrase.containsSequence('%'):
                                 role.second_level_role = '<price_change:1>'
                             elif 'c2' in phrase.tokens[0].tag:
@@ -86,3 +81,32 @@ class ConstraintsChecker:
             if PRICE_PATTERN.match(token.value):
                 contains = True
         return contains
+
+    @staticmethod
+    def getNamedEntityString(phrase):
+        # look for kA marker
+        value = ''
+        for token in phrase.tokens:
+            if token.value.endswith('kA'):
+                value += token.value[:-3].replace('_', ' ') + ' '
+        return value.strip()
+
+    @staticmethod
+    def getNumberEntityString(phrase):
+        # look for number entity
+        REAL_NUMBER_PATTERN = re.compile('[\+-]*\d+[\.,/:]*\d*')
+        value = ''
+        for token in phrase.tokens:
+            if REAL_NUMBER_PATTERN.match(token.value.split('_')[0]):
+                value = token.value.replace('_', ' ')
+        return value
+
+    @staticmethod
+    def getRecommendationString(phrase):
+        value = ''
+        for token in phrase.tokens:
+            if token.value.endswith('kR'):
+                value = token.value[:-3].replace('_', ' ')
+            elif 'mF' in token.tag:
+                value = token.lemma
+        return value
