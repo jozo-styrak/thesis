@@ -10,7 +10,7 @@ import re
 
 
 REAL_NUMBER_PATTERN = re.compile("^[\+-]*\d+[\.,/:]*\d*$")
-EXCEPTIONS = ['Komerční']
+EXCEPTIONS = ['komerční']
 
 # check if abbreviation is in replacement set
 def inReplacementSet(tokens, word):
@@ -48,7 +48,7 @@ if len(input_lines) != 0:
             elif line_tokens[2] != 'kA' and line_tokens[0].isupper() and len(line_tokens[0]) > 1:
                 print line_tokens[0] + '\t' + line_tokens[0] + '\tkA'
                 # replaces tag for every word starting upper case and with at least 3 letters and is not in exceptions
-            elif i>0 and not input_lines[i-1].strip().startswith('<s') and line_tokens[0][0].isupper() and len(line_tokens[0])>2 and line_tokens[1] not in EXCEPTIONS:
+            elif i>0 and not input_lines[i-1].strip().startswith('<s') and line_tokens[0][0].isupper() and len(line_tokens[0])>2 and line_tokens[1].strip() not in EXCEPTIONS:
                 print line_tokens[0] + '\t' + line_tokens[0] + '\tkA'
             else:
                 print input_lines[i].strip()
