@@ -64,7 +64,7 @@ class Clause:
 class Phrase:
 
     def __init__(self, num, head):
-        self.num =  num
+        self.num =  num  # num is string wit numeric values
         self.head = head
         self.tokens = []
         self.semantic_roles = []
@@ -96,6 +96,11 @@ class Phrase:
                 has = role
         return has
 
+    # returns if found
+    def hasBaseRole(self, role_str):
+        base_str = role_str.split('_')[0] + ':1>' if '_' in role_str else role_str
+        return self.hasRole(base_str)
+
     # new role conflict method - syntax base_specific for role name
     # conflict between specific roles
     def roleConflict(self, role_str):
@@ -112,6 +117,14 @@ class Phrase:
             if seq in token.value:
                 contains = True
         return contains
+
+    # return token with given num
+    def getTokenByNum(self, num):
+        try:
+            order = self.num.split().index(num)
+            return self.tokens[order]
+        except:
+            return None
     
     def __str__(self):
         values = []

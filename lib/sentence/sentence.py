@@ -1,7 +1,6 @@
 from lib.sentence.phrases import NPhrase, VPhrase, Clause
 
 
-''' Class representing one word with its information - value, tag, lemma '''
 class Token:
     def __init__(self, value, lemma, tag):
         self.value = value
@@ -14,7 +13,6 @@ class Token:
         return self.value
 
 
-''' Class representing whole sentence '''
 class Sentence:
     def __init__(self, value, lemma, tag):
         self.tokens = []
@@ -53,8 +51,6 @@ class Sentence:
     def addNewClause(self, num, conj):
         self.clauses.append(Clause(num, self.getTokenByValue(conj)))
 
-    ''' adds new verb phrase '''
-    ''' arguments are in form of strings with num and head, which are then resolved to token objects '''
     def addNewVerbPhrase(self, phrase_value, num, head):
         for clause in self.clauses:
             if clause.inClause(num):
@@ -73,7 +69,7 @@ class Sentence:
                 np.tokens = phrase_tokens
                 clause.phrases.append(np)
 
-    ''' return phrases which are dependent on specified phrase '''
+    # return phrases which are dependent on specified phrase
     def getDependentPhrases(self, phrase):
         dependent = []
         for clause in self.clauses:
@@ -81,6 +77,16 @@ class Sentence:
                 if isinstance(phr, NPhrase) and phrase is phr.dependent_on:
                     dependent.append(phr)
         return dependent
+
+    # return token that follows given phrase
+    def getFollowingToken(self, phrase):
+        following_num = phrase.num.split()[-1:]
+        token = None
+        for clause in self.clauses:
+            for phr in clause.phrases:
+                if following_num in phr.num.split():
+                    token = phr.getTokenByNum(following_num)
+        return token
 
     def __str__(self):
         values = []

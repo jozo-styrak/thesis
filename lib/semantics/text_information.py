@@ -1,4 +1,5 @@
 from lib.semantics.utils.utils import Utils
+from lib.semantics.utils.role_resolver import RoleResolver
 
 # grouping object for all the relations and roles in the text
 # for now also doing coreference, ellipse and named entity resolution
@@ -11,8 +12,15 @@ class TextInformation:
     # wrapping output method
     def getTextInformation(self):
 
+
+        # debug roles
+        # RoleResolver.resolveActorRoles(self.relations, self.sentences)
+        # self.printActors()
+        # return []
+
         # resolve <actor> roles
-        self.resolveActorRoles()
+        # self.setActorRoles()
+        RoleResolver.resolveActorRoles(self.relations, self.sentences)
 
         # apply constraints and remove invalid roles
         self.applyConstraints()
@@ -53,11 +61,12 @@ class TextInformation:
 
     # resolve actor roles
     # currently just make them agencies
-    def resolveActorRoles(self):
+    def setActorRoles(self):
         for relation in self.relations:
             for role in relation.roles:
                 if role.second_level_role == '<actor:1>':
                     role.second_level_role = '<actor_agency:1>'
+
 
     # apply constraints to all identified roles and delete invalid roles
     def applyConstraints(self):
@@ -67,34 +76,6 @@ class TextInformation:
             for role in relation.roles:
                 if role.invalid:
                     relation.roles.remove(role)
-
-    # # returns candidate coreferents for given role type from text
-    # # return type: Phrase
-    # def getCandidateCoreferents(self, role):
-    #     candidates = []
-    #
-    #
-    #
-    #     # create order of sentences
-    #     sentence_order = []
-    #     sentence_order.append(current)
-    #     # previous sentences in reversed order
-    #     for sentence in previous[::-1]:
-    #         sentence_order.append(sentence)
-    #     # next sentences in normal order
-    #     for sentence in next:
-    #         sentence_order.append(sentence)
-    #
-    #
-    #     # get possible candidates from given order
-    #     for sentence in sentence_order:
-    #         for clause in sentence.clauses:
-    #             for phrase in clause.phrases:
-    #                 phrase_role = phrase.hasRole(role.second_level_role)
-    #                 if phrase_role and phrase_role.filledWithNE():
-    #                     candidates.append(phrase)
-    #
-    #     return candidates
 
     # new coreference resolution method
     # slightly changed algorithm & returns just one item
@@ -125,6 +106,9 @@ class TextInformation:
             j = 0
             while j < len(clauses[i].phrases) and coreferent_phrase == None:
                 phrase_role = clauses[i].phrases[j].hasRole(role.second_level_role)
+                # newer version - search also base roles
+                if not phrase_role:
+                    phrase_role = clauses[i].phrases[j].hasBaseRole(role.second_level_role)
                 if phrase_role and phrase_role.filledWithNE():
                     coreferent_phrase = clauses[i].phrases[j]
                 j += 1
@@ -144,3 +128,11 @@ class TextInformation:
     def printRelations(self):
         for relation in self.relations:
             print relation
+
+    # debug method
+    def printActors(self):
+        print '---------------------------- ACTOR ROLES ---------------------------------'
+        for relation in self.relations:
+            for role in relation.roles:
+                if role.second_level_role.startswith('<actor') and role.filledWithNE():
+                    print role
