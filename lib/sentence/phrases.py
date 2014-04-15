@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-''' file contains class declarations for sentence analysis '''
-''' includes classes for set processing with aided semantic information from verbalex '''
+# file contains class declarations for sentence analysis
+# includes classes for set processing with aided semantic information from verbalex
 
 
 # Classes representing sentence structure

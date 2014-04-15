@@ -4,11 +4,6 @@ from lib.semantics.semantic_role import SemanticRole
 from lib.semantics.utils.utils import Utils
 
 
-# pattern to identify real numbers
-# REAL_NUMBER_PATTERN = re.compile('[\+-]*\d+[\.,/:]*\d*')
-#
-# PRICE_PATTERN = re.compile('[\+-]*\d+[\.,/:]*\d*_.*')
-
 # abstract class for all types of noun phrase types
 class FrameNoun:
 
