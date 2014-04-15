@@ -29,7 +29,7 @@ class NounFrameMatcher(FrameMatcher):
 
     # match loaded noun frames and complements on given clause - returns created relations
     def matchFrames(self, sentence):
-        relations = []
+        # relations = []
         for clause in sentence.clauses:
             for noun in self.noun_frames:
                 # newer version: it is allowed to look for noun match only in sentences that:
@@ -37,10 +37,11 @@ class NounFrameMatcher(FrameMatcher):
                 # 2. doesn't contain verb
                 # 3. noun frame is of named entity type (NER)
                 if isinstance(noun, NamedEntity) or clause.containing_relation != None or not clause.containsVerbPhrase():
-                    for relation in noun.matchClauseTokens(clause):
-                        relations.append(relation)
+                    # for relation in noun.matchClauseTokens(clause):
+                    # relations.append(relation)
+                    noun.matchClauseTokens(clause)
                     noun.resetFrame()
-        return relations
+        # return relations
 
     def printFrames(self):
         for noun in self.noun_frames:

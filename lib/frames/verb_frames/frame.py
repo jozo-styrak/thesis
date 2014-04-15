@@ -100,7 +100,7 @@ class Frame:
                         # set link to role into phrase
                         slot.match_item.semantic_roles.append(role)
                     clause.containing_relation.addNewRole(role)
-        return clause.containing_relation
+        # return clause.containing_relation
 
     # after matching remove matched items
     def resetFrame(self):

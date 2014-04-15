@@ -41,7 +41,7 @@ class FrameNoun:
 
     # whole matching method
     def matchClauseTokens(self, clause):
-        relations = []
+        # relations = []
         for phrase in clause.phrases:
 
             # does any frame noun match some phrase in clause?
@@ -104,8 +104,8 @@ class FrameNoun:
                     r.relation = clause.containing_relation
                     clause.containing_relation.addNewRole(r)
 
-                relations.append(clause.containing_relation)
-        return relations
+                # relations.append(clause.containing_relation)
+        # return relations
 
     # abstract method
     def matchesPhrase(self, phrase):
@@ -143,11 +143,6 @@ class NamedEntity(FrameNoun):
         FrameNoun.__init__(self)
 
     def matchesPhrase(self, phrase):
-        # contains = False
-        # for token in phrase.tokens:
-        #     if token.value.endswith('_kA'):
-        #         contains = True
-        # return contains
         return Utils.isNamedEntity(phrase)
 
 
@@ -158,9 +153,4 @@ class NumberEntity(FrameNoun):
         FrameNoun.__init__(self)
 
     def matchesPhrase(self, phrase):
-        # contains = False
-        # for token in phrase.tokens:
-        #     if PRICE_PATTERN.match(token.value):
-        #         contains = True
-        # return contains
         return Utils.isPriceEntity(phrase)

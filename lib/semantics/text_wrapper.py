@@ -3,15 +3,31 @@ from lib.semantics.utils.role_resolver import RoleResolver
 
 # grouping object for all the relations and roles in the text
 # for now also doing coreference, ellipse and named entity resolution
-class TextInformation:
+class TextWrapper:
 
-    def __init__(self, relations, sentences):
-        self.relations = relations
+    def __init__(self, sentences):
+        self.relations = []
         self.sentences = sentences
+        # self.fetchRelations()
+
+    # collects relations into relation list from given sentences
+    def fetchRelations(self):
+        for sentence in self.sentences:
+            for clause in sentence.clauses:
+                if clause.containing_relation != None:
+                    self.relations.append(clause.containing_relation)
+
+    # match sentences with given frame matcher object
+    def matchSentences(self, frame_matcher):
+        for sentence in self.sentences:
+            frame_matcher.matchFrames(sentence)
+
 
     # wrapping output method
-    def getTextInformation(self):
+    def processRelations(self):
 
+        # create relations list
+        self.fetchRelations()
 
         # debug roles
         # RoleResolver.resolveActorRoles(self.relations, self.sentences)
@@ -57,7 +73,9 @@ class TextInformation:
                 # fill object with values from relation
                 ret_objects.append(relation.getInformationObject())
 
-        return ret_objects
+        for obj in ret_objects:
+            print '***'
+            print obj
 
     # resolve actor roles
     # currently just make them agencies
