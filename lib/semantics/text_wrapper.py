@@ -23,7 +23,8 @@ class TextWrapper:
             frame_matcher.matchFrames(sentence)
 
 
-    # wrapping output method
+    # preprocess relation
+    # resolve roles, apply constraints, resolve coreferents,...
     def processRelations(self):
 
         # create relations list
@@ -50,7 +51,7 @@ class TextWrapper:
         # self.preprocessRelations()
 
         # for now it returns just arrays with filtered phrases
-        ret_objects = []
+        # ret_objects = []
 
         # look over all relations
         for relation in self.relations:
@@ -70,12 +71,12 @@ class TextWrapper:
                 for stock_role in stock_roles:
                     self.findNamedEntityCoreferent(stock_role)
 
-                # fill object with values from relation
-                ret_objects.append(relation.getInformationObject())
-
-        for obj in ret_objects:
-            print '***'
-            print obj
+        #         # fill object with values from relation
+        #         ret_objects.append(relation.getInformationObject())
+        #
+        # for obj in ret_objects:
+        #     print '***'
+        #     print obj
 
     # resolve actor roles
     # currently just make them agencies

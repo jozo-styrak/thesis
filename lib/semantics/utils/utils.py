@@ -91,6 +91,28 @@ class Utils:
                 value += token.value[:-3].replace('_', ' ') + ' '
         return value.strip()
 
+    # returns all named entities contained in phrase tokens as string representations
+    @staticmethod
+    def getNamedEntities(phrase):
+        # there is need to join tokens in form of: name_of_org_kA (abbr_price_value)_kA into one
+        entity_list = []
+        kA_list = []
+        # extract sub kAs
+        for i in range(len(phrase.tokens)):
+            if phrase.tokens[i].value.endswith('kA'):
+                kA_list.append(phrase.tokens[i].value[:-3])
+            elif phrase.tokens[i].lemma == 'banka' and i > 0 and phrase.tokens[i-1].lemma == 'komerční':
+                kA_list.append(phrase.tokens[i-1].lemma + ' ' + phrase.tokens[i].lemma)
+        if len(kA_list) > 0:
+            entity_list.append(kA_list[0])
+            # join names with abbreviations
+            for i in range(1,len(kA_list)):
+                if kA_list[i].startswith('('):
+                    entity_list[len(entity_list)-1] += ' ' + kA_list[i]
+                else:
+                    entity_list.append(kA_list[i])
+        return entity_list
+
     @staticmethod
     def getNumberEntityString(phrase):
         # look for number entity
@@ -104,9 +126,11 @@ class Utils:
     @staticmethod
     def getRecommendationString(phrase):
         value = ''
-        for token in phrase.tokens:
-            if token.value.endswith('kR'):
-                value = token.value[:-3].replace('_', ' ')
-            elif 'mF' in token.tag:
-                value = token.lemma
+        for i in range(len(phrase.tokens)):
+            if phrase.tokens[i].value.endswith('kR'):
+                value = phrase.tokens[i].value[:-3].replace('_', ' ')
+            elif 'mF' in phrase.tokens[i].tag:
+                value = phrase.tokens[i].lemma
+            elif phrase.tokens[i].lemma == 'doporučení' and i > 0 and phrase.tokens[i-1].lemma.lower() in ['nákupní', 'prodejní']:
+                value = phrase.tokens[i-1].lemma.lower() + ' ' + phrase.tokens[i].lemma
         return value

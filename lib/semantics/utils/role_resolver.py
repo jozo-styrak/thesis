@@ -19,14 +19,14 @@ class RoleResolver:
                     elif RoleResolver.parenthesisRule(role.phrase):
                         role.second_level_role = '<actor_stock:1>'
                     # is there another same-named entity in text?
-                    elif RoleResolver.alreadyInTextRule(role, relations):
+                    elif RoleResolver.alreadyInTextRule(role, relations, True):
                         # role is assigned in method
                         pass
                     # is name followed in text with ':'?
                     elif RoleResolver.followTokenRule(role.phrase, sentences, [':']):
                         role.second_level_role = '<actor_agency:1>'
                     # is there already another entity of same role in given clause?
-                    elif RoleResolver.sameClauseRule(role):
+                    elif RoleResolver.sameClauseRule(role, True):
                         # role is assigned in method
                         pass
                     # no rule applies, leave unresolved
@@ -45,15 +45,21 @@ class RoleResolver:
     # checks for presence of numbered value in parenthesis
     @staticmethod
     def parenthesisRule(phrase):
-        PRICE_PATTERN = re.compile('.*_[\+-]*\d+[\.,/:]*\d*_.*')
         joined_tokens = ''
         for token in phrase.tokens:
             joined_tokens += token.value
-        return PRICE_PATTERN.match(joined_tokens)
+        return RoleResolver.containsPriceValue(joined_tokens)
+
+    # sub method for presence of parenthesised numeric value in STRING representation
+    @staticmethod
+    def containsPriceValue(entity_str):
+        PRICE_PATTERN = re.compile('.*_[\+-]*\d+[\.,/:]*\d*_.*')
+        return PRICE_PATTERN.match(entity_str)
 
     # checks for presence of given named entity in text
+    # if assign set to true, changes role to given
     @staticmethod
-    def alreadyInTextRule(role, relations):
+    def alreadyInTextRule(role, relations, assign):
         entity_name = None
         assigned = False
         for token in role.phrase.tokens:
@@ -70,7 +76,9 @@ class RoleResolver:
                                 contains = True
                             # for now, full name must match
                             if contains:
-                                role.second_level_role = r.second_level_role
+                                # potentionally change role
+                                if assign:
+                                    role.second_level_role = r.second_level_role
                                 assigned = True
         return assigned
 
@@ -90,15 +98,31 @@ class RoleResolver:
         return  contains
 
     # if there is already given role in sentence, then this has probably different role
+    # if assign set to true, changes role to given
     @staticmethod
-    def sameClauseRule(role):
+    def sameClauseRule(role, assign):
         assigned = False
         for r in role.relation.roles:
             if r != role and r.second_level_role.startswith('<actor_') and r.phrase != None:
                 if r.second_level_role == '<actor_agency:1>':
-                    role.second_level_role = '<actor_stock:1>'
+                    # if assign set to true, changes role to given
+                    if assign:
+                        role.second_level_role = '<actor_stock:1>'
                     assigned = True
                 elif r.second_level_role == '<actor_stock:1>':
-                    role.second_level_role = '<actor_agency:1>'
+                    # if assign set to true, changes role to given
+                    if assign:
+                        role.second_level_role = '<actor_agency:1>'
                     assigned = True
         return assigned
+
+    # check for relevancy
+    # False, when some of non-agency criteria applies, otherwise True
+    @staticmethod
+    def isRelevantAgencyEntity(entity_str):
+        # can not be agency, if there is a price entity
+        relevant = True
+        if RoleResolver.containsPriceValue(entity_str):
+            relevant = False
+        return relevant
+

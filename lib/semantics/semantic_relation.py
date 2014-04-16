@@ -19,11 +19,14 @@ class SemanticRelation:
 
     # check whether this relation contains
     def containsMainInformation(self):
-        contains = False
+        contains_pat = False
+        contains_attr = False
         for role in self.roles:
             if 'state' in role.second_level_role or 'price' in role.second_level_role:
-                contains = True
-        return contains
+                contains_attr = True
+            elif 'actor_stock' in role.second_level_role:
+                contains_pat = True
+        return contains_pat and contains_attr
 
     # check whether given role is filled with named entity
     # for actor roles
