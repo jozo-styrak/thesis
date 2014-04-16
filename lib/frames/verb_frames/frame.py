@@ -11,7 +11,7 @@ class Frame:
     
     def __init__(self, slots):
         self.verb = None  # matching verb lemma from verb valence
-        self.vp_match_item = None  # matching verb phrase fro given clause
+        self.vp_match_item = None  # matching verb phrase from given clause
         # slot lists
         self.matched_slots = None  # link to matching slot list
         self.active_frame_slots = slots  # active slots of this frame

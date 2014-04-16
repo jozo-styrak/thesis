@@ -135,6 +135,9 @@ class OutputWrapper:
         # exact match
         if value in keys:
             return_key = value
+        # substring match
+        elif self.isSubstring(value, keys) != None:
+            return_key = self.isSubstring(value, keys)
         # there are just two stock values in whole text, one of them is full name (and added) and the second is abreviation
         else:
             # the new value is a abbreviation
@@ -151,6 +154,14 @@ class OutputWrapper:
                     return_key = keys[0]
 
         return return_key
+
+    # check if value is subset of some key or vice versa
+    def isSubstring(self, value, keys):
+        matching_key = None
+        for key in keys:
+            if value in key or key in value:
+                matching_key = key
+        return matching_key
 
     # check, whether newly create hashmap output object contains recommendation value
     def addedRecommendation(self, output_object):
