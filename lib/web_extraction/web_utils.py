@@ -106,11 +106,11 @@ def createTextCorpora(link, max_count, directory):
     i = 1
     for entry in crawlWebPage(link, max_count):
         f = open(directory + "/" + str(i).rjust(3, '0') + '.txt', 'w')
-        f.write('Dátum ' + entry['date'] + '.\n')
-        f.write(entry['headline'] + '. ')
+        # f.write('Dátum ' + entry['date'] + '.\n')
+        f.write(entry['headline'].replace("&amp;", "&").replace("„","\"").replace("“", "\"").replace("&quot;", "\"").replace("�", "\"") + '. ')
         if entry['perex'] != '':             
-            f.write(entry['perex'])
+            f.write(entry['perex'].replace("&amp;", "&").replace("„","\"").replace("“", "\"").replace("&quot;", "\"").replace("�", "\""))
         if entry['content'] != '':        
-            f.write(entry['content'])
+            f.write(entry['content'].replace("&amp;", "&").replace("„","\"").replace("“", "\"").replace("&quot;", "\"").replace("�", "\""))
         i += 1
         f.close()
