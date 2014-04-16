@@ -21,16 +21,27 @@ class OutputWrapper:
             if relation.containsMainInformation() and relation.isOutputSuitable():
 
                 # for each stock in relation
-                for stock_key in self.getStocks(relation):
+                for stock_str in self.getStocks(relation):
 
-                    # if there is no object with given key, create a new one
-                    # before this method should be same-name-resolving
-                    if not stock_key in self.output_objects.keys():
-                        self.output_objects[stock_key] = {}
+                    # try to match this stock_str on some already used
+                    stock_key = stock_str
+                    same_named = self.getSameNamedEntity(stock_str, self.output_objects.keys())
+                    if same_named != None:
+                        stock_key = same_named
 
-                    # add stock attribute
-                    if not 'stock' in self.output_objects[stock_key].keys():
-                        self.output_objects[stock_key]['stock'] = stock_key
+                    # temp holder object
+                    current = {}
+                    in_hashmap = False
+                    if stock_key in self.output_objects.keys():
+                        in_hashmap = True
+                        current = self.output_objects[stock_key]
+
+                    # add stock attribute and possible price change
+                    if not 'stock' in current.keys():
+                        current['stock'] = stock_key
+                        price_change = Utils.extractPriceChange(stock_key)
+                        if  price_change != None:
+                            current['price change'] = price_change
 
                     # resolve agencies
                     agencies = self.getAgencies(relation)
@@ -40,50 +51,55 @@ class OutputWrapper:
 
                         # recommendation attributes
                         for recommendation in relation.getRolesWithBase('state'):
-                            if recommendation.second_level_role == '<state_past:1>' and not 'past recommendation' in self.output_objects[stock_key].keys():
-                                self.output_objects[stock_key]['past recommendation'] = Utils.getRecommendationString(recommendation.phrase)
-                            elif recommendation.second_level_role == '<state_current:1>' and not 'current recommendation' in self.output_objects[stock_key].keys():
-                                self.output_objects[stock_key]['current recommendation'] = Utils.getRecommendationString(recommendation.phrase)
+                            if recommendation.second_level_role == '<state_past:1>' and not 'past recommendation' in current.keys():
+                                current['past recommendation'] = Utils.getRecommendationString(recommendation.phrase)
+                            elif recommendation.second_level_role == '<state_current:1>' and not 'current recommendation' in current.keys():
+                                current['current recommendation'] = Utils.getRecommendationString(recommendation.phrase)
 
+                    # agency mentioned
                     else:
 
                         # create agencies attribute array
-                        if not 'agencies' in self.output_objects[stock_key].keys():
-                            self.output_objects[stock_key]['agencies'] = {}
+                        if not 'agencies' in current.keys():
+                            current['agencies'] = {}
 
                         # for each agency
                         for agency_key in agencies:
 
                             # add agency attr.
-                            if not agency_key in self.output_objects[stock_key]['agencies'].keys():
-                                self.output_objects[stock_key]['agencies'][agency_key] = {}
-                                self.output_objects[stock_key]['agencies'][agency_key]['agency'] = agency_key
+                            if not agency_key in current['agencies'].keys():
+                                current['agencies'][agency_key] = {}
+                                current['agencies'][agency_key]['agency'] = agency_key
 
                             # agency recommendations
                             for recommendation in relation.getRolesWithBase('state'):
-                                if recommendation.second_level_role == '<state_past:1>': #and not 'past recommendation' in self.output_objects[stock_key]['agencies'][agency_key].keys():
-                                    self.output_objects[stock_key]['agencies'][agency_key]['past recommendation'] = Utils.getRecommendationString(recommendation.phrase)
-                                elif recommendation.second_level_role == '<state_current:1>': #and not 'current recommendation' in self.output_objects[stock_key]['agencies'][agency_key].keys():
-                                    self.output_objects[stock_key]['agencies'][agency_key]['current recommendation'] = Utils.getRecommendationString(recommendation.phrase)
+                                if recommendation.second_level_role == '<state_past:1>': #and not 'past recommendation' in current['agencies'][agency_key].keys():
+                                    current['agencies'][agency_key]['past recommendation'] = Utils.getRecommendationString(recommendation.phrase)
+                                elif recommendation.second_level_role == '<state_current:1>': #and not 'current recommendation' in current['agencies'][agency_key].keys():
+                                    current['agencies'][agency_key]['current recommendation'] = Utils.getRecommendationString(recommendation.phrase)
 
                             # price set by agency
                             price = relation.getSecondLevelRole('<price_current:1>')
-                            if price != None and not 'current price' in self.output_objects[stock_key]['agencies'][agency_key].keys():
-                                self.output_objects[stock_key]['agencies'][agency_key]['current price'] = Utils.getNumberEntityString(price.phrase)
+                            if price != None and not 'current price' in current['agencies'][agency_key].keys():
+                                current['agencies'][agency_key]['current price'] = Utils.getNumberEntityString(price.phrase)
 
                             # price set by agency
                             price = relation.getSecondLevelRole('<price_past:1>')
-                            if price != None and not 'past price' in self.output_objects[stock_key]['agencies'][agency_key].keys():
-                                self.output_objects[stock_key]['agencies'][agency_key]['past price'] = Utils.getNumberEntityString(price.phrase)
+                            if price != None and not 'past price' in current['agencies'][agency_key].keys():
+                                current['agencies'][agency_key]['past price'] = Utils.getNumberEntityString(price.phrase)
 
                     # prices in general
                     for price in relation.getRolesWithBase('price'):
-                        if price.second_level_role == '<price_past:1>' and not 'past price' in self.output_objects[stock_key].keys() and len(agencies) == 0:
-                            self.output_objects[stock_key]['past price'] = Utils.getNumberEntityString(price.phrase)
-                        elif price.second_level_role == '<price_current:1>' and not 'current price' in self.output_objects[stock_key].keys() and len(agencies) == 0:
-                            self.output_objects[stock_key]['current price'] = Utils.getNumberEntityString(price.phrase)
-                        elif price.second_level_role == '<price_change:1>' and not 'price change' in self.output_objects[stock_key].keys():
-                            self.output_objects[stock_key]['price change'] = Utils.getNumberEntityString(price.phrase)
+                        if price.second_level_role == '<price_past:1>' and not 'past price' in current.keys() and len(agencies) == 0:
+                            current['past price'] = Utils.getNumberEntityString(price.phrase)
+                        elif price.second_level_role == '<price_current:1>' and not 'current price' in current.keys() and len(agencies) == 0:
+                            current['current price'] = Utils.getNumberEntityString(price.phrase)
+                        elif price.second_level_role == '<price_change:1>' and not 'price change' in current.keys():
+                            current['price change'] = Utils.getNumberEntityString(price.phrase)
+
+                    # add created new object to hashmap, if contains recommendation value
+                    if not in_hashmap and self.addedRecommendation(current):
+                        self.output_objects[stock_key] = current
 
     # return agency identificators
     def getAgencies(self, relation):
@@ -112,6 +128,34 @@ class OutputWrapper:
                         stocks.append(entity_str.replace('_', ' '))
         return stocks
 
+    # looks through the set of keys
+    # if matches one of them, information from its relation will be added to given output object
+    def getSameNamedEntity(self, value, keys):
+        return_key = None
+        # exact match
+        if value in keys:
+            return_key = value
+        # there are just two stock values in whole text, one of them is full name (and added) and the second is abreviation
+        else:
+            # the new value is a abbreviation
+            if Utils.isStockAbbreviation(value):
+
+                # get all stock roles from text
+                stock_strs = []
+                for relation in self.text_wrapper.relations:
+                    for role in relation.roles:
+                        if role.second_level_role == '<actor_stock:1>' and role.filledWithNE() and role.coreferent != None and not Utils.getNamedEntityString(role.coreferent) in stock_strs:
+                            stock_strs.append(Utils.getNamedEntityString(role.coreferent))
+                # primitive check
+                if len(stock_strs) == 2 and len(keys) == 1 and not Utils.isStockAbbreviation(keys[0]):
+                    return_key = keys[0]
+
+        return return_key
+
+    # check, whether newly create hashmap output object contains recommendation value
+    def addedRecommendation(self, output_object):
+        return 'current recommendation' in str(output_object)
+
     # output objects
     def renderOutput(self):
         for output_object in self.output_objects.itervalues():
@@ -123,7 +167,6 @@ class OutputWrapper:
                     for agency_key in output_object[key].keys():
                         for sub_key in output_object[key][agency_key].keys():
                             print '\t\t' + sub_key + ' : ' + output_object[key][agency_key][sub_key]
-
 
     def renderJSON(self):
         for output_object in self.output_objects.itervalues():

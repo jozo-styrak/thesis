@@ -134,3 +134,22 @@ class Utils:
             elif phrase.tokens[i].lemma == 'doporučení' and i > 0 and phrase.tokens[i-1].lemma.lower() in ['nákupní', 'prodejní']:
                 value = phrase.tokens[i-1].lemma.lower() + ' ' + phrase.tokens[i].lemma
         return value
+
+    # get price change information from kA string
+    @staticmethod
+    def extractPriceChange(entity_str):
+        PRICE_CHANGE_PATTERN = re.compile('([-+][0-9]*[,\.]+[0-9]*\ [^\)\(]*)')
+        changes = PRICE_CHANGE_PATTERN.findall(entity_str)
+        if len(changes) == 0:
+            return None
+        else:
+            return changes[0]
+
+    # whether given stock title is an abbreviation - (TWTR), (OPL)
+    @staticmethod
+    def isStockAbbreviation(value):
+        abbreviation = True
+        for letter in value:
+            if not letter in '( )' and not letter.isupper():
+                abbreviation = False
+        return abbreviation

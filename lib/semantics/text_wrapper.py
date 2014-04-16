@@ -30,13 +30,7 @@ class TextWrapper:
         # create relations list
         self.fetchRelations()
 
-        # debug roles
-        # RoleResolver.resolveActorRoles(self.relations, self.sentences)
-        # self.printActors()
-        # return []
-
         # resolve <actor> roles
-        # self.setActorRoles()
         RoleResolver.resolveActorRoles(self.relations, self.sentences)
 
         # apply constraints and remove invalid roles
@@ -46,12 +40,6 @@ class TextWrapper:
         print '\n---------------------------------------------------'
         self.printRelations()
         print '---------------------------------------------------'
-
-        # join relations within the same clause
-        # self.preprocessRelations()
-
-        # for now it returns just arrays with filtered phrases
-        # ret_objects = []
 
         # look over all relations
         for relation in self.relations:
@@ -70,13 +58,6 @@ class TextWrapper:
                 stock_roles = relation.getSecondLevelRoles('<actor_stock:1>')
                 for stock_role in stock_roles:
                     self.findNamedEntityCoreferent(stock_role)
-
-        #         # fill object with values from relation
-        #         ret_objects.append(relation.getInformationObject())
-        #
-        # for obj in ret_objects:
-        #     print '***'
-        #     print obj
 
     # resolve actor roles
     # currently just make them agencies
