@@ -23,6 +23,9 @@ for t in sys.stdin:
             else:
                 print "</s>"
                 print "<s desamb=\"1\">"
+        elif pre1_token in ['s.', 'b.'] and token[0].isupper():
+            print "</s>"
+            print "<s desamb=\"1\">"
         print token
         pre2_token = pre1_token
         pre1_token = token
