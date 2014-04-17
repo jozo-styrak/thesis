@@ -97,8 +97,11 @@ class OutputWrapper:
                             current['price change'] = Utils.getNumberEntityString(price.phrase)
 
                     # add created new object to hashmap, if contains recommendation value
-                    if not in_hashmap and self.addedRecommendation(current):
+                    if not in_hashmap: #and self.addedRecommendation(current):
                         self.output_objects[stock_key] = current
+
+        # filter output objects
+        self.filterOutputObjects()
 
     # return agency identificators
     def getAgencies(self, relation):
@@ -113,6 +116,15 @@ class OutputWrapper:
                     if RoleResolver.isRelevantAgencyEntity(entity_str) and not entity_str.replace('_', ' ') in agencies:
                         agencies.append(entity_str.replace('_', ' '))
         return agencies
+
+    # remove output that does not contain relevant information
+    def filterOutputObjects(self):
+        keys = []
+        for key in self.output_objects.keys():
+            if not self.addedRecommendation(self.output_objects[key]):
+                keys.append(key)
+        for key in keys:
+            self.output_objects.pop(key, None)
 
     # return stock identificators
     def getStocks(self, relation):

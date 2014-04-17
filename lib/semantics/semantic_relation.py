@@ -1,5 +1,3 @@
-from lib.semantics.utils.utils import Utils
-
 # this goes for all the classes in semantics:
 # i have to think about the necessity of grouping roles into relations
 # currently the reason is to connect agent and patient, to resolve coreference
@@ -60,33 +58,6 @@ class SemanticRelation:
             if base_str in role.second_level_role:
                 roles.append(role)
         return roles
-
-    # return information object
-    def getInformationObject(self):
-        ret_str = ''
-        if self.isOutputSuitable():
-
-            if self.getSecondLevelRole('<actor_agency:1>') != None and self.getSecondLevelRole('<actor_agency:1>').coreferent != None:
-                ret_str += 'who changed recommendation/price? \n\t' + Utils.getNamedEntityString(self.getSecondLevelRole('<actor_agency:1>').coreferent) + ' / ' + str(self.getSecondLevelRole('<actor_agency:1>').coreferent) + ' {' + str(self.getSecondLevelRole('<actor_agency:1>').second_level_role) + '}\n'
-
-            if self.getSecondLevelRole('<actor_stock:1>') != None and self.getSecondLevelRole('<actor_stock:1>').coreferent != None:
-                ret_str += 'to whom? \n\t' + Utils.getNamedEntityString(self.getSecondLevelRole('<actor_stock:1>').coreferent) + ' / ' + str(self.getSecondLevelRole('<actor_stock:1>').coreferent) + ' {' + str(self.getSecondLevelRole('<actor_stock:1>').second_level_role) + '}\n'
-
-            for recommendation in self.getRolesWithBase('state'):
-                if recommendation.second_level_role == '<state_past:1>':
-                    ret_str += 'past recommendation \n\t' + Utils.getRecommendationString(recommendation.phrase) + ' / ' + str(recommendation.phrase) + ' {' + str(recommendation.second_level_role) + '}\n'
-                elif recommendation.second_level_role == '<state_current:1>':
-                    ret_str += 'current recommendation \n\t' + Utils.getRecommendationString(recommendation.phrase) + ' / ' + str(recommendation.phrase) + ' {' + str(recommendation.second_level_role) + '}\n'
-
-            for price in self.getRolesWithBase('price'):
-                if price.second_level_role == '<price_past:1>':
-                    ret_str += 'past price \n\t' + Utils.getNumberEntityString(price.phrase) + ' / ' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
-                elif price.second_level_role == '<price_current:1>':
-                    ret_str += 'current price \n\t' + Utils.getNumberEntityString(price.phrase) + ' / ' + str(price.phrase) + ' {' + str(price.second_level_role) + '}\n'
-                elif price.second_level_role == '<price_change:1>':
-                    ret_str += 'price change \n\t' + Utils.getNumberEntityString(price.phrase) + ' / ' + str(price.phrase)  + ' {' + str(price.second_level_role) + '}\n'
-
-        return ret_str
 
     # check whether relation contains output information
     def isOutputSuitable(self):

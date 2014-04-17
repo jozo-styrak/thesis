@@ -19,7 +19,7 @@ REAL_NUMBER_PATTERN = re.compile('[\+-]*\d+[\.,/:]*\d*')
 
 # lists of words used for tag editing
 NUM_FOLLOW = ['KČ', 'Kč', '%', 'euro', 'USD', 'mil', 'tis', 'PLN', 'NOK', 'HUN', 'GBP', 'AUD', 'JPY', 'CHF', 'RUB', 'eur', 'dolar', 'jen', 'CZK', 'czk']
-RECOMMENDATIONS = ['nákup', 'prodej', 'držet', 'koupit', 'kupovat', 'redukovat', 'akumulovat', 'prodat', 'strong', 'buy', 'strong_buy', 'hold', 'sell', 'neutral', 'market', 'perform', 'underperform', 'underweight', 'accumulate', 'outperform', 'swap', 'overweight', 'reduce', 'equalweight', 'nadvážit', 'podvážit', 'market_perform']
+RECOMMENDATIONS = ['nákup', 'prodej', 'prodávat', 'držet', 'koupit', 'kupovat', 'redukovat', 'akumulovat', 'prodat', 'strong', 'buy', 'strong_buy', 'hold', 'sell', 'neutral', 'market', 'perform', 'underperform', 'underweight', 'accumulate', 'outperform', 'swap', 'overweight', 'reduce', 'equalweight', 'nadvážit', 'podvážit', 'market_perform']
 RECOMMENDATION_SYNONYMS = ['doporučení', 'titul', 'předchozí', 'stupeň']
 AGENCIES = ['Goldman_Sachs', 'Morgan_Stanley', 'Credit_Suisse', 'Erste_Group', 'Nomura', 'Barclays']
 NO_NAMED_ENTITIES = ['D']
@@ -110,12 +110,14 @@ def connectQuotes(tokens):
                 quote_content[0] = quote_content[0] + '_' + token[0] if quote_content[0] != '' else token[0]
                 quote_content[1] = quote_content[1] + '_' + token[1] if quote_content[1] != '' else token[1]
             elif quote_start and token[0] == '\"':
-                new_tokens.append(quote_content)
-                quote_content = ['','','kA']
-                quote_start = False
                 # BONUS! if quote content is not in recommendations, add it there
                 if not quote_content[0].lower() in RECOMMENDATIONS:
                     RECOMMENDATIONS.append(quote_content[0].lower())
+                new_tokens.append(quote_content)
+                quote_content = ['','','kA']
+
+                quote_start = False
+
         return new_tokens
 
 # main function of script

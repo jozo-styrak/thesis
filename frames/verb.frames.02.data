@@ -129,3 +129,8 @@ AG(kdo1;<actor_stock:1>;obl)+++VERB+++ATTR(na co4;<price_current:1>;opt;{depende
 * nakupovat; kupovat
 
 AG(kdo1;<actor_agency:1>;obl)+++VERB+++PAT(co4;<actor_stock:1>;obl)
+
+
+* ztrácet; ztratit
+
+AG(kdo1;<actor_stock:1>;obl)+++VERB+++PAT(co4;<price_change:1>;obl)
