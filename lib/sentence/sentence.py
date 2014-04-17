@@ -79,10 +79,18 @@ class Sentence:
         return dependent
 
     # return token that follows given phrase
-    def getFollowingToken(self, phrase):
+    def getFollowingTokenToPhrase(self, phrase):
         following_num = int(phrase.num.split()[-1:][0])
         token = None if following_num == len(self.tokens) else self.tokens[following_num]
         return token
+
+    # return token that follows given phrase
+    def getFollowingTokenToToken(self, token):
+        next_token = None
+        for i in range(len(self.tokens)):
+            if self.tokens[i] == token and i < len(self.tokens):
+                next_token = self.tokens[i+1]
+        return next_token
 
     def __str__(self):
         values = []

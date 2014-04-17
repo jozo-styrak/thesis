@@ -73,7 +73,7 @@ AG(kdo1;<actor_stock:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:cena})
 # note: both this frames can contain also specific information
 
 
-* stanovit; stanovovat; dávat; ponechat; ponechávat
+* stanovit; stanovovat; dávat; ponechat; ponechávat; vydávat; vydat
 
 AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl;{lemma:cena})
 # example: Nomura dáva novú cenu

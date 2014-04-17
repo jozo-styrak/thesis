@@ -109,6 +109,9 @@ class TextWrapper:
                 # newer version - search also base roles
                 if not phrase_role:
                     phrase_role = clauses[i].phrases[j].hasBaseRole(role.second_level_role)
+                    # update role
+                    if phrase_role:
+                        phrase_role.second_level_role = role.second_level_role
                 if phrase_role and phrase_role.filledWithNE():
                     coreferent_phrase = clauses[i].phrases[j]
                 j += 1

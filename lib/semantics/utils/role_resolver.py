@@ -25,6 +25,9 @@ class RoleResolver:
                     # is name followed in text with ':'?
                     elif RoleResolver.followTokenRule(role.phrase, sentences, [':']):
                         role.second_level_role = '<actor_agency:1>'
+                    # is name followed in text with '-'?
+                    elif RoleResolver.followTokenRule(role.phrase, sentences, ['-']):
+                        role.second_level_role = '<actor_stock:1>'
                     # is there already another entity of same role in given clause?
                     elif RoleResolver.sameClauseRule(role, True):
                         # role is assigned in method
@@ -92,7 +95,12 @@ class RoleResolver:
                 for phr in clause.phrases:
                     if phr == phrase:
                         sentence = sent
-        following_token = sentence.getFollowingToken(phrase)
+        # following_token = sentence.getFollowingTokenToPhrase(phrase)
+        token = None
+        for t in phrase.tokens:
+            if t.value.endswith('kA'):
+                token = t
+        following_token = sentence.getFollowingTokenToToken(token)
         if following_token != None and following_token.value in tokens:
             contains = True
         return  contains
