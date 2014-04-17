@@ -4,6 +4,8 @@ from lib.frames.verb_frames.slots import VerbSlot, CommonSlot
 from lib.frames.verb_frames.forms import CaseForm
 from lib.semantics.semantic_role import SemanticRole
 from lib.semantics.semantic_relation import SemanticRelation
+from lib.sentence.phrases import NPhrase
+from lib.sentence.sentence import Token
 
 
 # class containing one frame for given verb
@@ -99,6 +101,13 @@ class Frame:
                         role.setPhrase(slot.match_item)
                         # set link to role into phrase
                         slot.match_item.semantic_roles.append(role)
+                    # ellipsed WE agens
+                    elif self.vp_match_item.hasTag('p1') and 'actor' in slot.second_level_role and 'AG' in slot.first_level_role:
+                        we_phrase = NPhrase('k1gInPc1', '0', '0', False)
+                        we_phrase.tokens.append(Token('Fio_kA', 'Fio_kA', 'k1gInPc1'))
+                        clause.phrases.append(we_phrase)
+                        role.setPhrase(we_phrase)
+                        we_phrase.semantic_roles.append(role)
                     clause.containing_relation.addNewRole(role)
         # return clause.containing_relation
 

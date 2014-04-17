@@ -35,17 +35,6 @@ while i < len(tokens):
         if tokens[i-1].strip() == 'Yahoo' and tokens[i].strip() == '!':
             print 'Yahoo!'
             i += 2
-        # split s. and b.
-        # if tokens[i-1].strip() == 's.':
-        #     print 's'
-        #     print '.'
-        #     print "</s>"
-        #     print "<s desamb=\"1\">"
-        #     i += 1
-        # if tokens[i-1].strip() == 'b.':
-        #     print 'b'
-        #     print '.'
-        #     i += 1
         else:
             print tokens[i-1].strip()
             i += 1

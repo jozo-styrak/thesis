@@ -125,6 +125,14 @@ class Phrase:
             return self.tokens[order]
         except:
             return None
+
+    # check if some token in phrase has given tag
+    def hasTag(self, tag):
+        has = False
+        for token in self.tokens:
+            if tag in token.tag:
+                has = True
+        return has
     
     def __str__(self):
         values = []

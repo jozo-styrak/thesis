@@ -78,15 +78,14 @@ class OutputWrapper:
                                 elif recommendation.second_level_role == '<state_current:1>': #and not 'current recommendation' in current['agencies'][agency_key].keys():
                                     current['agencies'][agency_key]['current recommendation'] = Utils.getRecommendationString(recommendation.phrase)
 
-                            # price set by agency
-                            price = relation.getSecondLevelRole('<price_current:1>')
-                            if price != None and not 'current price' in current['agencies'][agency_key].keys():
-                                current['agencies'][agency_key]['current price'] = Utils.getNumberEntityString(price.phrase)
-
-                            # price set by agency
-                            price = relation.getSecondLevelRole('<price_past:1>')
-                            if price != None and not 'past price' in current['agencies'][agency_key].keys():
-                                current['agencies'][agency_key]['past price'] = Utils.getNumberEntityString(price.phrase)
+                            # agency prices
+                            for price in relation.getRolesWithBase('price'):
+                                if price.second_level_role == '<price_past:1>' and not 'past price' in current['agencies'][agency_key].keys():
+                                    current['agencies'][agency_key]['past price'] = Utils.getNumberEntityString(price.phrase)
+                                elif price.second_level_role == '<price_current:1>' and not 'current price' in current['agencies'][agency_key].keys():
+                                    current['agencies'][agency_key]['current price'] = Utils.getNumberEntityString(price.phrase)
+                                elif price.second_level_role == '<price_change:1>' and not 'price change' in current['agencies'][agency_key].keys():
+                                    current['agencies'][agency_key]['price change'] = Utils.getNumberEntityString(price.phrase)
 
                     # prices in general
                     for price in relation.getRolesWithBase('price'):
@@ -94,7 +93,7 @@ class OutputWrapper:
                             current['past price'] = Utils.getNumberEntityString(price.phrase)
                         elif price.second_level_role == '<price_current:1>' and not 'current price' in current.keys() and len(agencies) == 0:
                             current['current price'] = Utils.getNumberEntityString(price.phrase)
-                        elif price.second_level_role == '<price_change:1>' and not 'price change' in current.keys():
+                        elif price.second_level_role == '<price_change:1>' and not 'price change' in current.keys() and len(agencies) == 0:
                             current['price change'] = Utils.getNumberEntityString(price.phrase)
 
                     # add created new object to hashmap, if contains recommendation value

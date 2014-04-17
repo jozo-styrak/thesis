@@ -18,8 +18,6 @@ class SemanticRole:
         self.coreferent = None
         # if the role is invalid for given phrase, done in constraints check
         self.invalid = False
-        # if verb is in first person
-        self.we_actor = False
 
     # return containing relation
     def getRelation(self):

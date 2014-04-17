@@ -80,12 +80,8 @@ class Sentence:
 
     # return token that follows given phrase
     def getFollowingToken(self, phrase):
-        following_num = phrase.num.split()[-1:]
-        token = None
-        for clause in self.clauses:
-            for phr in clause.phrases:
-                if following_num in phr.num.split():
-                    token = phr.getTokenByNum(following_num)
+        following_num = int(phrase.num.split()[-1:][0])
+        token = None if following_num == len(self.tokens) else self.tokens[following_num]
         return token
 
     def __str__(self):
