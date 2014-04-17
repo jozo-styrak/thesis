@@ -39,6 +39,8 @@ while i < len(tokens):
         if tokens[i-1].strip() == 's.':
             print 's'
             print '.'
+            print "</s>"
+            print "<s desamb=\"1\">"
             i += 1
         if tokens[i-1].strip() == 'b.':
             print 'b'
