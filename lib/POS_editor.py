@@ -143,16 +143,6 @@ def editTags(buffered_sentences):
             elif sentence[i][2] == 'k4' and new_sentence[len(new_sentence)-1][2] == 'kA':
                 new_sentence[len(new_sentence)-1][0] += '_' + sentence[i][0]
                 new_sentence[len(new_sentence)-1][1] += '_' + sentence[i][1]
-            # connect ending parenthese
-            # elif sentence[i][2] == 'kIx)' and (new_sentence[len(new_sentence)-1][2] == 'k4' or (new_sentence[len(new_sentence)-1][2] == 'kA' and not new_sentence[len(new_sentence)-1][1]) in RECOMMENDATIONS):
-            # elif sentence[i][2] == 'kIx)' and (sentence[i-1][2] == 'k4' or (sentence[i-1][2] == 'kA' and not sentence[i-1][1] in RECOMMENDATIONS) or sentence[i-1][1] in NUM_FOLLOW):
-            #     new_sentence[len(new_sentence)-1][0] += '_' + sentence[i][0]
-            #     new_sentence[len(new_sentence)-1][1] += '_' + sentence[i][1]
-            # # connect beginning parenthese
-            # elif new_sentence[len(new_sentence)-1][2] == 'kIx(' and (sentence[i][2] == 'k4' or sentence[i][2] == 'kA'):
-            #     new_sentence[len(new_sentence)-1][0] += '_' + sentence[i][0]
-            #     new_sentence[len(new_sentence)-1][1] += '_' + sentence[i][1]
-            #     new_sentence[len(new_sentence)-1][2] = 'kA'
             else:
                 new_sentence.append(sentence[i])
             i += 1
@@ -181,8 +171,6 @@ def editTags(buffered_sentences):
                 if not new_sentence[i][1] in NO_NAMED_ENTITIES: new_sentence[i][0] += '_kA'
             # change tag for kA if preceeded noun - genitiv case (in order to be included in same noun phrase)
             # if succeeded by verb, ignore - it is case, when kA splits PP and VP and has function of subject
-            # commented version - abreviation of type (_EU_) doesn't connect to previous noun - not sure if that is pleasable
-            # elif (new_sentence[i][2] == 'kA' and new_sentence[i][0].find('(') == -1) and getValueFromTag(new_sentence[i-1][2], 'k') == '1':
             elif new_sentence[i][2] == 'kA' and getValueFromTag(new_sentence[i-1][2], 'k') == '1' and inContextAfter(i, sentence, 1, 'k5') == None:
                 new_sentence[i][2] = 'k1nPgIc2'
                 if not new_sentence[i][1] in NO_NAMED_ENTITIES: new_sentence[i][0] += '_kA'

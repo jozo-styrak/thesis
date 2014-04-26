@@ -126,6 +126,16 @@ class Phrase:
         except:
             return None
 
+    # return number of the phrase
+    # 0 - no number, 1 - singular, 2 - plural
+    def getNumberCategory(self):
+        number = 0
+        if 'nS' in self.head.tag:
+            number = 1
+        elif 'nP' in self.head.tag:
+            number = 2
+        return number
+
     # check if some token in phrase has given tag
     def hasTag(self, tag):
         has = False

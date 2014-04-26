@@ -23,16 +23,16 @@ class RoleResolver:
                         # role is assigned in method
                         pass
                     # is name followed in text with ':'?
-                    elif RoleResolver.followTokenRule(role.phrase, sentences, [':']):
-                        role.second_level_role = '<actor_agency:1>'
-                    # is name followed in text with '-'?
-                    elif RoleResolver.followTokenRule(role.phrase, sentences, ['-']):
-                        role.second_level_role = '<actor_stock:1>'
-                    # is there already another entity of same role in given clause?
                     elif RoleResolver.sameClauseRule(role, True):
                         # role is assigned in method
                         pass
                     # no rule applies, leave unresolved
+                    elif RoleResolver.followTokenRule(role.phrase, sentences, [':', '-']):
+                        role.second_level_role = '<actor_agency:1>'
+                    # is name followed in text with '-'?
+                    # elif RoleResolver.followTokenRule(role.phrase, sentences, ['-']):
+                    #     role.second_level_role = '<actor_stock:1>'
+                    # is there already another entity of same role in given clause?
                     else:
                         pass
 
@@ -111,7 +111,7 @@ class RoleResolver:
     def sameClauseRule(role, assign):
         assigned = False
         for r in role.relation.roles:
-            if r != role and r.second_level_role.startswith('<actor_') and r.phrase != None:
+            if r != role and r.second_level_role.startswith('<actor_') and r.coreferent != None:
                 if r.second_level_role == '<actor_agency:1>':
                     # if assign set to true, changes role to given
                     if assign:

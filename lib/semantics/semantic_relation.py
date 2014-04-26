@@ -51,6 +51,15 @@ class SemanticRelation:
                 roles.append(r)
         return roles
 
+    # whether relation already has ellisped role
+    def hasEllipsedRole(self, role_name):
+        has = False
+        roles = self.getSecondLevelRoles(role_name)
+        for role in roles:
+            if role.phrase == None:
+                has = True
+        return has
+
     # return roles with specific base
     def getRolesWithBase(self, base_str):
         roles = []

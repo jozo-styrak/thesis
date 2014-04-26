@@ -1,5 +1,6 @@
 from lib.semantics.utils.utils import Utils
 from lib.semantics.utils.role_resolver import RoleResolver
+from lib.sentence.phrases import NPhrase
 
 # grouping object for all the relations and roles in the text
 # for now also doing coreference, ellipse and named entity resolution
@@ -51,16 +52,17 @@ class TextWrapper:
                 # first find agency
                 # agency_role = relation.getSecondLevelRole('<actor_agency:1>')
                 agency_roles = relation.getSecondLevelRoles('<actor_agency:1>')
-                for agency_role in agency_roles:
+                for agency_role in self.orderRoles(agency_roles):
                     self.findNamedEntityCoreferent(agency_role)
 
                     # ...then resolve stock role
                 stock_roles = relation.getSecondLevelRoles('<actor_stock:1>')
-                for stock_role in stock_roles:
+                for stock_role in self.orderRoles(stock_roles):
                     self.findNamedEntityCoreferent(stock_role)
 
     # resolve actor roles
     # currently just make them agencies
+    # unused method
     def setActorRoles(self):
         for relation in self.relations:
             for role in relation.roles:
@@ -81,6 +83,11 @@ class TextWrapper:
     # slightly changed algorithm & returns just one item
     def getCoreferent(self, role):
         coreferent_phrase = None
+        # for coord purposes
+        coreferent_clause = None
+
+        # get number of phrase - if coreferent is coordination, it will be choosen based on number
+        phrase_number = role.phrase.getNumberCategory() if role.phrase != None else 0
 
         # sequentially add clauses to the list order
         clauses = []
@@ -114,8 +121,22 @@ class TextWrapper:
                         phrase_role.second_level_role = role.second_level_role
                 if phrase_role and phrase_role.filledWithNE():
                     coreferent_phrase = clauses[i].phrases[j]
+                    coreferent_clause = clauses[i]
                 j += 1
             i += 1
+
+        # if phrase is coordination and antecedent wants just one entity
+        if phrase_number == 1 and isinstance(coreferent_phrase, NPhrase) and coreferent_phrase.is_coordination:
+            sub_phrases = coreferent_clause.getDependentPhrases(coreferent_phrase)
+            new_coreferent = None
+            i = len(sub_phrases) - 1
+            # find the latest NE in given coordination
+            while i >= 0 and new_coreferent == None:
+                if Utils.isNamedEntity(sub_phrases[i]):
+                    new_coreferent = sub_phrases[i]
+                i = i - 1
+            if new_coreferent != None:
+                coreferent_phrase = new_coreferent
 
         return coreferent_phrase
 
@@ -126,6 +147,19 @@ class TextWrapper:
             if not role.filledWithNE():
                 # new version, returns just one
                 role.coreferent = self.getCoreferent(role)
+
+    # order roles, so that ellipsed role is at the end
+    def orderRoles(self, roles):
+        new_order = []
+        ellipsed = []  # at the moment there should be just one, but just in case
+        for role in roles:
+            if role.coreferent != None:
+                new_order.append(role)
+            else:
+                ellipsed.append(role)
+        for role in ellipsed:
+            new_order.append(role)
+        return new_order
 
     # debug method
     def printRelations(self):

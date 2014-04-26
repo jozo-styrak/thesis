@@ -10,8 +10,9 @@ i = 1
 
 while i < len(tokens):
 
+    # join few abbreviations and exceptions
     if len(tokens[i].strip()) != 0:
-        # ''' abbreviation with digits at the end '''
+        # abbreviation with digits at the end
         if tokens[i].strip().isdigit() and tokens[i-1].strip().isupper() and len(tokens[i-1].strip()) > 1:
             print tokens[i-1].strip() + tokens[i].strip()
             i += 2
@@ -19,7 +20,7 @@ while i < len(tokens):
         if tokens[i].strip() == '+' and tokens[i-1].strip() == 'K' and tokens[i+1].strip() == 'S':
             print "K+S"
             i += 3
-        # ''' S&P[500] '''
+        # S&P[500]
         if tokens[i].strip() == '&' and tokens[i-1].strip() == 'S' and tokens[i+1].strip() == 'P':
             if tokens[i+2].strip().isdigit():
                 print "S&P", tokens[i+2].strip()

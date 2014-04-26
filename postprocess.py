@@ -47,8 +47,11 @@ if len(input_lines) != 0:
                 # replaces tag for every token which is upper case and at least 2 characters long
             elif line_tokens[2] != 'kA' and line_tokens[0].isupper() and len(line_tokens[0]) > 1:
                 print line_tokens[0] + '\t' + line_tokens[0] + '\tkA'
-                # replaces tag for every word starting upper case and with at least 3 letters and is not in exceptions
-            elif i>0 and not input_lines[i-1].strip().startswith('<s') and line_tokens[0][0].isupper() and len(line_tokens[0])>2 and line_tokens[1].strip() not in EXCEPTIONS:
+                # replaces tag for every word starting upper case and with at least 3 letters and is not in exceptions or preposition
+            elif i>0 and not input_lines[i-1].strip().startswith('<s') and line_tokens[0][0].isupper() and len(line_tokens[0])>2 and line_tokens[1].strip() not in EXCEPTIONS and 'k7' not in line_tokens[2]:
+                print line_tokens[0] + '\t' + line_tokens[0] + '\tkA'
+                # tokens of type mBank, eBay
+            elif line_tokens[2] != 'kA' and line_tokens[0][0].islower() and line_tokens[0][1].isupper():
                 print line_tokens[0] + '\t' + line_tokens[0] + '\tkA'
             else:
                 print input_lines[i].strip()
