@@ -61,32 +61,32 @@ def executeNER(buffered_sentences):
             if s[i][0] in NAMED_ENTITES:
                 s[i][2] = 'kA'
                 s[i][1] = s[i][0]
-                if not s[i][1] in NER_STOPWORDS + NUM_FOLLOW + RECOMMENDATIONS:
+                if not s[i][0] in NER_STOPWORDS + NUM_FOLLOW + RECOMMENDATIONS:
                     s[i][0] += '_ACTOR'
             # upper case first, other lower case
-            elif i > 0 and s[i][1][0].isupper() and len(s[i][1]) > 2 and s[i][1][1:].islower():
+            elif i > 0 and s[i][1][0].isupper() and len(s[i][0]) > 2 and s[i][0][1:].islower():
                 s[i][1] = s[i][0]
                 s[i][2] = 'kA'
                 if not s[i][1] in NER_STOPWORDS + NUM_FOLLOW + RECOMMENDATIONS:
                     s[i][0] += '_ACTOR'
             # at least two upper case letters
-            elif len(s[i][1]) > 1 and s[i][1].isupper():
+            elif len(s[i][0]) > 1 and s[i][0].isupper():
                 s[i][1] = s[i][0]
                 s[i][2] = 'kA'
-                if not s[i][1] in NER_STOPWORDS + NUM_FOLLOW + RECOMMENDATIONS:
+                if not s[i][0] in NER_STOPWORDS + NUM_FOLLOW + RECOMMENDATIONS:
                     s[i][0] += '_ACTOR'
             # first small, next upper
-            elif len(s[i][1]) > 1 and s[i][1][0].islower() and s[i][1][1].isupper():
+            elif len(s[i][0]) > 1 and s[i][0][0].islower() and s[i][0][1].isupper():
                 s[i][1] = s[i][0]
                 s[i][2] = 'kA'
                 s[i][0] += '_ACTOR'
             # if is first and next token is '-' or ':'
-            elif i == 0 and len(s) > 1 and (s[1][1] in '-:' or s[1][1].startswith('(')) and not s[0][1].lower() in ['akcie']:
+            elif i == 0 and len(s) > 1 and (s[1][1] in '-:' or s[1][0].startswith('(')) and not s[0][1].lower() in ['akcie']:
                 s[i][1] = s[i][0]
                 s[i][2] = 'kA'
                 s[i][0] += '_ACTOR'
             # if starts with ( and is upper
-            elif s[i][1].startswith('('):
+            elif s[i][0].startswith('('):
                 s[i][1] = s[i][0]
                 try:
                     if s[i][1].split('_')[0].isupper():
@@ -96,12 +96,12 @@ def executeNER(buffered_sentences):
 
             # ----- RECOMMENDATIONS -----
             # preposition + recommendation
-            elif s[i][1].lower() in RECOMMENDATIONS and i > 0 and 'k7' in s[i][2]:
+            elif s[i][1].lower() in RECOMMENDATIONS and i > 0 and 'k7' in s[i-1][2]:
                 s[i][1] = s[i][0]
                 s[i][2] = 'kA'
                 s[i][0] += '_STATE'
             # recommendation prefix + recommendation
-            elif s[i][1].lower() in RECOMMENDATIONS and i > 0 and s[i][1].lower() in RECOMMENDATION_PREFIX:
+            elif s[i][1].lower() in RECOMMENDATIONS and i > 0 and s[i-1][1].lower() in RECOMMENDATION_PREFIX:
                 s[i][1] = s[i][0]
                 s[i][2] = 'kA'
                 s[i][0] += '_STATE'
