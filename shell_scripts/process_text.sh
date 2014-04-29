@@ -82,5 +82,5 @@ perl -ne 'BEGIN { $/ = "</s>\n" } # odstran�n� hacku v tecky.pl
 perl -pe 's/<[^\t]+>\K\t.*//' |\
 
 # output postprocessing
-iconv -f iso-8859-2 -t utf-8 2>/dev/null |\
-/home/xstyrak/thesis/postprocess.py /home/xstyrak/thesis/desamb/replacement.utf8.data
+iconv -f iso-8859-2 -t utf-8 2>/dev/null
+#/home/xstyrak/thesis/postprocess.py /home/xstyrak/thesis/desamb/replacement.utf8.data

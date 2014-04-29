@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-''' post-processing script run after tagginf '''
-''' replaces tags for abbreviations '''
-''' adds tags to real numbers '''
-''' one command line argument - file with replacement data in utf '''
 import sys
 import re
 

@@ -66,8 +66,8 @@ class RoleResolver:
         entity_name = None
         assigned = False
         for token in role.phrase.tokens:
-            if token.value.endswith('kA'):
-                entity_name = token.value[:-3]
+            if token.value.endswith('ACTOR'):
+                entity_name = token.value[:-6]
         if entity_name != None:
             # find same named entity
             for relation in relations:
@@ -98,7 +98,7 @@ class RoleResolver:
         # following_token = sentence.getFollowingTokenToPhrase(phrase)
         token = None
         for t in phrase.tokens:
-            if t.value.endswith('kA'):
+            if t.value.endswith('ACTOR'):
                 token = t
         following_token = sentence.getFollowingTokenToToken(token)
         if following_token != None and following_token.value in tokens:

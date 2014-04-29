@@ -18,7 +18,8 @@ class LemmaAttribute(TokenAttribute):
     def matchesWithPhrase(self, phrase):
         found = False
         for token in phrase.tokens:
-            if token.lemma == self.value:
+            # if token.lemma == self.value:
+            if self.value in token.lemma:
                 found = True
         return found
 
