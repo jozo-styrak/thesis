@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # ''' preprocessing script - run before tagging '''
 # ''' for now, the main function of the script is to connect few abbreviatons that have been splitted by unitok '''
 import sys
