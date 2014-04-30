@@ -146,3 +146,8 @@ AG(kdo1;<actor_agency:1>;obl)+++VERB+++PAT(co4;<state_current:1>;obl)
 * těžit
 
 AG(kdo1;<actor_stock:1>;obl)+++VERB+++PAT(z čeho2;<state_current:1>;obl)
+
+
+* dařit
+
+AG(kdo1;<actor_stock:1>;obl)+++VERB
