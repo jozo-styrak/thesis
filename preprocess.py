@@ -36,6 +36,10 @@ while i < len(tokens):
         if tokens[i-1].strip() == 'Yahoo' and tokens[i].strip() == '!':
             print 'Yahoo!'
             i += 2
+        # join tokens split by & or '
+        if tokens[i].strip() in "&\'´`":
+            print tokens[i-1].strip() + tokens[i].strip() + tokens[i+1].strip()
+            i += 3
         else:
             print tokens[i-1].strip()
             i += 1
