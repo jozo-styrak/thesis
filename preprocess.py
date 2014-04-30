@@ -41,6 +41,9 @@ while i < len(tokens):
         if tokens[i].strip() in "&\'´`":
             print tokens[i-1].strip() + tokens[i].strip() + tokens[i+1].strip()
             i += 3
+        if tokens[i].strip() == '\'s' or tokens[i].strip() == '´s' or tokens[i].strip() == '`s':
+            print tokens[i-1].strip() + tokens[i].strip()
+            i += 2
         else:
             print tokens[i-1].strip()
             i += 1
