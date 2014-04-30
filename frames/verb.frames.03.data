@@ -135,3 +135,14 @@ AG(kdo1;<actor_agency:1>;obl)+++VERB+++PAT(co4;<actor_stock:1>;obl)
 * ztrácet; ztratit
 
 AG(kdo1;<actor_stock:1>;obl)+++VERB+++PAT(co4;<price_change:1>;obl)
+
+
+* potvrzovat; potvrzit
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++PAT(co4;<price_current:1>;obl)
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++PAT(co4;<state_current:1>;obl)
+
+
+* těžit
+
+AG(kdo1;<actor_stock:1>;obl)+++VERB+++PAT(z čeho2;<state_current:1>;obl)
