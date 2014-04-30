@@ -18,8 +18,8 @@ class Frame:
         self.matched_slots = None  # link to matching slot list
         self.active_frame_slots = slots  # active slots of this frame
         self.passive_frame_slots = None  # passive frame slots
-        # generate passive forms
-        self.generatePassiveFrame()
+        # generate passive forms (if there is object in frame)
+        if len(self.active_frame_slots) > 2: self.generatePassiveFrame()
 
     # generate passive frame from given slot tokens
     def generatePassiveFrame(self):
