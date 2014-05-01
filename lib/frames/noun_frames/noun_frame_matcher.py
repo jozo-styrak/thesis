@@ -1,5 +1,5 @@
 from lib.frames.frame_matcher import FrameMatcher
-from lib.frames.noun_frames.frame_noun import GeneralPhrase, NamedEntity, NumberEntity
+from lib.frames.noun_frames.frame_noun import GeneralPhrase, NamedEntity, NumberEntity, RecommendationEntity
 from lib.frames.noun_frames.complement import Complement
 
 # class handling matching of noun frames
@@ -13,10 +13,12 @@ class NounFrameMatcher(FrameMatcher):
         for line in frame_file.readlines():
             if not line.startswith('#') and len(line.strip()) > 0:
                 if line.startswith('*'):  # new noun entry
-                    if line.find('{kA}') != -1:
+                    if line.find('{ACTOR}') != -1:
                         self.noun_frames.append(NamedEntity())
-                    elif line.find('{k4}') != -1:
+                    elif line.find('{PRICE}') != -1:
                         self.noun_frames.append(NumberEntity())
+                    elif line.find('{STATE}') != -1:
+                        self.noun_frames.append(RecommendationEntity())
                     else:
                         self.noun_frames.append(GeneralPhrase(line[1:].strip()))
 

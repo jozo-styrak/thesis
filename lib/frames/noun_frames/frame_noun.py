@@ -154,3 +154,12 @@ class NumberEntity(FrameNoun):
 
     def matchesPhrase(self, phrase):
         return Utils.isPriceEntity(phrase)
+
+# class for numbers with number follow - price, percentage,...
+class RecommendationEntity(FrameNoun):
+
+    def __init__(self):
+        FrameNoun.__init__(self)
+
+    def matchesPhrase(self, phrase):
+        return Utils.isRecommendationValue(phrase)

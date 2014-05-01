@@ -22,7 +22,7 @@ ATTR(co4;<price:1>;opt)
 ATTR(pri čem6|s čím7;<state_current:1>;opt)
 ATTR(o co4;<price_change:1>;opt)
 
-* {kA}
+* {ACTOR}
 + role:<actor:1>
 ATTR(s čím7|čím7;<state_current:1>;opt)
 ATTR(s čím7|čím7;<price_current:1>;opt)
@@ -30,7 +30,14 @@ ATTR(k čemu3;<state_current:1>;opt)
 ATTR(z čeho2;<state_past:1>;opt)
 ATTR(na co4;<state_current:1>;opt)
 
-* {k4}
+* {STATE}
++ role:<state:1>
+PAT(pro co4|u čeho2;<actor_stock:1>;obl)
+AG(od čeho2;<actor_agency:1>;obl)
+ATTR(na co4;<state_current:1>;opt)
+ATTR(z čeho4;<state_past:1>;opt)
+
+* {PRICE}
 + role:<price:1>
 ATTR(na co4;<price_current:1>;opt)
 ATTR(o co4;<price_change:1>;opt)
