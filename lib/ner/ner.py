@@ -64,7 +64,7 @@ def executeNER(buffered_sentences):
                 if not s[i][0] in NER_STOPWORDS + NUM_FOLLOW + RECOMMENDATIONS:
                     s[i][0] += '_ACTOR'
             # upper case first, other lower case
-            elif i > 0 and s[i][1][0].isupper() and len(s[i][0]) > 2 and s[i][0][1].islower():
+            elif i > 0 and s[i][0][0].isupper() and len(s[i][0]) > 2 and s[i][0][1].islower():
                 s[i][1] = s[i][0]
                 s[i][2] = 'kA'
                 if not s[i][1] in NER_STOPWORDS + NUM_FOLLOW + RECOMMENDATIONS:
