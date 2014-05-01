@@ -19,7 +19,7 @@ class LemmaAttribute(TokenAttribute):
         found = False
         for token in phrase.tokens:
             # if token.lemma == self.value:
-            if self.value in token.lemma:
+            if self.value in token.lemma or self.value in token.value:
                 found = True
         return found
 

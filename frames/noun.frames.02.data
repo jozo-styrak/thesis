@@ -24,9 +24,11 @@ ATTR(o co4;<price_change:1>;opt)
 
 * {kA}
 + role:<actor:1>
-ATTR(s čím7|čím7;<state:1>;opt)
-ATTR(s čím7|čím7;<price:1>;opt)
-ATTR(k čemu3;<state:1>;opt)
+ATTR(s čím7|čím7;<state_current:1>;opt)
+ATTR(s čím7|čím7;<price_current:1>;opt)
+ATTR(k čemu3;<state_current:1>;opt)
+ATTR(z čeho2;<state_past:1>;opt)
+ATTR(na co4;<state_current:1>;opt)
 
 * {k4}
 + role:<price:1>
