@@ -6,7 +6,7 @@ import sys
 
 SENTENCE_DELIMITERS = ".!?"
 DOTTED_ABBRS = ['mil', 'ml', 'b', 'tis']
-ABBR_FOLLOWERS = ['Kč', ',']
+ABBR_FOLLOWERS = ['Kč', ',', 'EUR', 'USD']
 
 pre2_token = 'EOF'
 pre1_token = 'EOF'

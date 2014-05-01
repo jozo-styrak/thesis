@@ -105,7 +105,7 @@ class Frame:
                     elif self.vp_match_item.hasTag('p1') and 'actor' in slot.second_level_role and 'AG' in slot.first_level_role:
                         we_phrase = NPhrase('k1gInPc1', '0', '0', False)
                         # we_phrase.tokens.append(Token('Fio_kA', 'Fio_kA', 'k1gInPc1'))
-                        we_phrase.tokens.append(Token('Fio_STATE', 'Fio', 'k1gInPc1'))
+                        we_phrase.tokens.append(Token('Fio_ACTOR', 'Fio', 'k1gInPc1'))
                         clause.phrases.append(we_phrase)
                         role.setPhrase(we_phrase)
                         we_phrase.semantic_roles.append(role)

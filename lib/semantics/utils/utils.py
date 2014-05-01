@@ -28,6 +28,8 @@ class Utils:
                                 role.second_level_role = '<state_past:1>'
                             else:
                                 role.second_level_role = '<state_current:1>'
+                        else:
+                            role.invalid = True
                     # check price values
                     elif 'price_' in role.second_level_role:
                         if not Utils.isPriceEntity(phrase):
@@ -41,6 +43,8 @@ class Utils:
                                 role.second_level_role = '<price_past:1>'
                             else:
                                 role.second_level_role = '<price_current:1>'
+                        else:
+                            role.invalid = True
 
     # check whether given phrase is named entity
     @staticmethod

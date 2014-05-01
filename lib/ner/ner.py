@@ -22,7 +22,7 @@ from lib.POS_editor import getValueFromTag, inContextAfter, inContextBefore
 # pattern to identify real numbers
 REAL_NUMBER_PATTERN = re.compile('[\+-]*\d+[\.,/:]*\d*')
 # price follow
-NUM_FOLLOW = ['KČ', 'Kč', '%', 'euro', 'USD', 'mil', 'tis', 'PLN', 'NOK', 'HUN', 'GBP', 'AUD', 'JPY', 'CHF', 'RUB', 'eur', 'dolar', 'jen', 'CZK', 'czk', 'zloty', 'zlotý', 'b.']
+NUM_FOLLOW = ['KČ', 'Kč', '%', 'euro', 'EUR', 'USD', 'mil', 'tis', 'PLN', 'NOK', 'HUN', 'GBP', 'AUD', 'JPY', 'CHF', 'RUB', 'eur', 'dolar', 'jen', 'CZK', 'czk', 'zloty', 'zlotý', 'b.']
 # recommendation strings
 RECOMMENDATIONS = ['nákup', 'prodej', 'prodávat', 'držet', 'koupit', 'kupovat', 'redukovat', 'akumulovat', 'prodat', 'strong', 'buy', 'strong_buy', 'hold', 'sell', 'neutral', 'market', 'perform', 'underperform', 'underweight', 'accumulate', 'outperform', 'swap', 'overweight', 'reduce', 'equalweight', 'nadvážit', 'podvážit', 'market_perform']
 # recommendation PREFIX
@@ -64,10 +64,10 @@ def executeNER(buffered_sentences):
                 if not s[i][0] in NER_STOPWORDS + NUM_FOLLOW + RECOMMENDATIONS:
                     s[i][0] += '_ACTOR'
             # upper case first, other lower case
-            elif i > 0 and s[i][0][0].isupper() and len(s[i][0]) > 2 and s[i][0][1].islower():
+            elif i > 0 and s[i][0][0].isupper() and len(s[i][0]) > 2 and s[i][0][1].islower() and not s[i][0].lower() in RECOMMENDATIONS:
                 s[i][1] = s[i][0]
                 s[i][2] = 'kA'
-                if not s[i][1] in NER_STOPWORDS + NUM_FOLLOW + RECOMMENDATIONS:
+                if not s[i][0] in NER_STOPWORDS + NUM_FOLLOW + RECOMMENDATIONS:
                     s[i][0] += '_ACTOR'
             # at least two upper case letters
             elif len(s[i][0]) > 1 and s[i][0].isupper():

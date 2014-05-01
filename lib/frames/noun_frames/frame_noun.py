@@ -102,7 +102,9 @@ class FrameNoun:
                     #     r.relation = clause.containing_relation
                     #     clause.containing_relation.addNewRole(r)
                     r.relation = clause.containing_relation
-                    clause.containing_relation.addNewRole(r)
+                    # do not add unnecessary ellipsed role
+                    if r.phrase != None or (r.phrase == None and not clause.containing_relation.hasEllipsedRole(r.second_level_role)):
+                        clause.containing_relation.addNewRole(r)
 
                 # relations.append(clause.containing_relation)
         # return relations
