@@ -31,6 +31,8 @@ RECOMMENDATION_PREFIX = ['doporučení', 'titul', 'předchozí', 'stupeň', 'min
 NER_STOPWORDS = ['D']
 # agencies for tag changes
 AGENCIES = ['Goldman_Sachs', 'Morgan_Stanley', 'Credit_Suisse', 'Erste_Group', 'Nomura', 'Barclays']
+# non-price prefixes
+NON_PRICE = ['rok', 'leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec', 'jaro', 'léto', 'podzim', 'zima']
 
 def loadNamedEntities(f):
     entities = []
@@ -63,6 +65,13 @@ def executeNER(buffered_sentences):
                 s[i][1] = s[i][0]
                 if not s[i][0] in NER_STOPWORDS + NUM_FOLLOW + RECOMMENDATIONS:
                     s[i][0] += '_ACTOR'
+            # komercni banka exception
+            elif i > 0 and s[i-1][1] in ['komerční', 'Komerční'] and s[i][1] == 'banka':
+                if not s[i-1][0].endswith('_ACTOR'):
+                    s[i-1][0] += '_ACTOR'
+                s[i][0] += '_ACTOR'
+                # copy tag value
+                s[i-1][2] = s[i][2][:]
             # upper case first, other lower case
             elif i > 0 and s[i][0][0].isupper() and len(s[i][0]) > 2 and s[i][0][1].islower() and not s[i][0].lower() in RECOMMENDATIONS:
                 s[i][1] = s[i][0]
@@ -95,8 +104,8 @@ def executeNER(buffered_sentences):
                     pass
 
             # ----- RECOMMENDATIONS -----
-            # preposition + recommendation
-            elif s[i][1].lower() in RECOMMENDATIONS and i > 0 and 'k7' in s[i-1][2]:
+            # preposition/conjunction/comma + recommendation
+            elif s[i][1].lower() in RECOMMENDATIONS and i > 0 and ('k7' in s[i-1][2] or 'k8' in s[i-1][2] or s[i-1][1] in ',;:'):
                 s[i][1] = s[i][0]
                 s[i][2] = 'kA'
                 s[i][0] += '_STATE'
@@ -123,7 +132,7 @@ def executeNER(buffered_sentences):
                 s[i][0] += '_STATE'
 
             # ----- PRICE -----
-            elif REAL_NUMBER_PATTERN.match(s[i][0]):
+            elif REAL_NUMBER_PATTERN.match(s[i][0]) and (i == 0 or (i > 0 and not s[i][1].lower() in NON_PRICE)):
                 s[i][1] = s[i][0]
                 s[i][2] = 'k4'
                 s[i][0] += '_PRICE'

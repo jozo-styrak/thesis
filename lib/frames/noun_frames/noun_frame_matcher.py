@@ -37,8 +37,8 @@ class NounFrameMatcher(FrameMatcher):
                 # newer version: it is allowed to look for noun match only in sentences that:
                 # 1. contain already verb frame
                 # 2. doesn't contain verb
-                # 3. noun frame is of named entity type (NER)
-                if isinstance(noun, NamedEntity) or clause.containing_relation != None or not clause.containsVerbPhrase():
+                # 3. noun frame is of named entity type (NER) or recommendation type
+                if isinstance(noun, NamedEntity) or isinstance(noun, RecommendationEntity) or clause.containing_relation != None or not clause.containsVerbPhrase():
                     # for relation in noun.matchClauseTokens(clause):
                     # relations.append(relation)
                     noun.matchClauseTokens(clause)
