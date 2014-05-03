@@ -132,7 +132,7 @@ def executeNER(buffered_sentences):
                 s[i][0] += '_STATE'
 
             # ----- PRICE -----
-            elif REAL_NUMBER_PATTERN.match(s[i][0]) and (i == 0 or (i > 0 and not s[i][1].lower() in NON_PRICE)):
+            elif REAL_NUMBER_PATTERN.match(s[i][0]) and (i == 0 or (i > 0 and not s[i-1][1].lower() in NON_PRICE)):
                 s[i][1] = s[i][0]
                 s[i][2] = 'k4'
                 s[i][0] += '_PRICE'
