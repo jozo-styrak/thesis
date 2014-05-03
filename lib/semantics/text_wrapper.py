@@ -72,12 +72,16 @@ class TextWrapper:
 
     # apply constraints to all identified roles and delete invalid roles
     def applyConstraints(self):
+        # apply role constraints
         for sentence in self.sentences:
             Utils.applyConstraints(sentence)
+        # remove invalid roles
         for relation in self.relations:
+            updated_roles = []
             for role in relation.roles:
-                if role.invalid:
-                    relation.roles.remove(role)
+                if not role.invalid:
+                    updated_roles.append(role)
+            relation.roles = updated_roles
 
     # new coreference resolution method
     # slightly changed algorithm & returns just one item
