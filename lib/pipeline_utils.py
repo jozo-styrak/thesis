@@ -86,13 +86,14 @@ class PipelineUtils:
                     new_tokens.append(token)
                 elif not quote_start and token[0] == '\"':
                     quote_start = True
+                    quote_content[0] = '\"'
+                    quote_content[1] = '\"'
                 elif quote_start and token[0] != '\"':
                     quote_content[0] = quote_content[0] + '_' + token[0] if quote_content[0] != '' else token[0]
                     quote_content[1] = quote_content[1] + '_' + token[1] if quote_content[1] != '' else token[1]
                 elif quote_start and token[0] == '\"':
-                    # BONUS! if quote content is not in recommendations, add it there
-                    # if not quote_content[0].lower() in RECOMMENDATIONS:
-                    #     RECOMMENDATIONS.append(quote_content[0].lower())
+                    quote_content[0] += '_\"'
+                    quote_content[1] += '_\"'
                     new_tokens.append(quote_content)
                     quote_content = ['','','kA']
 

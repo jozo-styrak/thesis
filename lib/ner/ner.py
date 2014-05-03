@@ -24,7 +24,7 @@ REAL_NUMBER_PATTERN = re.compile('[\+-]*\d+[\.,/:]*\d*')
 # price follow
 NUM_FOLLOW = ['KČ', 'Kč', '%', 'euro', 'EUR', 'USD', 'mil', 'tis', 'PLN', 'NOK', 'HUN', 'GBP', 'AUD', 'JPY', 'CHF', 'RUB', 'eur', 'dolar', 'jen', 'CZK', 'czk', 'zloty', 'zlotý', 'b.']
 # recommendation strings
-RECOMMENDATIONS = ['nákup', 'prodej', 'prodávat', 'držet', 'koupit', 'kupovat', 'redukovat', 'akumulovat', 'prodat', 'strong', 'buy', 'strong_buy', 'hold', 'sell', 'neutral', 'market', 'perform', 'underperform', 'underweight', 'accumulate', 'outperform', 'swap', 'overweight', 'reduce', 'equalweight', 'nadvážit', 'podvážit', 'market_perform']
+# RECOMMENDATIONS = ['nákup', 'prodej', 'prodávat', 'držet', 'koupit', 'kupovat', 'redukovat', 'akumulovat', 'prodat', 'strong', 'buy', 'strong_buy', 'hold', 'sell', 'neutral', 'market', 'perform', 'underperform', 'underweight', 'accumulate', 'outperform', 'swap', 'overweight', 'reduce', 'equalweight', 'nadvážit', 'podvážit', 'market_perform', 'market-perform']
 # recommendation PREFIX
 RECOMMENDATION_PREFIX = ['doporučení', 'titul', 'předchozí', 'stupeň', 'minulé']
 # NER stoplist
@@ -34,19 +34,21 @@ AGENCIES = ['Goldman_Sachs', 'Morgan_Stanley', 'Credit_Suisse', 'Erste_Group', '
 # non-price prefixes
 NON_PRICE = ['rok', 'leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec', 'jaro', 'léto', 'podzim', 'zima']
 
-def loadNamedEntities(f):
-    entities = []
+def loadFromFile(f):
+    data = []
     for line in f.readlines():
         if len(line.strip()) > 0:
-            entities.append(line.strip())
-    return entities
+            data.append(line.strip())
+    return data
 
 # run NER on list of sentences
 def executeNER(buffered_sentences):
     new_sentences = []
 
     # load named entities
-    NAMED_ENTITES = loadNamedEntities(open('ner_data/named_entities.data', 'r'))
+    NAMED_ENTITES = loadFromFile(open('ner_data/named_entities.data', 'r'))
+    # load recommendations
+    RECOMMENDATIONS = loadFromFile(open('ner_data/recommendations.data', 'r'))
 
     # for each input sentence
     for sentence in buffered_sentences:
@@ -105,12 +107,14 @@ def executeNER(buffered_sentences):
 
             # ----- RECOMMENDATIONS -----
             # preposition/conjunction/comma + recommendation
-            elif s[i][1].lower() in RECOMMENDATIONS and i > 0 and ('k7' in s[i-1][2] or 'k8' in s[i-1][2] or s[i-1][1] in ',;:'):
+            elif (s[i][1].lower() in RECOMMENDATIONS or (s[i][0].startswith('\"_') and len(s[i][1]) > 4 and len(s[i][1]) < 20)) and i > 0 and ('k7' in s[i-1][2] or 'k8' in s[i-1][2] or s[i-1][1] in ',;:'):
+                if s[i][0].startswith('\"_'): s[i][0] = s[i][0][2:-2]
                 s[i][1] = s[i][0]
                 s[i][2] = 'kA'
                 s[i][0] += '_STATE'
             # recommendation prefix + recommendation
-            elif s[i][1].lower() in RECOMMENDATIONS and i > 0 and s[i-1][1].lower() in RECOMMENDATION_PREFIX:
+            elif (s[i][1].lower() in RECOMMENDATIONS or (s[i][0].startswith('\"_') and len(s[i][1]) > 4 and len(s[i][1]) < 20)) and i > 0 and s[i-1][1].lower() in RECOMMENDATION_PREFIX:
+                if s[i][0].startswith('\"_'): s[i][0] = s[i][0][2:-2]
                 s[i][1] = s[i][0]
                 s[i][2] = 'kA'
                 s[i][0] += '_STATE'
@@ -120,13 +124,9 @@ def executeNER(buffered_sentences):
                 s[i][2] = s[i+1][2]
                 s[i][0] += '_STATE'
                 s[i+1][0] += '_STATE'
-            # doporučení + token with _
-            elif i + 1 < len(s) and s[i][1].lower() in ['doporučení', 'titul'] and '_' in s[i+1][1]:
-                s[i+1][1] = s[i+1][0]
-                s[i+1][2] = 'kA'
-                s[i+1][0] += '_STATE'
             # in recommendation list and last in sentence
-            elif i == len(s) - 2 and s[i][0] in RECOMMENDATIONS:
+            elif i == len(s) - 2 and (s[i][0] in RECOMMENDATIONS or (s[i][0].startswith('\"_') and len(s[i][1]) > 4 and len(s[i][1]) < 20)):
+                if s[i][0].startswith('\"_'): s[i][0] = s[i][0][2:-2]
                 s[i][1] = s[i][0]
                 s[i][2] = 'kA'
                 s[i][0] += '_STATE'

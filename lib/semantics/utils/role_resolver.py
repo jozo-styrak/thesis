@@ -5,15 +5,21 @@ class RoleResolver:
 
     @staticmethod
     def resolveActorRoles(relations, sentences):
+
+        # common stocks
+        STOCK_NAMES = ['Apple', 'Twitter', 'BMW', 'Porsche', 'Audi', 'Siemens', 'Telefonica', 'Lufthansa', 'Volkswagen', 'Telecom', 'Orange_Polska']
+        # common agencies
+        AGENCY_NAMES = ['Berenberg', 'Guggenheim', 'Nomura', 'Barclays', 'Goldman_Sachs']
+
         for relation in relations:
             for role in relation.roles:
                 if role.second_level_role == '<actor:1>' and role.phrase != None:
 
                     # rules:
                     # is there word 'akcie', 'titul', ...? or 'agentura'
-                    if RoleResolver.wordPresenceRule(role.phrase, ['akcie', 'akcia', 'titul']):
+                    if RoleResolver.wordPresenceRule(role.phrase, ['akcie', 'akcia', 'titul'] + STOCK_NAMES):
                         role.second_level_role = '<actor_stock:1>'
-                    elif RoleResolver.wordPresenceRule(role.phrase, ['agentura']):
+                    elif RoleResolver.wordPresenceRule(role.phrase, ['agentura'] + AGENCY_NAMES):
                         role.second_level_role = '<actor_agency:1>'
                     # is there parenthesis with price value?
                     elif RoleResolver.parenthesisRule(role.phrase):

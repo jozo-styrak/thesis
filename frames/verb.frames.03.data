@@ -16,7 +16,7 @@ AG(kdo1;<actor_agency:1>;obl)+++VERB+++PAT(kdo4;<actor_stock:1>;obl)
 # note: used mainly in passive
 
 
-* zvýšit; zvyšovat
+* zvýšit; zvyšovat; navyšovat; navýšit
 
 AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení})
 # example: Nomura zvyšuje doporučení
@@ -64,7 +64,7 @@ AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl;{lemma:doporučení
 # example: Nomura změnila doporučení
 
 
-* obdržet; získat; získavat; dostat; dostávat; vysloužit
+* obdržet; získat; získavat; dostat; dostávat; vysloužit; nabýt; nabývat
 
 AG(kdo1;<actor_stock:1>;obl)+++VERB+++OBJ(co4;<state:1>;opt;{lemma:doporučení})
 # example: Apple obdrželo nové doporučení
@@ -111,7 +111,7 @@ AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(s čím7;<price:1>;obl;{lemma:cena})
 AG(kdo1;<actor_stock:1>;obl)+++VERB+++PAT(od čeho2;<actor_agency:1>;opt)+++OBJ(co4;<price_change:1>;opt)
 
 
-* růst; oslabovat; posilovat; posílit; vzrůst
+* růst; posilovat; posílit; vzrůst; vzrůst
 
 AG(kdo1;<actor_stock:1>;obl)+++VERB+++ATTR(na co4;<price_current:1>;opt)+++ATTR(o co4;<price_change:1>;opt)+++ATTR(z ceho2;<price_past:1>;opt)
 # example: Akcie Apple oslabují o 1,5% na 60USD
@@ -122,7 +122,7 @@ AG(kdo1;<actor_stock:1>;obl)+++VERB+++ATTR(na co4;<price_current:1>;opt)+++ATTR(
 AG(kdo1;<actor_stock:1>;obl)+++VERB+++ATTR(za co4;<price_current:1>;opt)
 
 
-* klesat; padat; oslabovat; oslabit
+* klesat; padat; oslabovat; oslabit; poklesnout
 
 AG(kdo1;<actor_stock:1>;obl)+++VERB+++ATTR(na co4;<price_current:1>;opt)+++ATTR(o co4;<price_change:1>;opt)+++ATTR(z ceho2;<price_past:1>;opt)
 

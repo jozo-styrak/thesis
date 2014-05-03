@@ -182,7 +182,7 @@ class Utils:
     # get price change information from kA string
     @staticmethod
     def extractPriceChange(entity_str):
-        PRICE_CHANGE_PATTERN = re.compile('([-+][0-9]*[,\.]+[0-9]*\ [^\)\(]*)')
+        PRICE_CHANGE_PATTERN = re.compile('([-+][0-9]+[,\.]*[0-9]*\ [^\)\(]*)')
         changes = PRICE_CHANGE_PATTERN.findall(entity_str)
         if len(changes) == 0:
             return None
