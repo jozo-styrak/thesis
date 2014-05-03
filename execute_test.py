@@ -16,7 +16,7 @@ folder_to = sys.argv[2] if sys.argv[2].endswith('/') else sys.argv[2] + '/'
 input_filenames = glob.glob(folder_from + '*.txt')
 
 # command
-command = '/home/xstyrak/thesis/shell_scripts/analyse_text_new.sh '
+command = '/home/xstyrak/thesis/shell_scripts/analyse_text.sh '
 
 # sequentially proces files
 for filepath in input_filenames:
