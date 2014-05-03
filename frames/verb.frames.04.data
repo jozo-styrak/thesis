@@ -1,0 +1,154 @@
+# Valence Frame file
+# verb frames
+# 02 newer version, complements for noun phrases are in different file
+# 03 removed dependency
+# 04 removed lemma attribute
+
+* snížit; snižovat
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl)+++ATTR(na co4;<state_current:1>;opt)+++ATTR(z čeho2;<state_past:1>;opt)
+# example: Nomura snižuje doporučení
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl)+++ATTR(na co4;<price_current:1>;opt)
+# example: Nomura snižuje cílovou cenu
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++PAT(kdo4;<actor_stock:1>;obl)
+# example: Nomura snižuje Apple
+# note: used mainly in passive
+
+
+* zvýšit; zvyšovat; navyšovat; navýšit
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl)
+# example: Nomura zvyšuje doporučení
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl)+++ATTR(na co4;<price_current:1>;opt)
+# example: Nomura zvyšuje cílovou cenu
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++PAT(kdo4;<actor_stock:1>;obl)
+# example: Nomura zvyšuje Apple
+# note: used mainly in passive
+
+
+* začít; začínat
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(inf;<action:1>;obl)+++PAT(co4;<actor_stock:1>;obl)
+# example: Nomura začína pokrývat akcie Apple
+
+
+* doporučovat
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<state_current:1>;obl)
+# example: Nomura doporučuje titul Neutral
+# note: add PAT?
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++PAT(co4;<actor_stock:1>;obl)+++ATTR(k čemu3;<state_current:1>;opt)
+# example: Nomura doporučuje akcie Apple (k čemu,...)
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(inf;<state_current:1>;obl)+++PAT(co4;<actor_stock:1>;obl)
+# example: Nomura doporučuje kupovat akcie Apple
+
+#AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(inf;<state_current:1>;obl)+++PAT(co4;<actor_stock:1>;obl)
+# example: Nomura doporučuje kupovat akcie Apple
+# note: because of dependencies, probably will delete
+
+
+* reagovat
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(čím7;<state_current:1>;obl)
+# example: Nomura reaguje doporučením Neutral
+
+
+* změnit
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl)+++PAT(pro co4|u čeho2;<actor_stock:1>;obl)+++ATTR(na co4;<state_current:1>;opt)+++ATTR(z ceho2;<state_past:1>;opt)
+# example: Nomura změnila doporučení
+
+
+* obdržet; získat; získavat; dostat; dostávat; vysloužit; nabýt; nabývat
+
+AG(kdo1;<actor_stock:1>;obl)+++VERB+++OBJ(co4;<state:1>;opt)
+# example: Apple obdrželo nové doporučení
+
+AG(kdo1;<actor_stock:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl)
+# example: Apple získalo novou cílovou cenu
+# note: both this frames can contain also specific information
+
+
+* stanovit; stanovovat; dávat; ponechat; ponechávat; vydávat; vydat; přiradit
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl)
+# example: Nomura dáva novú cenu
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<state:1>;obl)
+# example: Nomura ponecháva doporučení Neutral
+
+
+* prodávat; prodat
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++PAT(co4;<actor_stock:1>;obl)
+# example: Nomura by prodávala akcie Apple
+
+
+* radit
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(inf;<action:1>;obl)+++PAT(co4;<actor_stock:1>;opt)
+# example: Nomura radí prodávat akcie Apple
+
+
+* čekat; očekávat
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<price:1>;obl)
+# example: Nomura očekáva cenu 65USD
+
+
+* přijít; příst
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(s čím7;<price:1>;obl)
+# example: Nomura přisla s novou cílovou cenou
+
+
+* připsat; připísat; připisovat
+AG(kdo1;<actor_stock:1>;obl)+++VERB+++PAT(od čeho2;<actor_agency:1>;opt)+++OBJ(co4;<price_change:1>;opt)
+
+
+* růst; posilovat; posílit; vzrůst; vzrůst
+
+AG(kdo1;<actor_stock:1>;obl)+++VERB+++ATTR(na co4;<price_current:1>;opt)+++ATTR(o co4;<price_change:1>;opt)+++ATTR(z ceho2;<price_past:1>;opt)
+# example: Akcie Apple oslabují o 1,5% na 60USD
+
+
+* obchodovat
+
+AG(kdo1;<actor_stock:1>;obl)+++VERB+++ATTR(za co4;<price_current:1>;opt)
+
+
+* klesat; padat; oslabovat; oslabit; poklesnout
+
+AG(kdo1;<actor_stock:1>;obl)+++VERB+++ATTR(na co4;<price_current:1>;opt)+++ATTR(o co4;<price_change:1>;opt)+++ATTR(z ceho2;<price_past:1>;opt)
+
+
+* nakupovat; kupovat
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++PAT(co4;<actor_stock:1>;obl)
+
+
+* ztrácet; ztratit
+
+AG(kdo1;<actor_stock:1>;obl)+++VERB+++OBJ(co4;<price_change:1>;obl)
+
+
+* potvrzovat; potvrzit
+
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<price_current:1>;obl)
+AG(kdo1;<actor_agency:1>;obl)+++VERB+++OBJ(co4;<state_current:1>;obl)
+
+
+* těžit
+
+AG(kdo1;<actor_stock:1>;obl)+++VERB+++OBJ(z čeho2;<state_current:1>;obl)
+
+
+* dařit
+
+AG(kdo1;<none:1>;obl)+++VERB+++PAT(čemu3;<actor_stock:1>;obl)
