@@ -52,12 +52,15 @@ class RoleResolver:
         return present
 
     # checks for presence of numbered value in parenthesis
+    # new version: not just price, but abbr in general
     @staticmethod
     def parenthesisRule(phrase):
+        parenthesis_pattern = re.compile('.*\([^\)]*\).*')
         joined_tokens = ''
         for token in phrase.tokens:
             joined_tokens += token.value
-        return RoleResolver.containsPriceValue(joined_tokens)
+        # return RoleResolver.containsPriceValue(joined_tokens)
+        return parenthesis_pattern.match(joined_tokens)
 
     # sub method for presence of parenthesised numeric value in STRING representation
     @staticmethod

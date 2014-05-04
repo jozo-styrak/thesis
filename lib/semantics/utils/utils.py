@@ -144,6 +144,7 @@ class Utils:
                 entity_list.append(token.value[:-6])
         return entity_list
 
+    # returns all named entities contained in phrase tokens as string representations
     @staticmethod
     def getNumberEntityString(phrase):
         # # look for number entity
@@ -197,3 +198,26 @@ class Utils:
             if not letter in '( )' and not letter.isupper():
                 abbreviation = False
         return abbreviation
+
+    # returns parts of given string - name, abbreviation, price
+    # return type is dictionary
+    @staticmethod
+    def getEntityParts(value):
+        parts = {}
+        try:
+            # contains abbreviation?
+            if '(' in value and value.endswith(')'):
+                if not value.startswith('('):
+                    parts['name'] = value[:value.find('(')].strip()
+                parts['abbreviation'] = value[value.find('('):][1:-1].split()[0].strip()
+                price_change = Utils.extractPriceChange(value[value.find('('):])
+                if price_change != None:
+                    parts['price change'] = price_change
+            else:
+                if value.isupper():
+                    parts['abbreviation'] = value.strip()
+                else:
+                    parts['name'] = value.strip()
+        except:
+            parts['name'] = value
+        return parts

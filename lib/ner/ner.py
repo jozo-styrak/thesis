@@ -71,7 +71,7 @@ def executeNER(buffered_sentences):
             elif i > 0 and s[i-1][1] in ['komerční', 'Komerční'] and s[i][1] == 'banka':
                 if not s[i-1][0].endswith('_ACTOR'):
                     s[i-1][0] += '_ACTOR'
-                s[i][0] += '_ACTOR'
+                s[i][0] = 'banka_ACTOR'
                 # copy tag value
                 s[i-1][2] = s[i][2][:]
             # upper case first, other lower case

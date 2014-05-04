@@ -1,3 +1,4 @@
+import json
 from lib.semantics.utils.utils import Utils
 from lib.semantics.utils.role_resolver import RoleResolver
 
@@ -36,12 +37,24 @@ class OutputWrapper:
                         in_hashmap = True
                         current = self.output_objects[stock_key]
 
-                    # add stock attribute and possible price change
-                    if not 'stock' in current.keys():
-                        current['stock'] = stock_key
-                        price_change = Utils.extractPriceChange(stock_key)
-                        if  price_change != None:
-                            current['price change'] = price_change
+                    # # add name or abbreviation title
+                    # if Utils.isStockAbbreviation(stock_str):
+                    #     if not 'stock abbreviation' in current.keys():
+                    #         current['stock abbreviation'] = stock_str
+                    # elif not 'stock name' in current.keys():
+                    #     current['stock name'] = stock_str
+                    #
+                    # # add price change
+                    # price_change = Utils.extractPriceChange(stock_str)
+                    # if price_change != None:
+                    #     current['price change'] = price_change
+                    entity_parts = Utils.getEntityParts(stock_str)
+                    if 'name' in entity_parts.keys() and not 'name' in current.keys():
+                        current['stock name'] = entity_parts['name']
+                    if 'abbreviation' in entity_parts.keys() and not 'stock abbreviation' in current.keys():
+                        current['stock abbreviation'] = entity_parts['abbreviation']
+                    if 'price change' in entity_parts.keys() and not 'price change' in current.keys():
+                        current['price change'] = entity_parts['price change']
 
                     # resolve agencies
                     agencies = self.getAgencies(relation)
@@ -69,7 +82,7 @@ class OutputWrapper:
                             # add agency attr.
                             if not agency_key in current['agencies'].keys():
                                 current['agencies'][agency_key] = {}
-                                current['agencies'][agency_key]['agency'] = agency_key
+                                current['agencies'][agency_key]['agency name'] = agency_key
 
                             # agency recommendations
                             for recommendation in relation.getRolesWithBase('state'):
@@ -191,5 +204,4 @@ class OutputWrapper:
                             print '\t\t' + sub_key + ' : ' + output_object[key][agency_key][sub_key]
 
     def renderJSON(self):
-        for output_object in self.output_objects.itervalues():
-            print output_object
+        print json.dumps(self.output_objects, ensure_ascii=False)
