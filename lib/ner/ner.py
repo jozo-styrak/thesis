@@ -107,13 +107,13 @@ def executeNER(buffered_sentences):
 
             # ----- RECOMMENDATIONS -----
             # preposition/conjunction/comma + recommendation
-            elif (s[i][1].lower() in RECOMMENDATIONS or (s[i][0].startswith('\"_') and len(s[i][1]) > 4 and len(s[i][1]) < 20)) and i > 0 and ('k7' in s[i-1][2] or 'k8' in s[i-1][2] or s[i-1][1] in ',;:'):
+            elif (s[i][1].lower() in RECOMMENDATIONS or s[i][0].lower() in RECOMMENDATIONS or (s[i][0].startswith('\"_') and len(s[i][1]) > 4 and len(s[i][1]) < 20)) and i > 0 and ('k7' in s[i-1][2] or 'k8' in s[i-1][2] or s[i-1][1] in ',;:'):
                 if s[i][0].startswith('\"_'): s[i][0] = s[i][0][2:-2]
                 s[i][1] = s[i][0]
                 s[i][2] = 'kA'
                 s[i][0] += '_STATE'
             # recommendation prefix + recommendation
-            elif (s[i][1].lower() in RECOMMENDATIONS or (s[i][0].startswith('\"_') and len(s[i][1]) > 4 and len(s[i][1]) < 20)) and i > 0 and s[i-1][1].lower() in RECOMMENDATION_PREFIX:
+            elif (s[i][1].lower() in RECOMMENDATIONS or s[i][0].lower() in RECOMMENDATIONS or (s[i][0].startswith('\"_') and len(s[i][1]) > 4 and len(s[i][1]) < 20)) and i > 0 and s[i-1][1].lower() in RECOMMENDATION_PREFIX:
                 if s[i][0].startswith('\"_'): s[i][0] = s[i][0][2:-2]
                 s[i][1] = s[i][0]
                 s[i][2] = 'kA'
