@@ -156,7 +156,7 @@ def connectTokens(sentence):
             new_sentence[len(new_sentence)-1][0] += '_' + sentence[i][0][:sentence[i][0].rfind('_')] + '_' + tag
             new_sentence[len(new_sentence)-1][1] += '_' + sentence[i][0][:sentence[i][0].rfind('_')]
         # connects price and sufix
-        elif getTag(sentence[i-1][0]) == 'PRICE' and sentence[i][0] in NUM_FOLLOW:
+        elif getTag(sentence[i-1][0]) == 'PRICE' and (sentence[i][0] in NUM_FOLLOW or sentence[i][1] in NUM_FOLLOW):
             new_sentence[len(new_sentence)-1][0] = new_sentence[len(new_sentence)-1][0][:new_sentence[len(new_sentence)-1][0].rfind('_')]
             new_sentence[len(new_sentence)-1][0] += '_' + sentence[i][0] + '_PRICE'
             new_sentence[len(new_sentence)-1][1] += '_' + sentence[i][1]
