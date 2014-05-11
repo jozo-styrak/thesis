@@ -29,9 +29,6 @@ class FrameNoun:
     # return candidate phrases for complements for given phrase for containing clause
     def getCandidatePhrases(self, clause, phrase):
         phrases = self.generateDependencyTree(clause, phrase)
-        # for phr in clause.getSucceedingPhrases(phrase):
-        #     if isinstance(phr, NPhrase) and phr.dependent_on == None and phr not in phrases:
-        #         phrases.append(phr)
         return phrases
 
     # unmatch all complements after usage
@@ -50,10 +47,6 @@ class FrameNoun:
                 # relation = None
                 roles = []
 
-                # for now, if phrase is already in a relation, use this relation
-                # if len(phrase.semantic_roles) > 0:
-                #     relation = phrase.semantic_roles[0].getRelation()  # use first, but they're all the same
-
                 # if clause doesn't have containing relation, create one
                 if clause.containing_relation == None:
                     clause.containing_relation = SemanticRelation()
@@ -68,9 +61,6 @@ class FrameNoun:
                     role.setPhrase(phrase)
                     phrase.addSemanticRole(role)
                     roles.append(role)
-                # else:
-                #     # use this relation
-                #     relation = phrase.findRoleAndUpgrade(self.role).getRelation()
 
                 # match complements
                 for complement in self.complements:
@@ -91,23 +81,14 @@ class FrameNoun:
                         if not complement.matched and complement.isObligatory():
                             role = SemanticRole(complement.first_level_role, complement.second_level_role)
                             roles.append(role)
-                # # if there was no relation detected, create new one
-                # if relation == None:
-                #     relation = SemanticRelation()
 
                 # add roles to relation
                 # remove unnecessary ellipsed roles -  not in current version
                 for r in roles:
-                    # if not (r.phrase == None and clause.containing_relation.getSecondLevelRole(r.second_level_role) != None):
-                    #     r.relation = clause.containing_relation
-                    #     clause.containing_relation.addNewRole(r)
                     r.relation = clause.containing_relation
                     # do not add unnecessary ellipsed role
                     if r.phrase != None or (r.phrase == None and not clause.containing_relation.hasEllipsedRole(r.second_level_role)):
                         clause.containing_relation.addNewRole(r)
-
-                # relations.append(clause.containing_relation)
-        # return relations
 
     # abstract method
     def matchesPhrase(self, phrase):

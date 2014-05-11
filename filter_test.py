@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# filter texts from given directory to found matching string
+# used for extraction of recommendation news from larger datasets
 import sys
 
 f = open(sys.argv[1].strip(),'r')

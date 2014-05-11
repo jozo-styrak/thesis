@@ -1,15 +1,15 @@
 #!/usr/bin/env python
-''' module for parsing dependency output of set utility '''
-''' newer version - more object oriented'''
+# module for parsing dependency output of set utility
+# newer version - bit more object oriented
 import re
 from lib.sentence.sentence import Sentence
 
-
+# patterns for extraction
 TAG_PATTERN = re.compile("^<(.*?)>(.*)$")
 DEPENDENCY_PATTERN = re.compile("^\[([\d, ]*?)\] ->>> \[([\d, ]*?)\]$")
 
 
-''' method parses set input file and creates Sentence object '''
+# method parses set input file and creates Sentence object
 def parse(f):
     sentences = []
     lines = f.readlines()
@@ -62,9 +62,9 @@ def parse(f):
     return sentences
 
 
-''' applies patterns to the input line '''
-''' if it is standard line, returns token information '''
-''' if it is line with dependency ([1] ->>> [2]) returns this information '''
+# applies patterns to the input line
+# if it is standard line, returns token information
+# if it is line with dependency ([1] ->>> [2]) returns this information
 def getTagAndData(line):
     if TAG_PATTERN.match(line):
         return TAG_PATTERN.search(line).groups()
@@ -74,7 +74,7 @@ def getTagAndData(line):
         return False
      
         
-''' class representing one line from set output '''
+# class representing one line from set output
 class OutputLine:
     
     def __init__(self, line):

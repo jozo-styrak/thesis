@@ -39,11 +39,8 @@ class NounFrameMatcher(FrameMatcher):
                 # 2. doesn't contain verb
                 # 3. noun frame is of named entity type (NER) or recommendation type
                 if isinstance(noun, NamedEntity) or isinstance(noun, RecommendationEntity) or clause.containing_relation != None or not clause.containsVerbPhrase():
-                    # for relation in noun.matchClauseTokens(clause):
-                    # relations.append(relation)
                     noun.matchClauseTokens(clause)
                     noun.resetFrame()
-        # return relations
 
     def printFrames(self):
         for noun in self.noun_frames:

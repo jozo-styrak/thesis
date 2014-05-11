@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+# old module script containing methods for text extraction from fio website
+# much would have been done differently, but nobody got time for that
 from urllib import urlopen
 import re
 

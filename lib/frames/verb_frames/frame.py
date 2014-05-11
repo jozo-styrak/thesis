@@ -112,7 +112,6 @@ class Frame:
                     # don't add new ellipsed role
                     if role.phrase != None or (role.phrase == None and not clause.containing_relation.hasEllipsedRole(slot.second_level_role)):
                         clause.containing_relation.addNewRole(role)
-        # return clause.containing_relation
 
     # after matching remove matched items
     def resetFrame(self):

@@ -1,6 +1,6 @@
 from lib.sentence.phrases import NPhrase, VPhrase, Clause
 
-
+# class representing one word token - one line from desamb output with added semantic roles
 class Token:
     def __init__(self, value, lemma, tag):
         self.value = value
@@ -12,7 +12,9 @@ class Token:
         # return self.value + ' (' + ', '.join(self.semantic_roles) + ')' if self.semantic_roles != [] else self.value
         return self.value
 
-
+# class representing whole sentence structure
+# created from set output
+# contains list of clause objects, which contain phrases
 class Sentence:
     def __init__(self, value, lemma, tag):
         self.tokens = []
@@ -31,12 +33,14 @@ class Sentence:
                 ret_token = token
         return ret_token
 
+    # return list of tokens of given phrase
     def getPhraseTokens(self, phrase):
         ret_tokens = []
         for token in phrase.split():
             ret_tokens.append(self.getTokenByValue(token))
         return ret_tokens
 
+    # based on num identification in set output
     def getPhraseByNum(self, num):
         ret_phrase = None
         for clause in self.clauses:
@@ -97,38 +101,3 @@ class Sentence:
         for token in self.tokens:
             values.append(str(token))
         return ' '.join(values)
-
-    # ''' adds semantic information to sentence + checks if is relevant '''
-    # def addSemanticRoles(self, valency_slots):
-    #     if len(valency_slots) > 0:
-    #         self.relevant_sentence = True
-    #         for valency_slot in valency_slots:
-    #             token = self.getTokenByValue(valency_slot.word)
-    #             if token != None:
-    #                 token.semantic_roles = valency_slot.roles
-    #
-    # ''' redirects recommendation information dependency to point to the verb '''
-    # ''' currently unused '''
-    # def redirectRecommendationDependancy(self):
-    #     for clause in self.clauses:
-    #         for phrase in clause.phrases:
-    #             if isinstance(phrase, NPhrase) and phrase.tokens[0].tag.startswith('k7') and phrase.tokens[0].value.find('_') != -1:
-    #                 phrase.dependentOn = clause.getVPhrase()
-    #
-    # def containsLemma(self, lemma):
-    #     ret = False
-    #     for clause in self.clauses:
-    #         for phrase in clause.phrases:
-    #             for token in phrase.tokens:
-    #                 if lemma == token.lemma:
-    #                     ret = True
-    #     return ret
-    #
-    # def containsLemmaSubstring(self, lemma):
-    #     ret = False
-    #     for clause in self.clauses:
-    #         for phrase in clause.phrases:
-    #             for token in phrase.tokens:
-    #                 if token.lemma.find(lemma) != -1:
-    #                     ret = True
-    #     return ret

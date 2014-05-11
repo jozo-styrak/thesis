@@ -27,6 +27,7 @@ class LemmaAttribute(TokenAttribute):
         return '{lemma=' + str(self.value) + '}'
 
 # attribute redefinies dependency for given slot
+# CURRENTLY UNUSED - left here, just in case
 class DependencyAttribute(TokenAttribute):
 
     # positive number identifies slot in frame

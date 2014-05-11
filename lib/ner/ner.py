@@ -1,17 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # module for task connected with named entity recognition
-# simple pipeline
-#       desamb
-#         |
-#         V
-#        NER  (spoj zátvorky a úvodzovky/tag kA -> identifikácia menných entít, cien a doporučení (jeden cyklus?) -> spoj rovnako otagované entity za sebou -> spoj price a sufix )
-#         |
-#         V
-# syntaktický preprocesor (urči tagy)
-#         |
-#         V
-#        SET
+# also syntactic preprocessing
 
 import re
 from lib.pipeline_utils import PipelineUtils
@@ -34,6 +24,7 @@ AGENCIES = ['Goldman_Sachs', 'Morgan_Stanley', 'Credit_Suisse', 'Erste_Group', '
 # non-price prefixes
 NON_PRICE = ['rok', 'leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec', 'jaro', 'léto', 'podzim', 'zima']
 
+# loading named entities and recommendations
 def loadFromFile(f):
     data = []
     for line in f.readlines():

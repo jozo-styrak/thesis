@@ -4,7 +4,7 @@
 # args: set_output_file
 import sys
 
-from lib import set_parser_ver02
+from lib import set_output_parser
 from lib.frames.verb_frames.verb_frame_matcher import VerbFrameMatcher
 from lib.frames.noun_frames.noun_frame_matcher import NounFrameMatcher
 from lib.semantics.text_wrapper import TextWrapper
@@ -12,7 +12,7 @@ from lib.semantics.output.output_wrapper import OutputWrapper
 
 # read set output file
 set_output_file = open(sys.argv[1], 'r')
-sentences = set_parser_ver02.parse(set_output_file)
+sentences = set_output_parser.parse(set_output_file)
 
 # debug sentences
 for sentence in sentences:

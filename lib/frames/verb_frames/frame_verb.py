@@ -21,16 +21,9 @@ class FrameVerb:
     def matchClause(self, clause):
         vp_match = self.inClause(clause)
         if vp_match != None:  # does the verb match?
-            # relations = []
             for frame in self.frames:  # try to pass on verbal frames
                 frame.setMatchVerb(vp_match)  # set matching lemma from valence verbs and matching phrase from clause
-                # relation = frame.matchFrame(clause)  # try to match given frame
-                # if relation:
-                #     relations.append(relation)  # add semantic relation
                 frame.matchFrame(clause)
-        #     return relations
-        # else:
-        #     return []
 
     # after matching, reset matched items
     def resetFrames(self):

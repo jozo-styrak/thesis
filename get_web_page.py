@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# extract text from one web page
 # takes one argument - url of web page
 from urllib import urlopen
 import sys

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # file contains class declarations for sentence analysis
-# includes classes for set processing with aided semantic information from verbalex
+# includes classes for set processing with added semantic information from verbalex
 
 
 # Classes representing sentence structure
@@ -151,9 +151,6 @@ class Phrase:
         values = []
         for token in self.tokens:
             values.append(token.value)
-        # semantics = ''
-        # for role in self.semantic_roles:
-        #     semantics += str(role)
         return ' '.join(values)
 
 class VPhrase(Phrase):

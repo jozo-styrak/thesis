@@ -1,7 +1,3 @@
-# this goes for all the classes in semantics:
-# i have to think about the necessity of grouping roles into relations
-# currently the reason is to connect agent and patient, to resolve coreference
-
 # class representing one relation among different entities
 class SemanticRelation:
 
@@ -68,8 +64,8 @@ class SemanticRelation:
                 roles.append(role)
         return roles
 
-    # check whether relation contains output information
-    def isOutputSuitable(self):
+    # check whether relation contains any specific relevant information
+    def containsSpecificInformation(self):
         suitable = False
         for price in self.getRolesWithBase('price'):
             if '_' in price.second_level_role:

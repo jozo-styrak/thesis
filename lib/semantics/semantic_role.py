@@ -2,9 +2,7 @@
 
 from lib.semantics.utils.utils import Utils
 
-# does role need to have information about the referencing phrase/token??
-
-# class representing semantic role which translates to verbalex roles
+# class representing semantic role which translates to verbalex roles - sort of
 class SemanticRole:
 
     def __init__(self, first_lvl_role, second_lvl_role):

@@ -31,15 +31,10 @@ class VerbFrameMatcher(FrameMatcher):
 
     # try all verbal frames for given sentence
     def matchFrames(self, sentence):
-        # relations = []  # buffer for extracted relations for given sentence
         for clause in sentence.clauses:
             for verb in self.verbs:
-                # match given verb for given clause from sentence
-                # for relation in verb.matchClause(clause):
-                #     relations.append(relation)
                 verb.matchClause(clause)
                 verb.resetFrames()
-        # return relations
 
     def printFrames(self):
         for verb in self.verbs:

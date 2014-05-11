@@ -9,7 +9,6 @@ class TextWrapper:
     def __init__(self, sentences):
         self.relations = []
         self.sentences = sentences
-        # self.fetchRelations()
 
     # collects relations into relation list from given sentences
     def fetchRelations(self):

@@ -19,7 +19,7 @@ class OutputWrapper:
         for relation in self.text_wrapper.relations:
 
             # relevancy of output
-            if relation.containsMainInformation() and relation.isOutputSuitable():
+            if relation.containsMainInformation() and relation.containsSpecificInformation():
 
                 # for each stock in relation
                 for stock_str in self.getStocks(relation):

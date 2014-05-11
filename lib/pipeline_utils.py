@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# simple class with static methods for processing of pipelined outputs, mainly in vertical
 class PipelineUtils:
 
     # from list of sentences buffer lines for each sentence

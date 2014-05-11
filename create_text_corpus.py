@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+# downloads web page contents to given directory
 import sys
 
 from lib.web_extraction import web_utils
