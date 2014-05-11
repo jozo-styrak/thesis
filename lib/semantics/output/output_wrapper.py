@@ -49,7 +49,7 @@ class OutputWrapper:
                     # if price_change != None:
                     #     current['price change'] = price_change
                     entity_parts = Utils.getEntityParts(stock_str)
-                    if 'name' in entity_parts.keys() and not 'name' in current.keys():
+                    if 'name' in entity_parts.keys() and not 'stock name' in current.keys():
                         current['stock name'] = entity_parts['name']
                     if 'abbreviation' in entity_parts.keys() and not 'stock abbreviation' in current.keys():
                         current['stock abbreviation'] = entity_parts['abbreviation']
@@ -204,4 +204,14 @@ class OutputWrapper:
                             print '\t\t' + sub_key + ' : ' + output_object[key][agency_key][sub_key]
 
     def renderJSON(self):
-        print json.dumps(self.output_objects, ensure_ascii=False)
+        for key in self.output_objects.keys():
+            # needed conversion for agencies keys
+            json_obj = {}
+            for k in self.output_objects[key].keys():
+                if k != 'agencies':
+                    json_obj[k] = self.output_objects[key][k]
+                else:
+                    json_obj['agencies'] = []
+                    for agency in self.output_objects[key]['agencies'].keys():
+                        json_obj['agencies'].append(self.output_objects[key]['agencies'][agency])
+            print json.dumps(json_obj, ensure_ascii=False)

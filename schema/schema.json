@@ -1,0 +1,79 @@
+{
+	"type":"object",
+	"$schema": "http://stock.recommendations.cz/schema",
+	"id": "http://stock.recommendations.cz",
+	"required":false,
+	"properties":{
+		"agencies": {
+			"type":"array",
+			"id": "http://stock.recommendations.cz/agencies",
+			"required":false,
+			"items":
+				{
+					"type":"object",
+					"id": "http://stock.recommendations.cz/agencies/0",
+					"required":false,
+					"properties":{
+						"agency name": {
+							"type":"string",
+							"id": "http://stock.recommendations.cz/agencies/0/agency name",
+							"required":false
+						},
+						"current price": {
+							"type":"string",
+							"id": "http://stock.recommendations.cz/agencies/0/current price",
+							"required":false
+						},
+						"current recommendation": {
+							"type":"string",
+							"id": "http://stock.recommendations.cz/agencies/0/current recommendation",
+							"required":false
+						},
+						"past price": {
+							"type":"string",
+							"id": "http://stock.recommendations.cz/agencies/0/past price",
+							"required":false
+						},
+						"past recommendation": {
+							"type":"string",
+							"id": "http://stock.recommendations.cz/agencies/0/past recommendation",
+							"required":false
+						},
+						"price change": {
+							"type":"string",
+							"id": "http://stock.recommendations.cz/agencies/0/price change",
+							"required":false
+						}
+					}
+				}
+
+
+		},
+		"current price": {
+			"type":"string",
+			"id": "http://stock.recommendations.cz/current price",
+			"required":false
+		},
+		"past price": {
+			"type":"string",
+			"id": "http://stock.recommendations.cz/past price",
+			"required":false
+		},
+		"price change": {
+			"type":"string",
+			"id": "http://stock.recommendations.cz/price change",
+			"required":false
+		},
+		"stock abbreviation": {
+			"type":"string",
+			"id": "http://stock.recommendations.cz/stock abbreviation",
+			"required":false
+		},
+		"stock name": {
+			"type":"string",
+			"id": "http://stock.recommendations.cz/stock name",
+			"required":false
+		}
+	}
+}
+
