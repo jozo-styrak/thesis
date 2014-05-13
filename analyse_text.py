@@ -16,12 +16,14 @@ sentences = set_output_parser.parse(set_output_file)
 
 # debug sentences
 for sentence in sentences:
-    print "\n" + str(sentence)
-    for clause in sentence.clauses:
-        print "<clause>"
-        for phrase in clause.phrases:
-            print phrase
-    print
+    print str(sentence)
+    # for clause in sentence.clauses:
+    #     print "<clause>"
+    #     for phrase in clause.phrases:
+    #         print phrase
+    # print
+
+print "-------------------------------------------------------------------------------------"
 
 # load frame matchers
 f_v = open('frames/verb.frames.03.data', 'r')

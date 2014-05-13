@@ -37,9 +37,9 @@ class TextWrapper:
         self.applyConstraints()
 
         # debug
-        print '\n---------------------------------------------------'
-        self.printRelations()
-        print '---------------------------------------------------'
+        # print '\n---------------------------------------------------'
+        # self.printRelations()
+        # print '---------------------------------------------------'
 
         # look over all relations
         for relation in self.relations:

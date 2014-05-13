@@ -11,5 +11,3 @@ if file_content.find(sys.argv[2].strip()) != -1:
     print sys.argv[1], ' - MATCH FOUND!'
     print file_content
     print ""
-else:
-    print sys.argv[1], ' - NONE'
