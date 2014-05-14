@@ -1,11 +1,10 @@
 #!/bin/sh
-# variant to process_text.sh
-/home/xstyrak/thesis/shell_scripts/unitok.py -n  |\
+./pipeline_scripts/unitok.py -n  |\
 iconv -f utf-8 -t iso-8859-2 -c |\
 
 # desamb preprocessing
-/home/xstyrak/thesis/add_s_tags.py |\
-/home/xstyrak/thesis/preprocess.py |\
+./pipeline_scripts/add_s_tags.py |\
+./pipeline_scripts/preprocess.py |\
 
 /nlp/projekty/ajka/bin/ajka -n -c - |\
 perl -pe '
@@ -77,4 +76,3 @@ perl -pe 's/<[^\t]+>\K\t.*//' |\
 
 # output postprocessing
 iconv -f iso-8859-2 -t utf-8 2>/dev/null
-#/home/xstyrak/thesis/postprocess.py /home/xstyrak/thesis/desamb/replacement.utf8.data

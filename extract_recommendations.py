@@ -17,12 +17,6 @@ sentences = set_output_parser.parse(set_output_file)
 # debug sentences
 for sentence in sentences:
     print str(sentence)
-    # for clause in sentence.clauses:
-    #     print "<clause>"
-    #     for phrase in clause.phrases:
-    #         print phrase
-    # print
-
 print "-------------------------------------------------------------------------------------"
 
 # load frame matchers
@@ -31,14 +25,14 @@ verb_matcher = VerbFrameMatcher(f_v)
 f_n = open('frames/noun.frames.02.data', 'r')
 noun_matcher = NounFrameMatcher(f_n)
 
-# create text wrapper
+# create text wrapper - contains the whole text
 text_wrapper = TextWrapper(sentences)
 
 # apply frames
 text_wrapper.matchSentences(verb_matcher)
 text_wrapper.matchSentences(noun_matcher)
 
-# process relations
+# process relations - discourse analysis
 text_wrapper.processRelations()
 
 # create output
