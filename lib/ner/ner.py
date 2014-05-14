@@ -37,9 +37,9 @@ def executeNER(buffered_sentences):
     new_sentences = []
 
     # load named entities
-    NAMED_ENTITES = loadFromFile(open('ner_data/named_entities.data', 'r'))
+    NAMED_ENTITES = loadFromFile(open('../ner_data/named_entities.data', 'r'))
     # load recommendations
-    RECOMMENDATIONS = loadFromFile(open('ner_data/recommendations.data', 'r'))
+    RECOMMENDATIONS = loadFromFile(open('../ner_data/recommendations.data', 'r'))
 
     # for each input sentence
     for sentence in buffered_sentences:
