@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # main script
 # run from shell script analyse_text_new
-# args: set_output_file
+# args: set_output_file -s -o (output options)
 import sys
-
 from lib import set_output_parser
 from lib.frames.verb_frames.verb_frame_matcher import VerbFrameMatcher
 from lib.frames.noun_frames.noun_frame_matcher import NounFrameMatcher
@@ -14,10 +13,21 @@ from lib.semantics.output.output_wrapper import OutputWrapper
 set_output_file = open(sys.argv[1], 'r')
 sentences = set_output_parser.parse(set_output_file)
 
+# check for other cmd options
+s_out = False
+o_out = False
+if len(sys.argv) > 2:
+    for arg in sys.argv[2:]:
+        if arg.strip() == '-s':
+            s_out = True
+        elif arg.strip() == '-o':
+            o_out = True
+
 # debug sentences
-for sentence in sentences:
-    print str(sentence)
-print "-------------------------------------------------------------------------------------"
+if s_out:
+    for sentence in sentences:
+        print str(sentence)
+    print
 
 # load frame matchers
 f_v = open('frames/verb.frames.03.data', 'r')
@@ -38,5 +48,7 @@ text_wrapper.processRelations()
 # create output
 output_wrapper = OutputWrapper(text_wrapper)
 output_wrapper.createOutputObjects()
-output_wrapper.renderOutput()
+if o_out:
+    output_wrapper.renderOutput()
+    print
 output_wrapper.renderJSON()

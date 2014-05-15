@@ -23,7 +23,7 @@ command = './extract_recommendations.sh '
 for filepath in input_filenames:
     try:
         filename = filepath[filepath.rfind('/')+1:]
-        test_command = command + filepath + ' > ' + folder_to + filename
+        test_command = command + filepath + ' -s -o' + ' > ' + folder_to + filename
         os.system(test_command)
     except:
         print 'error processing file ' + filepath
