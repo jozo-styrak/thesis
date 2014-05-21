@@ -38,12 +38,12 @@ echo "Error reading command line arguments"
 else
 
 # the main code
-set_output="$(mktemp)"
+#set_output="$(mktemp)"
 
 cat $filestream |\
 ./tag_stream.sh |\
 ./ner_script.py |\
-./set.sh > $set_output
-./extract_recommendations.py "$set_output" "$s_out" "$o_out"
+./set.sh |\
+./extract_recommendations.py "$s_out" "$o_out"
 
 fi

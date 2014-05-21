@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # main script
-# run from shell script analyse_text_new
-# args: set_output_file -s -o (output options)
+# input from stdin
+# args: -s -o (output options)
 import sys
 from lib import set_output_parser
 from lib.frames.verb_frames.verb_frame_matcher import VerbFrameMatcher
@@ -10,14 +10,15 @@ from lib.semantics.text_wrapper import TextWrapper
 from lib.semantics.output.output_wrapper import OutputWrapper
 
 # read set output file
-set_output_file = open(sys.argv[1], 'r')
+# set_output_file = open(sys.argv[1], 'r')
+set_output_file = sys.stdin
 sentences = set_output_parser.parse(set_output_file)
 
 # check for other cmd options
 s_out = False
 o_out = False
-if len(sys.argv) > 2:
-    for arg in sys.argv[2:]:
+if len(sys.argv) > 1:
+    for arg in sys.argv[1:]:
         if arg.strip() == '-s':
             s_out = True
         elif arg.strip() == '-o':
