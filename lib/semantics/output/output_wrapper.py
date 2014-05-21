@@ -194,7 +194,7 @@ class OutputWrapper:
     # output objects
     def renderOutput(self):
         for output_object in self.output_objects.itervalues():
-            print '\nOutput information:'
+            print 'Output information:'
             for key in output_object.keys():
                 if key != 'agencies':
                     print '\t' + key + ' : ' + output_object[key]
