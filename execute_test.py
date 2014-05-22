@@ -17,7 +17,7 @@ input_filenames = glob.glob(folder_from + '*.txt')
 
 # command
 # command = '/home/xstyrak/thesis/pipeline_scripts/extract_recommendations.sh '
-command = './extract_recommendations.sh '
+command = './extract_recommendations.sh -f '
 
 # sequentially proces files
 for filepath in input_filenames:
