@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # adds <s> and </s> tags to delimit sentences
-# removes empty spaces caused by errors in encodings
+# removes empty spaces caused by errors in encoding
 import sys
 
 SENTENCE_DELIMITERS = ".!?"

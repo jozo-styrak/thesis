@@ -1,4 +1,5 @@
 #!/bin/sh
+# tokenization
 ./pipeline_scripts/unitok.py -n  |\
 iconv -f utf-8 -t iso-8859-2 -c |\
 

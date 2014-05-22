@@ -10,7 +10,6 @@ from lib.semantics.text_wrapper import TextWrapper
 from lib.semantics.output.output_wrapper import OutputWrapper
 
 # read set output file
-# set_output_file = open(sys.argv[1], 'r')
 set_output_file = sys.stdin
 sentences = set_output_parser.parse(set_output_file)
 

@@ -1,4 +1,5 @@
 #!/bin/sh
+# greps given directory files for given word 
 # arguments: input_dir filter_word
 FILES="$(ls $1)"
 

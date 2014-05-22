@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # script for running NER
-
 import sys
 
 from lib.pipeline_utils import PipelineUtils

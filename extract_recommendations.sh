@@ -38,8 +38,6 @@ echo "Error reading command line arguments"
 else
 
 # the main code
-#set_output="$(mktemp)"
-
 cat $filestream |\
 ./tag_stream.sh |\
 ./ner_script.py |\
