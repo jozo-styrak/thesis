@@ -14,3 +14,5 @@ To run:
 As mentioned, system, utilizies special analysers from NLP FI, in order ajka, desamb and set. To run it correctly it is necessary to do on aurora server of FI, or to download given utilities and tweak shell scripts.
 
 Main running script is extract_recommendations.sh, which has one argument - name of the text file
+
+Thesis.pdf contains the text of diploma thesis, written in slovak
